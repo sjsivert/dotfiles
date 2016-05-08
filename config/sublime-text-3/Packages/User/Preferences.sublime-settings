@@ -1,0 +1,9 @@
+{
+	"color_scheme": "Packages/Theme - Flatland/Flatland Dark.tmTheme",
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"preview_on_click": false,
+	"theme": "Flatland Dark.sublime-theme"
+}

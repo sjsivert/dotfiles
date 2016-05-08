@@ -1,0 +1,18 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Anaconda",
+		"Djaneiro",
+		"FTPSync",
+		"GitGutter",
+		"Package Control",
+		"requirementstxt",
+		"SideBarEnhancements",
+		"Theme - Flatland",
+		"Vintageous"
+	]
+}
