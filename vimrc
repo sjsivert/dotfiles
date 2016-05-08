@@ -1,4 +1,11 @@
 syntax on
+" line numbers
+set number
+"linen number distance to border
+set numberwidth=3
+" number relative to cursor
+set relativenumber
+
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
