@@ -1,6 +1,6 @@
 dir=~/dotfiles
 olddir=~/dotfiles_old
-files="bashrc vimrc  zshrc  dmenurc Xresources gtkrc-2.0"
+files="bashrc vimrc  zshrc  dmenurc Xresources xinitrc gtkrc-2.0"
 folders="oh-my-zsh vim config"
 
 # create backup folder
