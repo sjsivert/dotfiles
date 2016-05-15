@@ -40,4 +40,4 @@ echo "copy Scripts"
 sudo cp -r $dir/scripts ~/scripts
 
 echo "copy Sound"
-co -r $dir/sound ~/sound
+cp -r $dir/sound ~/sound
