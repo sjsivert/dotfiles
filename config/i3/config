@@ -50,12 +50,14 @@ client.urgent $background $background $background $background
 #----------bindings------------#
 # ----custom bindings-------#
 # sound
-bindsym $mod+KP_Add exec pulseaudio-ctl up; exec paplay ~/Music/sound/pop.wav
-bindsym $mod+KP_Subtract exec pulseaudio-ctl down; exec paplay ~/Music/sound/pop.wav
-bindsym $mod+KP_Multiply exec pulseaudio-ctl mute; exec paplay ~/Music/sound/pop.wav
+bindsym $mod+KP_Add exec pulseaudio-ctl up; exec paplay ~/dotfiles/sound/pop.wav
+bindsym $mod+KP_Subtract exec pulseaudio-ctl down; exec paplay ~/dotfiles/sound/pop.wav
+bindsym $mod+KP_Multiply exec pulseaudio-ctl mute; exec paplay ~/dotfiles/sound/pop.wav
 
 # Lock screen
-bindsym $mod+Shift+p exec --no-startup-id lock; exec paplay ~/Music/Sound/lock.wav
+bindsym $mod+Shift+p exec --no-startup-id lock; exec paplay ~/dotfiles/Sound/lock.wav
+# Shutdown
+bindsym $mod+F12 exec shutdown now
 
 # Rofi + j4-dmenu
 bindsym  $mod+d exec --no-startup-id ~/.config/i3/rofi.sh
@@ -234,4 +236,5 @@ gaps outer 0
 # Autostart apps
 exec --no-startup-id feh --no-fehbg --bg-fill Pictures/walls/mountain.jpg
 exec --no-startup-id owncloud
+exec --np-startup-id redshift -l 69.0643084:18.538515200000006
 exec_always --no-startup-id compton
