@@ -4,7 +4,10 @@ rxvt-unicode
 feh
 compton
 pavucontrol
-sysstat"
+sysstat
+ranger
+w3m
+mediainfo"
 
 
 pacaur="i3-gaps
@@ -17,7 +20,8 @@ pulseaudio
 pulseaudio-ctl
 i3lock-color-git
 j4-dmenu-desktop
-vundle"
+vundle
+i3-lock-fancy-dualmonitors-git"
 pip="the-fuck"
 sudo pacman -S $pacman
 yaourt -S --noconfirm $pacaur
