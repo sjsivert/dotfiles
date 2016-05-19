@@ -2,7 +2,10 @@ pacman=" gnome-themes-standard
 gtk-engine-murrine
 rxvt-unicode
 feh
-compton"
+compton
+pavucontrol
+sysstat"
+
 
 pacaur="i3-gaps
 gtk-theme-arc

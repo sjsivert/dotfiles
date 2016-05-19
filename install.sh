@@ -1,7 +1,7 @@
 dir=~/dotfiles
 olddir=~/dotfiles_old
 files="bashrc vimrc  zshrc  dmenurc Xresources xinitrc gtkrc-2.0"
-folders="oh-my-zsh vim config"
+folders="oh-my-zsh vim config/git config/gtk-3.0 config/i3 config/sublime-text-3"
 
 # create backup folder
 
@@ -24,10 +24,10 @@ done
 for folder in $folders; do
 	echo "------------"
 	echo "backup $folder folder"
-	cp -r ~/.$folder $olddir
+	mv ~/.$folder $olddir
 	echo "merge and overviret $folder to home"
 	mkdir -p ~/.$folder
-	cp -r $dir/$folder/* ~/.$folder
+	ln -s $dir/$folder/* ~/.$folder
 done
 
 echo "Copy fonts"
