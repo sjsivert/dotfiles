@@ -7,7 +7,8 @@ pavucontrol
 sysstat
 ranger
 w3m
-mediainfo"
+mediainfo
+lxappearence"
 
 
 pacaur="i3-gaps
