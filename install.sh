@@ -1,7 +1,7 @@
 dir=~/dotfiles
 olddir=~/dotfiles_old
 files="bashrc vimrc  zshrc  dmenurc Xresources xinitrc gtkrc-2.0"
-folders="oh-my-zsh vim config/git config/gtk-3.0 config/i3 config/sublime-text-3"
+folders="oh-my-zsh vim config/git config/gtk-3.0 config/i3 config/sublime-text-3 config/ranger"
 
 # create backup folder
 
