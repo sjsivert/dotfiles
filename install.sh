@@ -16,7 +16,7 @@ echo "...done"
 for file in $files; do
 	echo "------"
 	echo "Copy $file  existing dotfiles from ~ to $olddir"
-	mv ~/.$file ~/dotfiles_old
+	mv ~/.$file $olddir
 	echo "Creating symlink to $file in home directory"
 	ln -s $dir/$file ~/.$file
 done
@@ -26,13 +26,13 @@ for folder in $folders; do
 	echo "backup $folder folder"
 	mv ~/.$folder $olddir
 	echo "merge and overviret $folder to home"
-	mkdir -p ~/.$folder
-	ln -s $dir/$folder/* ~/.$folder
+	ln -s $dir/$folder ~/.$folder
 done
 
 echo "Copy fonts"
 echo "-----------------------------"
-sudo cp $dir/fonts/* /usr/share/fonts/TTF/
+# cpoy fonts but do not overwrite if existing
+sudo cp -n $dir/fonts/* /usr/share/fonts/TTF/
 # update fonts cache
 fc-cache
 
