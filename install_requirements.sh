@@ -22,7 +22,7 @@ pulseaudio-ctl
 i3lock-color-git
 j4-dmenu-desktop
 vundle
-i3-lock-fancy-dualmonitors-git"
+i3-lock-fancy-git"
 pip="the-fuck"
 sudo pacman -S $pacman
 yaourt -S --noconfirm $pacaur

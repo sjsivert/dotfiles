@@ -136,9 +136,9 @@ set $WS4 "4:"
 set $WS5 "5:" 
 
 # multiple monitor settings----------
-workspace $WS1 output DVI-D-0
-workspace $WS2 output HDMI-0
-workspace $WS3 output DVI-D-1
+#workspace $WS1 output DVI-D-0
+#workspace $WS2 output HDMI-0
+#workspace $WS3 output DVI-D-1
 # -----------------
 # switch to workspace
 bindsym $mod+1 workspace $WS1
