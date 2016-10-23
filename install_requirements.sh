@@ -8,7 +8,11 @@ sysstat
 ranger
 w3m
 mediainfo
-lxappearence"
+lxappearence
+xfce4-panel
+xfce4-settings
+xfce4-power-manager"
+
 
 
 pacaur="i3-gaps
