@@ -13,9 +13,11 @@ lxappearence"
 
 pacaur="i3-gaps
 gtk-theme-arc
+nitrogen
 numix-icon-theme-git
 xcursor-chameleon-pearl
 i3blocks-gaps-git
+i3lock-fancy-git
 rofi-git
 pulseaudio
 pulseaudio-ctl

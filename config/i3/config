@@ -55,7 +55,7 @@ bindsym $mod+KP_Subtract exec pulseaudio-ctl down; exec paplay ~/dotfiles/sound/
 bindsym $mod+KP_Multiply exec pulseaudio-ctl mute; exec paplay ~/dotfiles/sound/pop.wav
 
 # Lock screen
-bindsym $mod+Shift+p exec --no-startup-id i3lock-fancy; exec paplay ~/dotfiles/Sound/lock.wav
+bindsym $mod+Shift+p exec i3lock-fancy; exec paplay ~/dotfiles/Sound/lock.wav
 # Shutdown
 bindsym $mod+F12 exec shutdown now
 
@@ -136,9 +136,9 @@ set $WS4 "4:"
 set $WS5 "5:" 
 
 # multiple monitor settings----------
-workspace $WS1 output DVI-D-0
-workspace $WS2 output HDMI-0
-workspace $WS3 output DVI-D-1
+#workspace $WS1 output DVI-D-0
+#workspace $WS2 output HDMI-0
+#workspace $WS3 output DVI-D-1
 # -----------------
 # switch to workspace
 bindsym $mod+1 workspace $WS1
@@ -203,7 +203,7 @@ bar {
         status_command i3blocks -c ~/.config/i3/i3blocks.conf  #i3status
         position top
 
-	tray_output primary
+	#tray_output primary
 	#strip_workspace_numbers yes
         colors {
         	background $bar_bg
@@ -242,7 +242,13 @@ gaps inner 20
 gaps outer 0 
 
 # Autostart apps
-exec --no-startup-id feh --no-fehbg --bg-fill Pictures/walls/mountain.jpg
 exec --no-startup-id owncloud
 exec --np-startup-id redshift -l 69.0643084:18.538515200000006
 exec_always --no-startup-id compton
+exec sleep 3 && nitrogen --restore 
+
+# XFCE4
+exec --no-startup-id xfce4-panel
+exec --no-startup-id xfce4-power-manager
+exec --no-startup-id xfsettingsd --sm-client-disable &
+
