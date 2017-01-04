@@ -17,6 +17,7 @@ compinit
 ZSH=~/.oh-my-zsh/
 
 # .bashrc config
+alias clock='tty-clock -c '
 alias ls='ls --color=auto'
 alias ll='ls -l'
 # the fuck
