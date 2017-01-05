@@ -2,6 +2,7 @@ pacman=" gnome-themes-standard
 gtk-engine-murrine
 rxvt-unicode
 feh
+polkit-gnome
 compton
 pavucontrol
 sysstat
