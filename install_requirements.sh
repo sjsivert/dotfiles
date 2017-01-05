@@ -7,13 +7,15 @@ pavucontrol
 sysstat
 ranger
 w3m
-mediainfo
-lxappearence"
+mediainfo"
+#lxappearence"
 
 
 pacaur="i3-gaps
 gtk-theme-arc
 nitrogen
+playerctl
+cava-git
 numix-icon-theme-git
 xcursor-chameleon-pearl
 i3blocks-gaps-git

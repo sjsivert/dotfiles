@@ -53,7 +53,9 @@ client.urgent $background $background $background $background
 bindsym $mod+KP_Add exec pulseaudio-ctl up; exec paplay ~/dotfiles/sound/pop.wav
 bindsym $mod+KP_Subtract exec pulseaudio-ctl down; exec paplay ~/dotfiles/sound/pop.wav
 bindsym $mod+KP_Multiply exec pulseaudio-ctl mute; exec paplay ~/dotfiles/sound/pop.wav
-
+bindsym $mod+KP_0 exec --no-startup-id playerctl play-pause
+bindsym $mod+KP_3 exec --no-startup-id playerctl next
+bindsym $mod+KP_1 exec --no-startup-id playerctl previous
 # Lock screen
 bindsym $mod+Shift+p exec i3lock-fancy; exec paplay ~/dotfiles/Sound/lock.wav
 # Shutdown
