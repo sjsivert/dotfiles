@@ -11,13 +11,12 @@ mkdir -p $olddir
 # change to the dotfiles directory
 echo "Changing to the $dir directory"
 cd $dir
-echo "...done"
 
 for file in $files; do
 	echo "------"
-	echo "Copy $file  existing dotfiles from ~ to $olddir"
+	echo "Copy $file from ~ to $olddir"
 	mv ~/.$file $olddir
-	echo "Creating symlink to $file in home directory"
+	echo "Creating symlink to $file"
 	ln -s $dir/$file ~/.$file
 done
 
@@ -36,6 +35,5 @@ sudo cp -n $dir/fonts/* /usr/share/fonts/TTF/
 # update fonts cache
 fc-cache
 
-echo "copy Scripts"
-sudo cp -r $dir/scripts ~/scripts
-
+echo "symlink Scripts"
+ln -s $dir/scripts ~/scripts

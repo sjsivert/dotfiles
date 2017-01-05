@@ -248,7 +248,7 @@ gaps outer 0
 exec --no-startup-id owncloud
 exec --np-startup-id redshift -l 69.0643084:18.538515200000006
 exec_always --no-startup-id compton
-exec sleep 3 && nitrogen --restore 
+exec sleep 2 && nitrogen --restore 
 
 # XFCE4
 exec --no-startup-id xfce4-panel
