@@ -31,21 +31,31 @@ font pango:Iosevka, FontAwesome Regular 8
 
 #------------colors--------------#
 # Setting colors
-#set $background #121312 
-set $background #1D1F21  
-set $foreground #3F4F5D
-set $dominant #43AAE5
-set $text-color #43AAE5
-set $border-focus #5294E2
+#set $background #1D1F21 #darker background used with blue theme 
+set $green #16C17D
+set $dark #1D232F
+set $blue #43AAE5
+set $lightblue #5294E2
 
-set $bar_bg #1D1F21
-#set $bar_fg #C5C8C6
+#dark
+set $background #1D232F
+#light dark
+set $foreground #3F4F5D
+set $dominant $green 
+set $text-color #C5C8C6
+#green
+set $border-focus #16C17D 
+
+#set $bar_bg #1D1F21
+set $bar_bg #1D232F
+set $bar_fg #16C17D
 
 # Theme colors
-#		background?   border        text	  child_border
-client.focused $border-focus $border-focus $foreground $foreground
-client.unfocused $background $background $background $background
-client.urgent $background $background $background $background
+#			border      background      text    indicator    child_border
+client.focused 		$border-focus $border-focus $foreground $foreground $border-focus
+client.placeholder 	$background $background $background $background $background
+client.unfocused 	$background $background $background $background $background
+client.urgent 		$background $background $background $background $background
 
 #----------bindings------------#
 # ----custom bindings-------#
@@ -211,13 +221,15 @@ bar {
 	#tray_output primary
 	#strip_workspace_numbers yes
         colors {
-        	background $bar_bg
 
         	#		border 		background		text
-        	focused_workspace   $bar_bg		$bar_bg			$text-color
+        	focused_workspace   $bar_bg		$bar_bg			$bar_fg
         	inactive_workspace  $bar_bg		$bar_bg			white
-        	urgent_workspace	$bar_bg		$bar_bg			red
+        	urgent_workspace	$bar_bg		$bar_bg		        red
 
+        	background $bar_bg
+		#statusline $dominant
+		active_workspace $bar_bg	$bar_bg				$text-color
         }
 }
 # Hide borders

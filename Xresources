@@ -30,7 +30,10 @@ Xft.antialias: 1
 Xft.rgba: rgb
 
 !colors
-#define bg	#1D1F21
+!black dark, with blue
+!#define bg	#1D1F21
+!light dark
+#define bg 	#1D232F
 #define fg	#C5C8C6
 
 xterm*foreground: fg
@@ -65,8 +68,11 @@ URxvt*background: bg
 *.color3:  #b3bdcb
 *.color11: #CAD1DB
 ! DarkBlue + Blue
-*.color4:  #5294e2
-*.color12: #97bfee
+!*.color4:  #5294e2
+!*.color12: #97bfee
+!green folders + executeables
+*.color4: #16C17D
+*.color12: #35cc8f
 ! DarkMagenta + Magenta
 *.color5:  #404552
 *.color13: #686d79
