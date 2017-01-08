@@ -141,16 +141,16 @@ bindsym $mod+a focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
-set $WS1 "1:"
-set $WS2 "2:"
-set $WS3 "3:"
-set $WS4 "4:"
-set $WS5 "5:" 
+set $WS1 "1"
+set $WS2 "2"
+set $WS3 "3"
+set $WS4 "4"
+set $WS5 "5" 
 
 # multiple monitor settings----------
-#workspace $WS1 output DVI-D-0
-#workspace $WS2 output HDMI-0
-#workspace $WS3 output DVI-D-1
+workspace $WS1 output HDMI1
+workspace $WS2 output HDMI1
+workspace $WS3 output HDMI2
 # -----------------
 # switch to workspace
 bindsym $mod+1 workspace $WS1
@@ -244,8 +244,8 @@ new_float none
 
 # Open program spes desktop
 # assign [class="VirtualBox"] $WS9
-assign [class="Firefox"] $WS2
-assign [class="chromium"] $WS3
+#assign [class="Firefox"] $WS2
+#assign [class="chromium"] $WS3
 
 
 
