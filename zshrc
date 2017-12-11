@@ -16,7 +16,14 @@ compinit
 # Path to your oh-my-zsh installation.
 ZSH=~/.oh-my-zsh/
 
+# bsdtar locale error fix
+export  LANG=en_US.UTF-8
+
+export LANG=en_US.UTF-8
+export LC_MESSAGES="C"
+LC_CTYPE="en_US.UTF-8"
 # .bashrc config
+alias update='sudo pacmatic -Syu'
 alias clock='tty-clock -c '
 alias ls='ls --color=auto'
 alias ll='ls -l'
@@ -42,6 +49,7 @@ DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
+# 
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
