@@ -260,7 +260,7 @@ gaps outer 0
 
 # Autostart apps
 exec --no-startup-id nextcloud
-exec --np-startup-id redshift -l 69.0643084:18.538515200000006
+exec --no-startup-id redshift -l 69.0643084:18.538515200000006
 exec_always --no-startup-id compton
 exec sleep 2 && nitrogen --restore 
 
