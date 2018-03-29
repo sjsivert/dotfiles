@@ -12,7 +12,7 @@ mediainfo"
 #lxappearence"
 
 
-pacaur="i3-gaps
+pakku="i3-gaps
 gtk-theme-arc
 nitrogen
 playerctl
@@ -30,5 +30,5 @@ vundle
 i3-lock-fancy-dualmonitors-git"
 pip="the-fuck"
 sudo pacman -S $pacman
-yaourt -S --noconfirm $pacaur
+pakku -S --noconfirm $pakku
 pip install $pip
