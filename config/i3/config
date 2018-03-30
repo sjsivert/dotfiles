@@ -73,6 +73,23 @@ exec --no-startup-id xautolock -time 5 -locker "~/scripts/betterlockscreen/lock.
 # Shutdown
 bindsym $mod+F12 exec shutdown now
 
+# Set inner/outer gaps
+gaps inner 20
+gaps outer 0 
+
+# Autostart apps
+exec --no-startup-id nextcloud
+exec --no-startup-id redshift -l 69.0643084:18.538515200000006
+exec_always --no-startup-id compton
+exec sleep 2 && nitrogen --restore 
+
+## XFCE4
+exec --no-startup-id xfce4-panel
+exec --no-startup-id xfce4-power-manager
+exec --no-startup-id xfsettingsd --sm-client-disable &
+# polkit for authicating in a GUI
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
 # Rofi + j4-dmenu
 bindsym  $mod+d exec --no-startup-id ~/.config/i3/rofi.sh
 
@@ -254,20 +271,4 @@ new_float none
 # Disable window titlebars entirely
 for_window [class="^.*"] border pixel 2 
 
-# Set inner/outer gaps
-gaps inner 20
-gaps outer 0 
-
-# Autostart apps
-exec --no-startup-id nextcloud
-exec --no-startup-id redshift -l 69.0643084:18.538515200000006
-exec_always --no-startup-id compton
-exec sleep 2 && nitrogen --restore 
-
-# XFCE4
-exec --no-startup-id xfce4-panel
-exec --no-startup-id xfce4-power-manager
-exec --no-startup-id xfsettingsd --sm-client-disable &
-# polkit for authicating in a GUI
-exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 

@@ -29,6 +29,9 @@ Xft.hinting: 1
 Xft.antialias: 1
 Xft.rgba: rgb
 
+! High DPI Surface
+Xft.dpi: 150
+
 !colors
 !black dark, with blue
 !#define bg	#1D1F21

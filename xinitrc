@@ -55,6 +55,9 @@ twm &
 # keyboard layout
 setxkbmap no
 #exec xterm -geometry 80x66+0+0 -name login
+
+# High DPI setting for surfarePro
+xrandr --dpi 150
 exec i3
 [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
 

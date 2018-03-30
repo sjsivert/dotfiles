@@ -8,12 +8,18 @@ pavucontrol
 sysstat
 ranger
 w3m
+rofi
+redshift
+thunar
+xfce4-settings
+xfce4-power-manager
+xfsettingsd
 mediainfo"
 #lxappearence"
 
 
 pakku="i3-gaps
-gtk-theme-arc
+arc-gtk-theme
 nitrogen
 playerctl
 cava-git
