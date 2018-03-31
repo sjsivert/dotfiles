@@ -1,5 +1,7 @@
 pacman=" gnome-themes-standard 
 gtk-engine-murrine
+libgnome-keyring
+gnome-keyring
 xautolock
 rxvt-unicode
 feh
