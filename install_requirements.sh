@@ -1,5 +1,6 @@
 pacman=" gnome-themes-standard 
 gtk-engine-murrine
+xautolock
 rxvt-unicode
 feh
 polkit-gnome
@@ -14,11 +15,15 @@ thunar
 xfce4-settings
 xfce4-power-manager
 xfsettingsd
+imagemagick
+xorg-xdpyinfo
+bc
 mediainfo"
 #lxappearence"
 
 
 pakku="i3-gaps
+i3lock-color
 arc-gtk-theme
 nitrogen
 playerctl

@@ -68,8 +68,8 @@ bindsym $mod+KP_3 exec --no-startup-id playerctl next
 bindsym $mod+KP_1 exec --no-startup-id playerctl previous
 # Lock screen
 #bindsym $mod+Shift+p exec i3lock-fancy; exec paplay ~/dotfiles/Sound/lock.wav
-bindsym $mod+Shift+p exec --no-startup-id ~/scripts/betterlockscreen/lock.sh -l dim; exec paplay ~/dotfiles/Sound/lock.wav
-exec --no-startup-id xautolock -time 5 -locker "~/scripts/betterlockscreen/lock.sh -l dim"
+bindsym $mod+Shift+p exec --no-startup-id betterlockscreen --lock dim; exec paplay ~/dotfiles/Sound/lock.wav
+exec --no-startup-id xautolock -time 5 -locker "betterlockscreen --lock dim"
 # Shutdown
 bindsym $mod+F12 exec shutdown now
 
