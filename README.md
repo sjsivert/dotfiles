@@ -1,2 +1,3 @@
 # dotfiles
-Dotfiles for my Arch linux + i3 setup
+Dotfiles Arch linux + i3/XFCE4 setup
+![screenshot](screenshot.png)
