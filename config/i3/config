@@ -259,7 +259,9 @@ new_window pixel
 new_float none
 
 # Open program in floating mode
-# for_window [title="alsamixer"] floating enable border pixel 2
+ for_window [title="xfce"] floating enable border pixel 2
+
+ for_window [title="file manager"] floating enable border pixel 2
 
 # Open program spes desktop
 # assign [class="VirtualBox"] $WS9
@@ -272,3 +274,8 @@ new_float none
 for_window [class="^.*"] border pixel 2 
 
 
+
+#xfce4
+exec --no-startup-id xfce4-panel
+exec --no-startup-id xfsettingsd --sm-client-disable &
+exec --no-startup-id xfce4-power-manager
