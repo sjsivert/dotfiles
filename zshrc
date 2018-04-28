@@ -36,7 +36,24 @@ eval $(thefuck --alias)
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="bullet-train"
-
+BULLETTRAIN_PROMPT_SEPERATE_LINE=true
+BULLETTRAIN_PROMPT_ADD_NEWLINE=true
+BULLETTRAIN_PROMPT_ORDER=(
+	status
+	custom
+	context
+	dir
+	screen
+	perl
+	ruby
+	virtualenv
+	aws
+	go
+	rust
+	elixir
+	git
+	hg
+)
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -45,7 +62,7 @@ ZSH_THEME="bullet-train"
 # HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
-DISABLE_AUTO_UPDATE="true"
+#DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
@@ -122,3 +139,4 @@ source $ZSH/oh-my-zsh.sh
 
 
 cd /home/archie
+

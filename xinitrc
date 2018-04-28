@@ -55,6 +55,9 @@ twm &
 # keyboard layout
 setxkbmap no
 #exec xterm -geometry 80x66+0+0 -name login
+
+# High DPI setting for surfarePro
+xrandr --dpi 150
 exec i3
 [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
 
@@ -62,3 +65,5 @@ exec i3
 # gnome keyring
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
 export SSH_AUTH_SOCK
+# export display for dynst notification if not using login manager
+systemctl --user import-environment DISPLAY

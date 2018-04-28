@@ -68,10 +68,27 @@ bindsym $mod+KP_3 exec --no-startup-id playerctl next
 bindsym $mod+KP_1 exec --no-startup-id playerctl previous
 # Lock screen
 #bindsym $mod+Shift+p exec i3lock-fancy; exec paplay ~/dotfiles/Sound/lock.wav
-bindsym $mod+Shift+p exec --no-startup-id ~/scripts/betterlockscreen/lock.sh -l dim; exec paplay ~/dotfiles/Sound/lock.wav
-exec --no-startup-id xautolock -time 5 -locker "~/scripts/betterlockscreen/lock.sh -l dim"
+bindsym $mod+Shift+p exec --no-startup-id betterlockscreen --lock dim; exec paplay ~/dotfiles/Sound/lock.wav
+exec --no-startup-id xautolock -time 5 -locker "betterlockscreen --lock dim"
 # Shutdown
 bindsym $mod+F12 exec shutdown now
+
+# Set inner/outer gaps
+gaps inner 20
+gaps outer 0 
+
+# Autostart apps
+exec --no-startup-id nextcloud
+exec --no-startup-id redshift -l 69.0643084:18.538515200000006
+exec_always --no-startup-id compton
+exec sleep 2 && nitrogen --restore 
+
+## XFCE4
+exec --no-startup-id xfce4-panel
+exec --no-startup-id xfce4-power-manager
+exec --no-startup-id xfsettingsd --sm-client-disable &
+# polkit for authicating in a GUI
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 # Rofi + j4-dmenu
 bindsym  $mod+d exec --no-startup-id ~/.config/i3/rofi.sh
@@ -150,9 +167,9 @@ set $WS4 "4"
 set $WS5 "5" 
 
 # multiple monitor settings----------
-workspace $WS1 output HDMI1
-workspace $WS2 output HDMI1
-workspace $WS3 output HDMI2
+#workspace $WS1 output HDMI1
+#workspace $WS2 output HDMI1
+#workspace $WS3 output HDMI2
 # -----------------
 # switch to workspace
 bindsym $mod+1 workspace $WS1
@@ -242,7 +259,9 @@ new_window pixel
 new_float none
 
 # Open program in floating mode
-# for_window [title="alsamixer"] floating enable border pixel 2
+ for_window [title="xfce"] floating enable border pixel 2
+
+ for_window [title="file manager"] floating enable border pixel 2
 
 # Open program spes desktop
 # assign [class="VirtualBox"] $WS9
@@ -254,20 +273,9 @@ new_float none
 # Disable window titlebars entirely
 for_window [class="^.*"] border pixel 2 
 
-# Set inner/outer gaps
-gaps inner 20
-gaps outer 0 
 
-# Autostart apps
-exec --no-startup-id nextcloud
-exec --no-startup-id redshift -l 69.0643084:18.538515200000006
-exec_always --no-startup-id compton
-exec sleep 2 && nitrogen --restore 
 
-# XFCE4
+#xfce4
 exec --no-startup-id xfce4-panel
-exec --no-startup-id xfce4-power-manager
 exec --no-startup-id xfsettingsd --sm-client-disable &
-# polkit for authicating in a GUI
-exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-
+exec --no-startup-id xfce4-power-manager
