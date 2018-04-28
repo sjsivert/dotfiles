@@ -38,6 +38,22 @@ eval $(thefuck --alias)
 ZSH_THEME="bullet-train"
 BULLETTRAIN_PROMPT_SEPERATE_LINE=true
 BULLETTRAIN_PROMPT_ADD_NEWLINE=true
+BULLETTRAIN_PROMPT_ORDER=(
+	status
+	custom
+	context
+	dir
+	screen
+	perl
+	ruby
+	virtualenv
+	aws
+	go
+	rust
+	elixir
+	git
+	hg
+)
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 

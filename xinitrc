@@ -65,3 +65,5 @@ exec i3
 # gnome keyring
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
 export SSH_AUTH_SOCK
+# export display for dynst notification if not using login manager
+systemctl --user import-environment DISPLAY
