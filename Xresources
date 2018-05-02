@@ -30,7 +30,7 @@ Xft.antialias: 1
 Xft.rgba: rgb
 
 ! High DPI Surface
-Xft.dpi: 150
+Xft.dpi: 100
 
 !colors
 !black dark, with blue
