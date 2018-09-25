@@ -67,9 +67,12 @@ bindsym $mod+KP_0 exec --no-startup-id playerctl play-pause
 bindsym $mod+KP_3 exec --no-startup-id playerctl next
 bindsym $mod+KP_1 exec --no-startup-id playerctl previous
 # Lock screen
+# startup programs
 #bindsym $mod+Shift+p exec i3lock-fancy; exec paplay ~/dotfiles/Sound/lock.wav
 bindsym $mod+Shift+p exec --no-startup-id betterlockscreen --lock dim; exec paplay ~/dotfiles/Sound/lock.wav
 exec --no-startup-id xautolock -time 5 -locker "betterlockscreen --lock dim"
+# keepass
+exec --no-startup-id secret-tool lookup keepass theVault | keepass --pw-stdin -minimize backup/theVault.kdbx
 # Shutdown
 bindsym $mod+F12 exec shutdown now
 
@@ -80,7 +83,7 @@ gaps outer 0
 # Autostart apps
 exec --no-startup-id nextcloud
 exec --no-startup-id redshift -l 69.0643084:18.538515200000006
-exec_always --no-startup-id compton
+exec_always --no-startup-id compton --unredir-if-possible  --glx-no-stencil --glx-use-copysubbuffermesa -b
 exec sleep 2 && nitrogen --restore 
 
 ## XFCE4

@@ -27,6 +27,8 @@ alias update='sudo pacmatic -Syu'
 alias clock='tty-clock -c '
 alias ls='ls --color=auto'
 alias ll='ls -l'
+# virtualenv
+alias vpong='source ~/.virtualenvs/abapong/bin/activate'
 # the fuck
 eval $(thefuck --alias)
 
