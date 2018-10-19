@@ -23,3 +23,5 @@ export GIT_PS1_SHOWDIRTYSTATE=1
 
  #transparency i xterm
 #[ -n "$XTERM_VERSION" ] && transset-df --id "$WINDOWID" >/dev/null
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

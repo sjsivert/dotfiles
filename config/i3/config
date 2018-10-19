@@ -82,6 +82,9 @@ exec --no-startup-id nextcloud
 exec --no-startup-id redshift -l 69.0643084:18.538515200000006
 exec_always --no-startup-id compton
 exec sleep 2 && nitrogen --restore 
+# keepass
+exec --no-startup-id  secret-tool lookup keepass theVault | keepass --pw-stdin -minimize backup/theVault.kdbx
+
 
 ## XFCE4
 exec --no-startup-id xfce4-panel
@@ -267,6 +270,7 @@ new_float none
 # assign [class="VirtualBox"] $WS9
 #assign [class="Firefox"] $WS2
 #assign [class="chromium"] $WS3
+assign [class="KeePass2"] $WS4
 
 
 
