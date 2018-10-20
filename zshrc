@@ -5,6 +5,7 @@ SAVEHIST=1000
 setopt appendhistory autocd extendedglob nomatch
 unsetopt beep notify
 bindkey -e
+export TERM=xterm-256color
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/archie/.zshrc'
@@ -28,7 +29,7 @@ alias clock='tty-clock -c '
 alias ls='ls --color=auto'
 alias ll='ls -l'
 # virtualenv
-alias vpong='source ~/.virtualenvs/abapong/bin/activate'
+alias venv='source ~/.virtualenvs/abapong/bin/activate'
 # the fuck
 eval $(thefuck --alias)
 
@@ -142,3 +143,5 @@ source $ZSH/oh-my-zsh.sh
 
 cd /home/archie
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
