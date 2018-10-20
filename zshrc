@@ -32,6 +32,8 @@ alias ll='ls -l'
 alias venv='source ~/.virtualenvs/abapong/bin/activate'
 # the fuck
 eval $(thefuck --alias)
+# cd into dir when closing ranger
+alias ranger='ranger-cd'
 
 
 # Set name of the theme to load.
@@ -137,6 +139,22 @@ ZSH_CACHE_DIR=$HOME/.oh-my-zsh-cache
 if [[ ! -d $ZSH_CACHE_DIR ]]; then
   mkdir $ZSH_CACHE_DIR
 fi
+#This is based on: https://github.com/ranger/ranger/blob/master/examples/bash_automatic_cd.sh
+#Paste this into your .zshrc:
+
+function ranger-cd {
+    tempfile="$(mktemp -t tmp.XXXXXX)"
+    /usr/bin/ranger --choosedir="$tempfile" "${@:-$(pwd)}"
+    test -f "$tempfile" &&
+    if [ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]; then
+        cd -- "$(cat "$tempfile")"
+    fi
+    rm -f -- "$tempfile"
+}
+
+
+bindkey -s '^O' 'ranger-cd\n'
+#ranger-cd will fire for Ctrl+O
 
 source $ZSH/oh-my-zsh.sh
 

@@ -1,4 +1,5 @@
 pacman=" gnome-themes-standard 
+python-pywal
 gtk-engine-murrine
 libgnome-keyring
 gnome-keyring

@@ -7,6 +7,9 @@ set numberwidth=3
 " number relative to cursor
 set relativenumber
 
+" COLERSCHEME
+"colorscheme spacegray
+
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -46,6 +49,12 @@ Plug 'https://github.com/tpope/vim-surround'
 
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+" Linting
+Plug 'w0rp/ale'
+" Git features
+Plug 'airblade/vim-gitgutter'
+" Color scheme
+"Plug 'ajh17/Spacegray.vim'
 
 
 

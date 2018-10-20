@@ -1,0 +1,13 @@
+ranger
+htop
+zsh
+vim
+htop
+ranger
+whois
+ufw
+tmux
+rsync
+
+
+
