@@ -5,7 +5,6 @@ SAVEHIST=1000
 setopt appendhistory autocd extendedglob nomatch
 unsetopt beep notify
 bindkey -e
-export TERM=xterm-256color
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/archie/.zshrc'
