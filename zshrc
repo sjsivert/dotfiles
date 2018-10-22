@@ -33,6 +33,12 @@ alias venv='source ~/.virtualenvs/abapong/bin/activate'
 eval $(thefuck --alias)
 # cd into dir when closing ranger
 alias ranger='ranger-cd'
+alias cc='pushd'
+alias dirs="dirs -v"
+alias v='vim'
+
+
+
 
 
 # Set name of the theme to load.

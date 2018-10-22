@@ -55,6 +55,8 @@ Plug 'w0rp/ale'
 Plug 'airblade/vim-gitgutter'
 " Color scheme
 "Plug 'ajh17/Spacegray.vim'
+" Julia syntax
+Plug 'JuliaEditorSupport/julia-vim'
 
 
 
