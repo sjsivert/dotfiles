@@ -26,3 +26,4 @@ keepass
 zip
 unzip
 zsh
+fzf

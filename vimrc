@@ -62,6 +62,8 @@ Plug 'JuliaEditorSupport/julia-vim'
 Plug 'scrooloose/nerdcommenter'
 " autoclose of tags
 Plug 'raimondi/delimitmate'
+" autocompletion
+Plug 'Valloric/YouCompleteMe'
 
 
 

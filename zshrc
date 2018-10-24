@@ -21,6 +21,12 @@ export  LANG=en_US.UTF-8
 
 export LANG=en_US.UTF-8
 export LC_MESSAGES="C"
+# fzf options
+# CTRL-T: automaticly selects if only 1 uitem. quits if 0
+export FZF_CTRL_T_OPTS="--select-1 --exit-0"
+# ALT-c tree command to get entries from dirs
+export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
+
 LC_CTYPE="en_US.UTF-8"
 # .bashrc config
 alias update='sudo pacmatic -Syu'
