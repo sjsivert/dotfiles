@@ -42,6 +42,7 @@ alias ranger='ranger-cd'
 alias cc='pushd'
 alias dirs="dirs -v"
 alias v='vim'
+alias todo='topydo columns'
 
 
 
