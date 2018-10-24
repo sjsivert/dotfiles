@@ -145,3 +145,6 @@ cd /home/archie
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# added by travis gem
+[ -f /home/archie/.travis/travis.sh ] && source /home/archie/.travis/travis.sh

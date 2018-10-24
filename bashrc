@@ -25,3 +25,6 @@ export GIT_PS1_SHOWDIRTYSTATE=1
 #[ -n "$XTERM_VERSION" ] && transset-df --id "$WINDOWID" >/dev/null
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# added by travis gem
+[ -f /home/archie/.travis/travis.sh ] && source /home/archie/.travis/travis.sh
