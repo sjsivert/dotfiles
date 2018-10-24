@@ -13,6 +13,7 @@ set relativenumber
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
+filetype plugin on
 
 " install vim-plug if it is not installed
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -57,6 +58,10 @@ Plug 'airblade/vim-gitgutter'
 "Plug 'ajh17/Spacegray.vim'
 " Julia syntax
 Plug 'JuliaEditorSupport/julia-vim'
+" Commenter
+Plug 'scrooloose/nerdcommenter'
+" autoclose of tags
+Plug 'raimondi/delimitmate'
 
 
 
@@ -65,3 +70,4 @@ call plug#end()
 
 " -----KEYBINDS-------
 map ; :Files<CR>
+let mapleader = ','
