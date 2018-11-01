@@ -55,6 +55,7 @@ Plug 'w0rp/ale'
 " Git features
 Plug 'airblade/vim-gitgutter'
 " Color scheme
+Plug 'dracula/vim', { 'as': 'dracula' }
 "Plug 'ajh17/Spacegray.vim'
 " Julia syntax
 Plug 'JuliaEditorSupport/julia-vim'
@@ -64,8 +65,9 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'raimondi/delimitmate'
 " autocompletion
 Plug 'Valloric/YouCompleteMe'
-
-
+" python highlighting
+Plug 'kh3phr3n/python-syntax'
+let python_highlight_all = 1
 
 " Initialize plugin system
 call plug#end()
