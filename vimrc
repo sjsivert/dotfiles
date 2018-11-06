@@ -7,6 +7,15 @@ set numberwidth=3
 " number relative to cursor
 set relativenumber
 
+" show a visual line under the cursor's current line
+set cursorline
+
+" show the matching part of the pair for [] {} and ()
+set showmatch
+
+" enable all Python syntax highlighting features
+let python_highlight_all = 1
+
 " COLERSCHEME
 "colorscheme spacegray
 
@@ -64,6 +73,20 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'raimondi/delimitmate'
 " autocompletion
 Plug 'Valloric/YouCompleteMe'
+" Python higligh (NOT WORKING)??
+Plug 'https://github.com/vim-python/python-syntax'
+let python_highlight_all = 1
+" syntax highlighitng
+Plug 'https://github.com/vim-syntastic/syntastic'
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
 
 
 
