@@ -13,6 +13,7 @@ set relativenumber
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
+filetype plugin on
 
 " install vim-plug if it is not installed
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -54,12 +55,23 @@ Plug 'w0rp/ale'
 " Git features
 Plug 'airblade/vim-gitgutter'
 " Color scheme
+Plug 'dracula/vim', { 'as': 'dracula' }
 "Plug 'ajh17/Spacegray.vim'
-
-
+" Julia syntax
+Plug 'JuliaEditorSupport/julia-vim'
+" Commenter
+Plug 'scrooloose/nerdcommenter'
+" autoclose of tags
+Plug 'raimondi/delimitmate'
+" autocompletion
+Plug 'Valloric/YouCompleteMe'
+" python highlighting
+Plug 'kh3phr3n/python-syntax'
+let python_highlight_all = 1
 
 " Initialize plugin system
 call plug#end()
 
 " -----KEYBINDS-------
 map ; :Files<CR>
+let mapleader = ','

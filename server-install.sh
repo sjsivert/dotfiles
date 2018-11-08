@@ -31,3 +31,5 @@ done
 
 echo "symlink Scripts"
 ln -s $dir/scripts ~/scripts
+# set default shell
+sh -s $(which zsh)

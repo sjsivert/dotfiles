@@ -8,6 +8,6 @@ whois
 ufw
 tmux
 rsync
-
+thefuck
 
 

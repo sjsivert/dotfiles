@@ -5,7 +5,6 @@ SAVEHIST=1000
 setopt appendhistory autocd extendedglob nomatch
 unsetopt beep notify
 bindkey -e
-export TERM=xterm-256color
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/archie/.zshrc'
@@ -22,6 +21,12 @@ export  LANG=en_US.UTF-8
 
 export LANG=en_US.UTF-8
 export LC_MESSAGES="C"
+# fzf options
+# CTRL-T: automaticly selects if only 1 uitem. quits if 0
+export FZF_CTRL_T_OPTS="--select-1 --exit-0"
+# ALT-c tree command to get entries from dirs
+export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
+
 LC_CTYPE="en_US.UTF-8"
 # .bashrc config
 alias update='sudo pacmatic -Syu'
@@ -34,6 +39,13 @@ alias venv='source ~/.virtualenvs/abapong/bin/activate'
 eval $(thefuck --alias)
 # cd into dir when closing ranger
 alias ranger='ranger-cd'
+alias cc='pushd'
+alias dirs="dirs -v"
+alias v='vim'
+alias todo='topydo columns'
+
+
+
 
 
 # Set name of the theme to load.
@@ -163,3 +175,6 @@ cd ~/
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# added by travis gem
+[ -f /home/archie/.travis/travis.sh ] && source /home/archie/.travis/travis.sh
