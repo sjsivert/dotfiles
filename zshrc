@@ -40,7 +40,7 @@ alias ranger='ranger-cd'
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="bullet-train"
+ZSH_THEME="sorin"
 BULLETTRAIN_PROMPT_SEPERATE_LINE=true
 BULLETTRAIN_PROMPT_ADD_NEWLINE=true
 BULLETTRAIN_PROMPT_ORDER=(
@@ -159,7 +159,7 @@ bindkey -s '^O' 'ranger-cd\n'
 source $ZSH/oh-my-zsh.sh
 
 
-cd /home/archie
+cd ~/
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
