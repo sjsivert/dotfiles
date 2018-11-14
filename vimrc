@@ -74,4 +74,5 @@ call plug#end()
 
 " -----KEYBINDS-------
 map ; :Files<CR>
+map f; :Ag<CR>
 let mapleader = ','
