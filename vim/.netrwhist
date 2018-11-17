@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_cnt =4
 let g:netrw_dirhist_1='/home/archie/.oh-my-zsh'
 let g:netrw_dirhist_2='/home/archie/code/fg'
 let g:netrw_dirhist_3='/home/archie/NTNU/Proglab/Project 6 (robot)/bbrc'
+let g:netrw_dirhist_4='/home/archie/code/fg/src/angular_frontend'

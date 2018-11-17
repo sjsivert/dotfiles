@@ -7,5 +7,5 @@ shell wal -i feh_001491_000001_1463389589-3.jpg -n
 delete
 open_with vim
 rename docker-compose.override.yml
-
 shell v .
+
