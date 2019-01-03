@@ -1,6 +1,6 @@
 dir=~/dotfiles
 olddir=~/dotfiles_old
-files="bashrc vimrc  zshrc"
+files="tmux.conf bashrc vimrc  zshrc"
 folders="oh-my-zsh vim config/git config/ranger"
 
 # create backup folder
