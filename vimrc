@@ -58,7 +58,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'dracula/vim', { 'as': 'dracula' }
 "Plug 'ajh17/Spacegray.vim'
 " Julia syntax
-Plug 'JuliaEditorSupport/julia-vim'
+" Plug 'JuliaEditorSupport/julia-vim'
 " Commenter
 Plug 'scrooloose/nerdcommenter'
 " autoclose of tags
