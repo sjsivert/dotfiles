@@ -16,6 +16,19 @@ compinit
 # Path to your oh-my-zsh installation.
 ZSH=~/.oh-my-zsh/
 
+# zgen plugin manager for zsh
+# load zgen
+source "${HOME}/.zgen/zgen.zsh"
+# if the init script doesn't exist
+if ! zgen saved; then
+
+  # specify plugins here
+  zgen oh-my-zsh
+
+  # generate the init script from plugins above
+  zgen save
+fi   
+
 # bsdtar locale error fix
 export  LANG=en_US.UTF-8
 
