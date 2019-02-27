@@ -1,4 +1,4 @@
-set shell=/bin/bash
+
 syntax on
 " line numbers
 set number
@@ -6,7 +6,9 @@ set number
 set numberwidth=3
 " number relative to cursor
 set relativenumber
+set showcmd " Show keystroke combination bottom right
 
+let mapleader = "," " change <Leader> key from \ to ,
 " COLERSCHEME
 "colorscheme spacegray
 
@@ -58,7 +60,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'dracula/vim', { 'as': 'dracula' }
 "Plug 'ajh17/Spacegray.vim'
 " Julia syntax
-Plug 'JuliaEditorSupport/julia-vim'
+" Plug 'JuliaEditorSupport/julia-vim'
 " Commenter
 Plug 'scrooloose/nerdcommenter'
 " autoclose of tags
@@ -68,6 +70,13 @@ Plug 'Valloric/YouCompleteMe'
 " python highlighting
 Plug 'kh3phr3n/python-syntax'
 let python_highlight_all = 1
+" Python code formatter
+Plug 'Chiel92/vim-autoformat'
+" Ranger as filemanager
+"Plug 'francoiscabrol/ranger.vim'
+Plug 'iberianpig/ranger-explorer.vim'
+nnoremap <silent><Leader>c :RangerOpenCurrentDir<CR>
+nnoremap <silent><Leader>f :RangerOpenProjectRootDir<CR>
 
 " Initialize plugin system
 call plug#end()

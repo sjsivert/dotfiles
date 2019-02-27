@@ -16,6 +16,19 @@ compinit
 # Path to your oh-my-zsh installation.
 ZSH=~/.oh-my-zsh/
 
+# zgen plugin manager for zsh
+# load zgen
+source "${HOME}/.zgen/zgen.zsh"
+# if the init script doesn't exist
+if ! zgen saved; then
+
+  # specify plugins here
+  zgen oh-my-zsh
+
+  # generate the init script from plugins above
+  zgen save
+fi   
+
 # bsdtar locale error fix
 export  LANG=en_US.UTF-8
 
@@ -26,6 +39,9 @@ export LC_MESSAGES="C"
 export FZF_CTRL_T_OPTS="--select-1 --exit-0"
 # ALT-c tree command to get entries from dirs
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
+# editor vim
+export VISUAL=vim
+export EDITOR="$VISUAL"
 
 LC_CTYPE="en_US.UTF-8"
 # .bashrc config
@@ -114,7 +130,7 @@ BULLETTRAIN_PROMPT_ORDER=(
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git zsh-syntax-highlighting)
 
 # User configuration
 

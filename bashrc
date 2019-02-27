@@ -28,3 +28,9 @@ export GIT_PS1_SHOWDIRTYSTATE=1
 
 # added by travis gem
 [ -f /home/archie/.travis/travis.sh ] && source /home/archie/.travis/travis.sh
+
+# run zsh
+if test -t 1; then
+	exec zsh
+fi
+
