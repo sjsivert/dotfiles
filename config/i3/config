@@ -84,8 +84,8 @@ gaps outer 0
 exec --no-startup-id nextcloud
 exec --no-startup-id redshift -l 69.0643084:18.538515200000006
 exec_always --no-startup-id compton --unredir-if-possible  --glx-no-stencil --glx-use-copysubbuffermesa -b
-# exec sleep 2 && nitrogen --restore 
-exec --no-startup-id wal -R
+exec sleep 2 && nitrogen --restore 
+exec --no-startup-id wal -Rn
 
 
 ## XFCE4
