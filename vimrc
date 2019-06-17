@@ -12,6 +12,10 @@ let mapleader = "," " change <Leader> key from \ to ,
 " COLERSCHEME
 "colorscheme spacegray
 
+" Yaml files spesific settings
+au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
