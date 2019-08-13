@@ -9,7 +9,9 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
+# VARIABLES
 set $mod Mod1
+set $TERMINAL termite
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -66,19 +68,29 @@ bindsym $mod+KP_Multiply exec pulseaudio-ctl mute; exec paplay ~/dotfiles/sound/
 bindsym $mod+KP_0 exec --no-startup-id playerctl play-pause
 bindsym $mod+KP_3 exec --no-startup-id playerctl next
 bindsym $mod+KP_1 exec --no-startup-id playerctl previous
-# Lock screen
 # startup programs
-#bindsym $mod+Shift+p exec i3lock-fancy; exec paplay ~/dotfiles/Sound/lock.wav
-bindsym $mod+Shift+p exec --no-startup-id betterlockscreen --lock dim; exec paplay ~/dotfiles/Sound/lock.wav
-exec --no-startup-id xautolock -time 5 -locker "betterlockscreen --lock dim"
+
+# Make mediakeys work
+exec --no-startup-id xbindkeys
+
+# Lock on ctr + shift +p
+# xss-lock must be running
+bindsym $mod+Shift+p exec xset s activate
+
+#exec --no-startup-id xautolock -time 5 -locker "betterlockscreen --lock dim"
+
+# Lock screen
+exec --no-statup-id xss-lock -n /usr/lib/xsecurelock/dimmer -l -- xsecurelock
+
 # keepass
-exec --no-startup-id secret-tool lookup keepass theVault | keepass --pw-stdin -minimize backup/theVault.kdbx
+#exec --no-startup-id secret-tool lookup keepass theVault | keepass --pw-stdin -minimize backup/theVault.kdbx
 # Shutdown
 bindsym $mod+F12 exec shutdown now
+bindsym $mod+F11 exec systemctl hibernate
 
 # Set inner/outer gaps
-gaps inner 20
-gaps outer 0 
+gaps inner 30
+gaps outer 20
 
 # Autostart apps
 exec --no-startup-id nextcloud
@@ -87,11 +99,6 @@ exec_always --no-startup-id compton --unredir-if-possible  --glx-no-stencil --gl
 exec sleep 2 && nitrogen --restore 
 exec --no-startup-id wal -Rn
 
-
-## XFCE4
-exec --no-startup-id xfce4-panel
-exec --no-startup-id xfce4-power-manager
-exec --no-startup-id xfsettingsd --sm-client-disable &
 # polkit for authicating in a GUI
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
@@ -103,7 +110,7 @@ bindsym  $mod+d exec --no-startup-id ~/.config/i3/rofi.sh
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
+bindsym $mod+Return exec --no-startup-id termite #i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -259,6 +266,7 @@ bar {
 # Hide borders
 hide_edge_borders both
 
+border_radius 5
 # Configure border style
 new_window pixel
 new_float none
@@ -281,7 +289,3 @@ for_window [class="^.*"] border pixel 2
 
 
 
-#xfce4
-exec --no-startup-id xfce4-panel
-exec --no-startup-id xfsettingsd --sm-client-disable &
-exec --no-startup-id xfce4-power-manager

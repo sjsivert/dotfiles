@@ -1,6 +1,12 @@
-Xgft.dpi: 96
+Xft.dpi: 96
 Xcursor.theme: Chameleon-Pearl-Regular-0.5
 Xcursor.size:  0
+Xft.autohint: 0
+Xft.lcdfilter:  lcddefault
+Xft.hintstyle:  hintfull
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
 
 !font
 xterm*faceName: ctrld:size999999999:antialias=false
@@ -17,9 +23,20 @@ URxvt.resize-font.smaller: C-Down
 URxvt.resize-font.bigger: C-Up
 URxvt.iso14755: false
 URxvt.iso14755_52: false
+Urxvt*internalBorder: 24 
+URxvt*externalBorder:   0
+Urxvt.urlLauncher:	firefox
+Urxvt.underlineURLs:	true
+Urxvt.urlButton:	1
+Urxvt.urgentOnBell:	true
+
  
 ! font
-URxvt*font: xft:Input-regular:size=10:antialias=true:hinting=true
+!URxvt*font: xft:Input-regular:size=10:antialias=true:hinting=true
+!URxvt.font:     xft:bitstream vera sans mono:size=16:antialias=true
+!URxct.font: xft:M+ 1mn:regular=size=12
+!URxvt.font:xft:InconsolataGo\ Nerd\ Font:size=17
+URxvt.font:xft:SauceCodePro Nerd Font:size=15
 
 ! make otf / ttf fonts look pretty.  does not matter if you are using a bitmap font.
 Xft.autohint: 0
@@ -30,7 +47,7 @@ Xft.antialias: 1
 Xft.rgba: rgb
 
 ! High DPI Surface
-Xft.dpi: 100
+Xft.dpi: 97
 
 !colors
 !black dark, with blue

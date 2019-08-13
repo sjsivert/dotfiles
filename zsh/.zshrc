@@ -15,16 +15,16 @@ compinit
 
 # zgen plugin manager for zsh
 # load zgen
-source "${HOME}/.zgen/zgen.zsh"
+source ".zgen/zgen.zsh"
 # if the init script doesn't exist
 if ! zgen saved; then
 
   # specify plugins here
   zgen oh-my-zsh
-  zgen load caiogondim/bullet-train-oh-my-zsh-theme bullet-train
   zgen load zsh-users/zsh-syntax-highlightin
   zgen oh-my-zsh plugins/git
   zgen oh-my-zsh plugins/sudo
+  zgen load caiogondim/bullet-train-oh-my-zsh-theme bullet-train
 
   # generate the init script from plugins above
   zgen save
@@ -43,6 +43,7 @@ export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
 # editor vim
 export VISUAL=vim
 export EDITOR="$VISUAL"
+export TERMINAL=termite
 
 LC_CTYPE="en_US.UTF-8"
 # .bashrc config
@@ -67,7 +68,7 @@ alias todo='topydo columns'
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="agnoster"
+#ZSH_THEME="bullet-train"
 BULLETTRAIN_PROMPT_SEPERATE_LINE=true
 BULLETTRAIN_PROMPT_ADD_NEWLINE=true
 BULLETTRAIN_PROMPT_ORDER=(
@@ -107,7 +108,7 @@ BULLETTRAIN_PROMPT_ORDER=(
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="false"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -161,10 +162,6 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-ZSH_CACHE_DIR=$HOME/.oh-my-zsh-cache
-if [[ ! -d $ZSH_CACHE_DIR ]]; then
-  mkdir $ZSH_CACHE_DIR
-fi
 #This is based on: https://github.com/ranger/ranger/blob/master/examples/bash_automatic_cd.sh
 #Paste this into your .zshrc:
 
