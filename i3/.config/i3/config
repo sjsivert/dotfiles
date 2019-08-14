@@ -109,8 +109,8 @@ exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 # Rofi + j4-dmenu
 #bindsym  $mod+d exec --no-startup-id ~/.config/i3/rofi.sh
 bindsym  $mod+Shift+f exec --no-startup-id ~/.config/i3/rofi-emoji.sh
-bindsym  $mod+d exec --no-startup-id "rofi -show run -modi run,ssh -show-icons -terminal termite -sidebar-mode "
-bindsym  $mod+Shift+d exec --no-startup-id "rofi -show window -show-icons -terminal termite "
+bindsym  $mod+d exec --no-startup-id "rofi -show run -modi run,ssh -show-icons -terminal termite"
+bindsym  $mod+Shift+d exec --no-startup-id "rofi -show window -show-icons -terminal termite"
 
 #-----standard bindings-----#
 # Use Mouse+$mod to drag floating windows to their wanted position
