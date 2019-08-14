@@ -61,6 +61,7 @@ alias cc='pushd'
 alias dirs="dirs -v"
 alias v='vim'
 alias todo='topydo columns'
+alias wall='QuickWall'
 
 
 
@@ -68,7 +69,7 @@ alias todo='topydo columns'
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-#ZSH_THEME="bullet-train"
+ZSH_THEME="agnoster"
 BULLETTRAIN_PROMPT_SEPERATE_LINE=true
 BULLETTRAIN_PROMPT_ADD_NEWLINE=true
 BULLETTRAIN_PROMPT_ORDER=(
