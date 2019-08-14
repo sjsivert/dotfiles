@@ -99,11 +99,18 @@ exec_always --no-startup-id compton --unredir-if-possible  --glx-no-stencil --gl
 exec sleep 2 && nitrogen --restore 
 exec --no-startup-id wal -Rn
 
+# Wifi system tray
+# Not working?
+exec --no-startup-id nm-applet
+
 # polkit for authicating in a GUI
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 # Rofi + j4-dmenu
-bindsym  $mod+d exec --no-startup-id ~/.config/i3/rofi.sh
+#bindsym  $mod+d exec --no-startup-id ~/.config/i3/rofi.sh
+bindsym  $mod+Shift+f exec --no-startup-id ~/.config/i3/rofi-emoji.sh
+bindsym  $mod+d exec --no-startup-id "rofi -show run -modi run,ssh -show-icons -terminal termite -sidebar-mode "
+bindsym  $mod+Shift+d exec --no-startup-id "rofi -show window -show-icons -terminal termite "
 
 #-----standard bindings-----#
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -248,9 +255,14 @@ bindsym $mod+e exec thunar
 bar {
         status_command i3blocks -c ~/.config/i3/i3blocks.conf  #i3status
         position top
+	
+	# font
+	font pango:DejaVu Sans Mono 12
 
-	#tray_output primary
-	#strip_workspace_numbers yes
+	strip_workspace_numbers yes
+	
+	# Which screens program system trays will show
+	tray_output primary
         colors {
 
         	#		border 		background		text
