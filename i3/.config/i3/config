@@ -33,7 +33,7 @@ font pango:Iosevka, FontAwesome Regular 8
 
 #------------colors--------------#
 # Setting colors
-#set $background #1D1F21 #darker background used with blue theme 
+#set $background #1D1F21 #darker background used with blue theme
 set $green #16C17D
 set $dark #1D232F
 set $blue #43AAE5
@@ -43,10 +43,10 @@ set $lightblue #5294E2
 set $background #1D232F
 #light dark
 set $foreground #3F4F5D
-set $dominant $green 
+set $dominant $green
 set $text-color #C5C8C6
 #green
-set $border-focus #16C17D 
+set $border-focus #16C17D
 
 #set $bar_bg #1D1F21
 set $bar_bg #1D232F
@@ -95,8 +95,8 @@ gaps outer 20
 # Autostart apps
 exec --no-startup-id nextcloud
 exec --no-startup-id redshift -l 69.0643084:18.538515200000006
-exec_always --no-startup-id compton --unredir-if-possible  --glx-no-stencil --glx-use-copysubbuffermesa -b
-exec sleep 2 && nitrogen --restore 
+exec_always --no-startup-id compton --unredir-if-possible  --glx-no-stencil -b
+exec sleep 1 && nitrogen --restore
 exec --no-startup-id wal -Rn
 
 # Wifi system tray
@@ -111,6 +111,9 @@ exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 bindsym  $mod+Shift+f exec --no-startup-id ~/.config/i3/rofi-emoji.sh
 bindsym  $mod+d exec --no-startup-id "rofi -show run -modi run,ssh -show-icons -terminal termite"
 bindsym  $mod+Shift+d exec --no-startup-id "rofi -show window -show-icons -terminal termite"
+# exec thunar
+#bindsym $mod+Shift+e exec thunar
+bindsym $mod+Shift+e exec "termite -e ranger"
 
 #-----standard bindings-----#
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -166,7 +169,7 @@ bindsym $mod+f fullscreen toggle
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
-#bindsym $mod+e layout toggle split
+bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -183,7 +186,7 @@ set $WS1 "1"
 set $WS2 "2"
 set $WS3 "3"
 set $WS4 "4"
-set $WS5 "5" 
+set $WS5 "5"
 
 # multiple monitor settings----------
 workspace $WS1 output HDMI1
@@ -219,7 +222,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+Escape exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -247,20 +250,18 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# exec thunar
-bindsym $mod+e exec thunar
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
         status_command i3blocks -c ~/.config/i3/i3blocks.conf  #i3status
         position top
-	
+
 	# font
 	font pango:DejaVu Sans Mono 12
 
 	strip_workspace_numbers yes
-	
+
 	# Which screens program system trays will show
 	tray_output primary
         colors {
@@ -297,7 +298,7 @@ assign [class="KeePass2"] $WS4
 
 
 # Disable window titlebars entirely
-for_window [class="^.*"] border pixel 2 
+for_window [class="^.*"] border pixel 2
 
 
 
