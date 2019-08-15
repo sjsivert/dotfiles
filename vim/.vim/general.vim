@@ -3,6 +3,9 @@
 " make backspace behave in a sane manner
 set backspace=indent,eol,start
 
+" Scrolling before cursor reach end of screen
+set scrolloff=10
+
 " use indents of 4 spaces
  set shiftwidth=4
 
