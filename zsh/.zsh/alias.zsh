@@ -1,5 +1,5 @@
 
-alias ssh="TERM=termite ssh archie@192.168.1.201"
+alias ssh="TERM=termite ssh"
 # .bashrc config
 alias update='sudo pacmatic -Syu'
 alias clock='tty-clock -c '
@@ -10,7 +10,9 @@ alias venv='source ~/.virtualenvs/abapong/bin/activate'
 # the fuck
 eval $(thefuck --alias)
 # cd into dir when closing ranger
-alias ranger='ranger-cd'
+alias ranger='ranger-cd && cat ~/.cache/wal/sequences'
+# trying to get correct wal colorscheme from rofi
+#alias ranger='ranger-cd && cat ~/.cache/wal/sequences'
 alias cc='pushd'
 alias dirs="dirs -v"
 alias v='vim'
