@@ -42,7 +42,7 @@ Plug 'scrooloose/nerdcommenter'
 " autoclose of tags
 Plug 'raimondi/delimitmate'
 " autocompletion
-Plug 'Valloric/YouCompleteMe'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " python highlighting
 Plug 'kh3phr3n/python-syntax'
 let python_highlight_all = 1

@@ -4,6 +4,7 @@ let configs = [
 \  "commands",
 \  "plugins",
 \  "plugin-settings",
+\  "coc"
 \]
 for file in configs
   let x = expand("~/.vim/".file.".vim")
