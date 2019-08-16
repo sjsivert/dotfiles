@@ -10,12 +10,12 @@ alias venv='source ~/.virtualenvs/abapong/bin/activate'
 # the fuck
 eval $(thefuck --alias)
 # cd into dir when closing ranger
-alias ranger='ranger-cd && cat ~/.cache/wal/sequences'
+alias ranger='ranger-cd'
 # trying to get correct wal colorscheme from rofi
 #alias ranger='ranger-cd && cat ~/.cache/wal/sequences'
 alias cc='pushd'
 alias dirs="dirs -v"
-alias v='vim'
+alias v='nvim'
 alias todo='topydo columns'
 alias wall='QuickWall'
-
+alias walb='wal -i ~/.QuickWall -b "#1D232F"'
