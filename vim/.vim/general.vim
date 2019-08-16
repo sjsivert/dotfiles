@@ -18,6 +18,10 @@ set scrolloff=10
 " let backspace delete indent
  set softtabstop=4
 
+" focus new split
+set splitbelow
+set splitright
+
  " enable auto indentation
  set autoindent
 
