@@ -61,6 +61,8 @@ client.urgent 		$background $background $background $background $background
 
 #----------bindings------------#
 # ----custom bindings-------#
+# Screenshot
+bindsym Print exec deepin-screenshot
 # sound
 bindsym $mod+KP_Add exec pulseaudio-ctl up; exec paplay ~/dotfiles/sound/pop.wav
 bindsym $mod+KP_Subtract exec pulseaudio-ctl down; exec paplay ~/dotfiles/sound/pop.wav
@@ -162,7 +164,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+v split b
+bindsym $mod+v split h
 
 # split in vertical orientation
 bindsym $mod+b split v
