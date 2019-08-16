@@ -34,9 +34,6 @@ Plug 'w0rp/ale'
 Plug 'airblade/vim-gitgutter'
 " Color scheme
 Plug 'dracula/vim', { 'as': 'dracula' }
-"Plug 'ajh17/Spacegray.vim'
-" Julia syntax
-" Plug 'JuliaEditorSupport/julia-vim'
 " Commenter
 Plug 'scrooloose/nerdcommenter'
 " autoclose of tags
@@ -46,13 +43,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " python highlighting
 Plug 'kh3phr3n/python-syntax'
 let python_highlight_all = 1
-" Python code formatter
-Plug 'Chiel92/vim-autoformat'
-" Ranger as filemanager
-"Plug 'francoiscabrol/ranger.vim'
-Plug 'iberianpig/ranger-explorer.vim'
-nnoremap <silent><Leader>c :RangerOpenCurrentDir<CR>
-nnoremap <silent><Leader>f :RangerOpenProjectRootDir<CR>
 
 " Initialize plugin system
 call plug#end()
