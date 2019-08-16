@@ -80,7 +80,7 @@ bindsym $mod+Shift+p exec xset s activate
 #exec --no-startup-id xautolock -time 5 -locker "betterlockscreen --lock dim"
 
 # Lock screen
-exec --no-statup-id xss-lock -n /usr/lib/xsecurelock/dimmer -l -- xsecurelock
+exec --no-startup-id xss-lock -n /usr/lib/xsecurelock/dimmer -l -- xsecurelock
 
 # keepass
 #exec --no-startup-id secret-tool lookup keepass theVault | keepass --pw-stdin -minimize backup/theVault.kdbx
@@ -91,6 +91,10 @@ bindsym $mod+F11 exec systemctl hibernate
 # Set inner/outer gaps
 gaps inner 30
 gaps outer 20
+
+# Activate smart borders (always)
+# only borders if more than 1 container
+smart_borders on
 
 # Autostart apps
 exec --no-startup-id nextcloud
@@ -279,7 +283,8 @@ bar {
 # Hide borders
 hide_edge_borders both
 
-border_radius 5
+# rounded corders
+border_radius 7
 # Configure border style
 new_window pixel
 new_float none
@@ -301,4 +306,41 @@ assign [class="KeePass2"] $WS4
 for_window [class="^.*"] border pixel 2
 
 
+# Change gaps shortcuts start
+set $mode_gaps Gaps: (o) outer, (i) inner
+set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+bindsym $mod+Shift+g mode "$mode_gaps"
 
+mode "$mode_gaps" {
+        bindsym o      mode "$mode_gaps_outer"
+        bindsym i      mode "$mode_gaps_inner"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_inner" {
+        bindsym plus  gaps inner current plus 5
+        bindsym minus gaps inner current minus 5
+        bindsym 0     gaps inner current set 0
+
+        bindsym Shift+plus  gaps inner all plus 5
+        bindsym Shift+minus gaps inner all minus 5
+        bindsym Shift+0     gaps inner all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_outer" {
+        bindsym plus  gaps outer current plus 5
+        bindsym minus gaps outer current minus 5
+        bindsym 0     gaps outer current set 0
+
+        bindsym Shift+plus  gaps outer all plus 5
+        bindsym Shift+minus gaps outer all minus 5
+        bindsym Shift+0     gaps outer all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+# change gaps shortcuts END
