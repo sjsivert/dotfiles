@@ -51,6 +51,7 @@ cursor_shape = block
 #foreground = #dcdccc
 #foreground_bold = #ffffff
 #background = #3f3f3f
+background = #1D232F
 
 # 20% background transparency (requires a compositor)
 #background = rgba(63, 63, 63, 0.8)
