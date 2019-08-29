@@ -31,6 +31,9 @@ font pango:System San Francisco Display  9, Awesome 8
 # Font for windows titles
 font pango:Iosevka, FontAwesome Regular 8
 
+# set keymap on mateBook
+exec --no-startup-id setxkbmap no
+
 #------------colors--------------#
 # Setting colors
 #set $background #1D1F21 #darker background used with blue theme
@@ -108,6 +111,9 @@ exec --no-startup-id wal -Rn
 # Wifi system tray
 # Not working?
 exec --no-startup-id nm-applet
+
+# cliboard manager
+exec --no-startup-id xfce4-clipman
 
 # polkit for authicating in a GUI
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
