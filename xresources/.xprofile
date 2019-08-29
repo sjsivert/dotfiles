@@ -1,3 +1,1 @@
-setxkbmap no
-autocutsel -fork &
-autocutsel -selection PRIMARY -fork &
+
