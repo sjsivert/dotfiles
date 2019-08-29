@@ -44,5 +44,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'kh3phr3n/python-syntax'
 let python_highlight_all = 1
 
+" Vim-OrgMode. Like Emacs
+Plug '/jceb/vim-orgmode'
+
 " Initialize plugin system
 call plug#end()
