@@ -1,5 +1,6 @@
 
 alias ssh="TERM=termite ssh"
+alias pdf="zathura"
 # .bashrc config
 alias update='sudo pacmatic -Syu'
 alias clock='tty-clock -c '

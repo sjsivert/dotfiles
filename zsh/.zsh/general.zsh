@@ -10,13 +10,14 @@ export  LANG=en_US.UTF-8
 
 export LANG=en_US.UTF-8
 export LC_MESSAGES="C"
+export BROWSER="/usr/bin/firefox"
 # fzf options
 # CTRL-T: automaticly selects if only 1 uitem. quits if 0
 export FZF_CTRL_T_OPTS="--select-1 --exit-0"
 # ALT-c tree command to get entries from dirs
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
 # editor vim
-export VISUAL=vim
+export VISUAL=nvim
 export EDITOR="$VISUAL"
 export TERMINAL=termite
 
