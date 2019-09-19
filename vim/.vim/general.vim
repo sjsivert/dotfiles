@@ -1,22 +1,29 @@
 
-
 " make backspace behave in a sane manner
 set backspace=indent,eol,start
+set shortmess=a
+set cmdheight=10
 
 " Scrolling before cursor reach end of screen
 set scrolloff=10
 
 " use indents of 4 spaces
- set shiftwidth=4
-
+set shiftwidth=4
+let g:bufferline_echo=0
 " tabs are tabs
- set noexpandtab
+set noexpandtab
+
+ " Enables automatic indentation as you type
+filetype indent on
+
+ " latex files to load correctly
+"" let g:tex_flavor='latex'
 
 " an indentation every four columns
- set tabstop=4
+set tabstop=4
 
 " let backspace delete indent
- set softtabstop=4
+set softtabstop=4
 
 " focus new split
 set splitbelow
@@ -63,6 +70,24 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+" Denite file search bindings
+" Define mappings
+autocmd FileType denite call s:denite_my_settings()
+function! s:denite_my_settings() abort
+  nnoremap <silent><buffer><expr> <CR>
+  \ denite#do_map('do_action')
+  nnoremap <silent><buffer><expr> d
+  \ denite#do_map('do_action', 'delete')
+  nnoremap <silent><buffer><expr> p
+  \ denite#do_map('do_action', 'preview')
+  nnoremap <silent><buffer><expr> q
+  \ denite#do_map('quit')
+  nnoremap <silent><buffer><expr> i
+  \ denite#do_map('open_filter_buffer')
+  nnoremap <silent><buffer><expr> <Space>
+  \ denite#do_map('toggle_select').'j'
+endfunction
 
 " NERDTress File highlighting
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)

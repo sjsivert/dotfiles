@@ -1,8 +1,8 @@
 let configs = [
 \  "general",
+\  "plugins",
 \  "ui",
 \  "commands",
-\  "plugins",
 \  "plugin-settings",
 \  "coc"
 \]
