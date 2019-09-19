@@ -94,8 +94,8 @@ bindsym $mod+F12 exec shutdown now
 bindsym $mod+F11 exec systemctl hibernate
 
 # Set inner/outer gaps
-gaps inner 30
-gaps outer 20
+gaps inner 20
+gaps outer 10
 
 # Activate smart borders (always)
 # only borders if more than 1 container
