@@ -1,0 +1,6 @@
+[submodule "config/ranger/plugins/ranger-autojump"]
+	path = config/ranger/plugins/ranger-autojump
+	url = https://github.com/fdw/ranger-autojump
+[submodule "zsh/.oh-my-zsh"]
+	path = zsh/.oh-my-zsh
+	url = https://github.com/robbyrussell/oh-my-zsh.git
