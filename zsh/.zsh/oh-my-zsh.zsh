@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/archie/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
@@ -14,7 +14,8 @@ plugins=(git autojump docker docker-compose)
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="bullet-train"
+#ZSH_THEME="bullet-train"
+ZSH_THEME="agnoster"
 
 BULLETTRAIN_PROMPT_SEPERATE_LINE=true
 BULLETTRAIN_PROMPT_ADD_NEWLINE=true
