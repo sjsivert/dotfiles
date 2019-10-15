@@ -17,6 +17,7 @@ alias ranger='ranger-cd'
 alias cc='pushd'
 alias dirs="dirs -v"
 alias v='nvim'
+alias vim='nvim'
 alias todo='topydo columns'
 alias wall='QuickWall'
 alias walb='wal -i ~/.QuickWall -b "#1D232F"'
