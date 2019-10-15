@@ -40,10 +40,14 @@ Plug 'airblade/vim-gitgutter'
 " Commenter
 Plug 'scrooloose/nerdcommenter'
 " autoclose of tags
-Plug 'raimondi/delimitmate'
+Plug 'jiangmiao/auto-pairs'
 " autocompletion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"---Higlighting---
+" show marks made with m
+Plug 'kshenoy/vim-signature'
+
+"
+""---Higlighting---
 " typescript highlighting
 
 " === Javascript Plugins === "
@@ -52,7 +56,7 @@ Plug 'HerringtonDarkholme/yats.vim'
 
 " ReactJS JSX syntax highlighting
 Plug 'mxw/vim-jsx'
-
+j
 " === Syntax Highlighting === "
 " Syntax highlighting for nginx
 Plug 'chr4/nginx.vim'

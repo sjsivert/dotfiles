@@ -29,8 +29,8 @@ set softtabstop=4
 set splitbelow
 set splitright
 
- " enable auto indentation
- set autoindent
+" enable auto indentation
+set autoindent
 
  " remove trailing whitespaces and ^M chars
  augroup ws
@@ -70,6 +70,12 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+" Ctrl-j/k deletes blank line below/above, and Alt-j/k inserts.
+nnoremap <silent><C-j> m`:silent +g/\m^\s*$/d<CR>``:noh<CR>
+nnoremap <silent><C-k> m`:silent -g/\m^\s*$/d<CR>``:noh<CR>
+nnoremap <silent><C-h> :set paste<CR>m`o<Esc>``:set nopaste<CR>
+nnoremap <silent><C-l> :set paste<CR>m`O<Esc>``:set nopaste<CR>
 
 " Denite file search bindings
 " Define mappings
