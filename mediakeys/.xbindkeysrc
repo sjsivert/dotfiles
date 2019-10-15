@@ -38,7 +38,7 @@
 #keystate_scrolllock= enable
 
 # Examples of commands:
-# run xbindkeys --multikey 
+# run xbindkeys --multikey
 # or xbindkeys --key to find key values
 
 # Increase volume
