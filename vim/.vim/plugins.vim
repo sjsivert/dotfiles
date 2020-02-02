@@ -46,6 +46,10 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " show marks made with m
 Plug 'kshenoy/vim-signature'
 
+" MarkDownPreview
+Plug 'iamcco/mathjax-support-for-mkdp'
+Plug 'iamcco/markdown-preview.vim'
+
 "
 ""---Higlighting---
 " typescript highlighting

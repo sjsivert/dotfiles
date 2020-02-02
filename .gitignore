@@ -2,3 +2,4 @@ pw_nas.txt
 vim/plugged
 */gitk/*
 **/plugged/**
+**__pycache__**
