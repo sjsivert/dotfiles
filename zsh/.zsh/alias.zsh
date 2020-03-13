@@ -1,4 +1,4 @@
-
+alias lyd="pavucontrol"
 alias ssh="TERM=termite ssh"
 alias pdf="zathura"
 # .bashrc config

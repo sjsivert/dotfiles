@@ -79,12 +79,17 @@ let python_highlight_all = 1
 Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
+" Kotlin language server
+autocmd BufReadPost *.kt setlocal filetype=kotlin
+
+let g:LanguageClient_serverCommands = {
+    \ 'kotlin': ["kotlin-language-server"],
+    \ }
 " Vim-OrgMode. Like Emacs
 "Plug '/jceb/vim-orgmode'
 " Javascript syntax highlighting and indation
 "Plug 'pangloss/vim-javascript'
 " highlighting for jsdocs
 "let g:javascript_plugin_jsdoc = 1
-
 " Initialize plugin system
 call plug#end()
