@@ -73,5 +73,7 @@
     "vim.easymotion": true,
     "vscode-neovim.neovimPath": "/usr/bin/nvim",
     "vim.neovimPath": "/usr/bin/nvim",
-    "editor.tabCompletion": "onlySnippets"
+    "editor.tabCompletion": "onlySnippets",
+    "toggl.apiKey": "15596369cbfe605d7ef4cf035ac60f7f",
+    "latex-workshop.view.pdf.viewer": "tab"
 }

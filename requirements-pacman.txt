@@ -1,4 +1,5 @@
-gnome-themes-standard 
+gnome-themes-standard
+libinput-gestures
 python-pywal
 gtk-engine-murrine
 libgnome-keyring
