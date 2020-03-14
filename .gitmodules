@@ -1,6 +1,10 @@
-[submodule "config/ranger/plugins/ranger-autojump"]
-	path = config/ranger/plugins/ranger-autojump
+[submodule "ranger/.config/ranger/plugins/ranger-autojump"]
+	path = ranger/.config/ranger/plugins/ranger-autojump
 	url = https://github.com/fdw/ranger-autojump
 [submodule "zsh/.oh-my-zsh"]
 	path = zsh/.oh-my-zsh
-	url = https://github.com/robbyrussell/oh-my-zsh.git
+	#url = https://github.com/robbyrussell/oh-my-zsh.git
+	url = git@github.com:ohmyzsh/ohmyzsh.git
+[submodule "ranger/.config/ranger/plugins/ranger_devicons"]
+	path = ranger/.config/ranger/plugins/ranger_devicons
+	url = https://github.com/alexanderjeurissen/ranger_devicons.git
