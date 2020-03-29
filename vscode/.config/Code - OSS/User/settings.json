@@ -75,5 +75,11 @@
     "vim.neovimPath": "/usr/bin/nvim",
     "editor.tabCompletion": "onlySnippets",
     "toggl.apiKey": "15596369cbfe605d7ef4cf035ac60f7f",
-    "latex-workshop.view.pdf.viewer": "tab"
+    "latex-workshop.view.pdf.viewer": "tab",
+    "gitlens.views.compare.files.layout": "list",
+    "prettier.singleQuote": true,
+    "[python]": {
+        
+    },
+    "python.linting.flake8Enabled": true
 }

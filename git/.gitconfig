@@ -6,3 +6,8 @@
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+	bc3 = trustExitCode
