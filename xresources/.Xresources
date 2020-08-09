@@ -23,14 +23,14 @@ URxvt.resize-font.smaller: C-Down
 URxvt.resize-font.bigger: C-Up
 URxvt.iso14755: false
 URxvt.iso14755_52: false
-Urxvt*internalBorder: 24 
+Urxvt*internalBorder: 24
 URxvt*externalBorder:   0
 Urxvt.urlLauncher:	firefox
 Urxvt.underlineURLs:	true
 Urxvt.urlButton:	1
 Urxvt.urgentOnBell:	true
 
- 
+
 ! font
 !URxvt*font: xft:Input-regular:size=10:antialias=true:hinting=true
 !URxvt.font:     xft:bitstream vera sans mono:size=16:antialias=true

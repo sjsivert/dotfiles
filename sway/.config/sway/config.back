@@ -11,7 +11,16 @@
 
 # VARIABLES
 set $mod Mod4
-set $TERMINAL termite
+#set $TERMINAL termite
+
+# Your preferred terminal emulator
+set $term alacritty
+set $TERMINAL alacritty
+
+# Your preferred application launcher
+# Note: pass the final command to swaymsg so that the resulting window can be opened
+# on the original workspace that the command was run on.
+set $menu dmenu_path | dmenu | xargs swaymsg exec --
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -31,6 +40,8 @@ font pango:System San Francisco Display  9, Awesome 8
 # Font for windows titles
 font pango:Iosevka, FontAwesome Regular 8
 
+# set keymap on mateBook
+exec --no-startup-id setxkbmap no
 workspace_layout stacking
 
 #------------colors--------------#
@@ -69,9 +80,9 @@ bindsym Print exec deepin-screenshot
 bindsym $mod+KP_Add exec pulseaudio-ctl up; exec paplay ~/dotfiles/sound/pop.wav
 bindsym $mod+KP_Subtract exec pulseaudio-ctl down; exec paplay ~/dotfiles/sound/pop.wav
 bindsym $mod+KP_Multiply exec pulseaudio-ctl mute; exec paplay ~/dotfiles/sound/pop.wav
-bindsym $mod+KP_0 exec --no-startup-id playerctl play-pause
-bindsym $mod+KP_3 exec --no-startup-id playerctl next
-bindsym $mod+KP_1 exec --no-startup-id playerctl previous
+#bindsym $mod+KP_0 exec --no-startup-id playerctl play-pause
+#bindsym $mod+KP_3 exec --no-startup-id playerctl next
+#bindsym $mod+KP_1 exec --no-startup-id playerctl previous
 # startup programs
 
 # Make mediakeys work
@@ -107,7 +118,7 @@ smart_borders on
 exec --no-startup-id nextcloud
 exec --no-startup-id redshift -l 69.0643084:18.538515200000006
 #exec_always --no-startup-id compton --unredir-if-possible  --glx-no-stencil -b
-#exec_always --no-startup-id -b -c --config ~./config/picom/picom.conf
+exec_always --no-startup-id -b -c --config ~./config/picom/picom.conf
 exec sleep 1 && nitrogen --restore
 exec --no-startup-id wal -Rn
 
@@ -135,7 +146,8 @@ bindsym $mod+Shift+e exec "termite -e ranger"
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id termite -d "$(xcwd)" #i3-sensible-terminal
+#bindsym $mod+Return exec --no-startup-id termite -d "$(xcwd)" #i3-sensible-terminal
+bindsym $mod+Return exec --no-startup-id alacritty -d "$(xcwd)" #i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -283,8 +295,8 @@ bar {
 
         	#		border 		background		text
         	focused_workspace   $bar_bg		$bar_bg			$bar_fg
-        	inactive_workspace  $bar_bg		$bar_bg			white
-        	urgent_workspace	$bar_bg		$bar_bg		        red
+        	inactive_workspace  $bar_bg		$bar_bg			$bar_fg
+        	urgent_workspace	$bar_bg		$bar_bg		    $bar_fg
 
         	background $bar_bg
 		#statusline $dominant
@@ -295,10 +307,10 @@ bar {
 hide_edge_borders both
 
 # rounded corders
-border_radius 7
+#border_radius 7
 # Configure border style
-new_window pixel
-new_float none
+default_border pixel
+default_floating_border none
 
 # Open program in floating mode
  for_window [title="xfce"] floating enable border pixel 2
@@ -355,5 +367,3 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 # change gaps shortcuts END
-# set keymap on mateBook
-exec_always --no-startup-id setxkbmap no
