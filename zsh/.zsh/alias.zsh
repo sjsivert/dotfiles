@@ -25,4 +25,5 @@ alias td="topydo"
 alias gap="git add -p"
 # Go over and fix
 alias co= "!git for-each-ref --format='%(refname:short)' refs/heads | fzf | xargs git checkout"
-alias standup='{git -C ~/dev/capra/handlekonto-frontend log --since 1.day --author sindrejohan1@gmail.no; git -C ~/dev/capra/coopay-handlekonto-backend-springboot log --since 1.day --author sindrejohan1@gmail.com} | cat'
+alias standup='{git -C ~/code/Purefolio-webapp log --since 1.day --author sindrejohan1@gmail.no; git -C ~/code/Purefolio-backend log --since 1.day --author sindrejohan1@gmail.com} | cat'
+alias dc = "docker-compose"
