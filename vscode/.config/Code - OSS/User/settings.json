@@ -128,5 +128,8 @@
   ],
   "javascript.updateImportsOnFileMove.enabled": "always",
   "editor.formatOnSave": true,
-  "editor.formatOnPaste": true
+  "editor.formatOnPaste": true,
+  "python.dataScience.askForKernelRestart": false,
+  "vim.smartRelativeLine": true,
+  "editor.renameOnType": true
 }
