@@ -13,3 +13,6 @@
 	bc3 = trustExitCode
 [pull]
 	rebase = true
+[filter "gitignore"]
+	clean = "sed '/#gitignore$/d'"
+	smudge = cat
