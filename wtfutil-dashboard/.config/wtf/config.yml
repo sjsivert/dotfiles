@@ -1,0 +1,91 @@
+wtf:
+  colors:
+    border:
+      focusable: darkslateblue
+      focused: orange
+      normal: gray
+  grid:
+    columns: [32, 32, 32, 32, 90]
+    rows: [10, 10, 10, 4, 4, 90]
+  refreshInterval: 1
+  mods:
+    docker:
+      type: docker
+      enabled: true
+      labelColor: lightblue
+      position:
+        top: 1
+        left: 1
+        height: 2
+        width: 1
+      refreshInterval: 1
+    todoist:
+      #apikey: ""
+      enabled: true
+      position:
+        top: 0
+        left: 0
+        height: 1
+        width: 1
+      projects:
+      #- 1516302821 # Personal
+      #- 1516302823 # Work
+        - 1516302820 # Inbox
+      refreshInterval: 3600
+
+    feedreader:
+      enabled: true
+      feeds:
+      - https://www.kode24.no/?lab_viewport=rss
+      - https://news.ycombinator.com/rss
+      feedLimit: 10
+      position:
+        top: 0
+        left: 1
+        width: 2
+        height: 1
+      updateInterval: 14400
+    power:
+      enabled: true
+      position:
+        top: 2
+        left: 2
+        height: 1
+        width: 1
+      refreshInterval: 15
+      title: "⚡️"
+    digitalclock:
+      color: orange
+      enabled: true
+      font: bigfont
+      hourFormat: 12
+      position:
+        top: 1
+        left: 2
+        height: 1
+        width: 1
+      refreshInterval: 1
+      title: "big clock"
+      type: "digitalclock"
+    uptime:
+      args: [""]
+      cmd: "uptime"
+      enabled: true
+      position:
+        top: 3
+        left: 0
+        height: 1
+        width: 2
+      refreshInterval: 30
+      type: cmdrunner
+    uptimerobot:
+      #apikey: ""
+      enabled: true
+      offlineFirst: true
+      position:
+        top: 1
+        left: 0
+        height: 1
+        width: 1
+      refreshInterval: 3600
+      uptimePeriods: 7-30
