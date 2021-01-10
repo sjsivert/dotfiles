@@ -105,7 +105,8 @@ smart_borders on
 
 # Autostart apps
 exec --no-startup-id nextcloud
-exec --no-startup-id redshift -l 69.0643084:18.538515200000006 -t 6500K:3000K
+#exec --no-startup-id redshift -l 69.0643084:18.538515200000006 -t 6500K:3000K
+exec --no-startup-id redshift-l 69.0643084:18.538515200000006 -t 6500K:3000K
 #exec_always --no-startup-id compton --unredir-if-possible  --glx-no-stencil -b
 #exec_always --no-startup-id -b -c --config ~./config/picom/picom.conf
 exec sleep 1 && nitrogen --restore

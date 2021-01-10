@@ -15,7 +15,10 @@ plugins=(vi-mode git autojump docker docker-compose zsh-syntax-highlighting)
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 #ZSH_THEME="bullet-train"
-ZSH_THEME="agnoster"
+#ZSH_THEME="agnoster"
+# Starship command prompt
+eval "$(starship init zsh)"
+test -r "~/.dir_colors" && eval $(dircolors ~/.dir_colors)
 
 BULLETTRAIN_PROMPT_SEPERATE_LINE=true
 BULLETTRAIN_PROMPT_ADD_NEWLINE=true
