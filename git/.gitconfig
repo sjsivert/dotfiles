@@ -16,3 +16,5 @@
 [filter "gitignore"]
 	clean = "sed '/#gitignore$/d'"
 	smudge = cat
+[init]
+	defaultBranch = master
