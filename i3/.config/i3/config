@@ -11,7 +11,7 @@
 
 # VARIABLES
 set $mod Mod4
-set $TERMINAL termite
+set $TERMINAL alacritty
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -125,18 +125,21 @@ exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 # Rofi + j4-dmenu
 #bindsym  $mod+d exec --no-startup-id ~/.config/i3/rofi.sh
 bindsym  $mod+Shift+f exec --no-startup-id ~/.config/i3/rofi-emoji.sh
-bindsym  $mod+d exec --no-startup-id "rofi -show run -modi run,ssh -show-icons -terminal termite"
-bindsym  $mod+Shift+d exec --no-startup-id "rofi -show window -show-icons -terminal termite"
+bindsym  $mod+d exec --no-startup-id "rofi -show run -modi run,ssh -show-icons -terminal alacritty"
+
+bindsym  $mod+Shift+d exec --no-startup-id "rofi -show window -show-icons -terminal alacritty"
 # exec thunar
 #bindsym $mod+Shift+e exec thunar
-bindsym $mod+Shift+e exec "termite -e ranger"
+bindsym $mod+Shift+e exec "alacritty -e ranger"
 
 #-----standard bindings-----#
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id termite -d "$(xcwd)" #i3-sensible-terminal
+#bindsym $mod+Return exec --no-startup-id termite -d "$(xcwd)"
+
+bindsym $mod+Return exec --no-startup-id alacritty #i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
