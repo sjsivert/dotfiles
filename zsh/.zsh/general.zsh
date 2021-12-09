@@ -19,7 +19,9 @@ export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
 # editor vim
 export VISUAL=nvim
 export EDITOR="$VISUAL"
-export TERMINAL=termite
+#export TERMINAL=termite
+export TERMINAL=alacritty
+export TERM="xterm-256color"
 
 LC_CTYPE="en_US.UTF-8"
 
