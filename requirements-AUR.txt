@@ -19,3 +19,5 @@ gotop-bin
 i3-lock-fancy-git
 thefuck
 betterlockscreen
+greetd
+greetd-tuigreet
