@@ -14,4 +14,6 @@ imap jk <esc>
 nmap <leader>r :action Run<cr>
 nmap <leader>t :action Refactorings.QuickListPopupAction<cr>
 nmap <leader>b :action CompileDirty<cr>
+nmap gb :action SelectNextOccurrence<cr>
+nmap gh :action ShowErrorDescription<cr>
 
