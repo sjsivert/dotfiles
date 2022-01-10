@@ -35,10 +35,10 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #
 # Example configuration:
 #
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-#          before-sleep 'swaylock -f -c 000000'
+exec swayidle -w \
+          timeout 300 'swaylock -f -c 000000' \
+          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+          before-sleep 'swaylock -f -c 000000'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -52,7 +52,7 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #       dwt enabled
 #       tap enabled
 #       natural_scroll enabled
-#       middle_emulation enabled
+
 #   }
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
@@ -81,6 +81,9 @@ smart_borders on
 bindsym $mod+Shift+r restart
 # Rofi + j4-dmenu
 bindsym  $mod+d exec --no-startup-id "rofi -show run -modi run,ssh -show-icons -terminal alacritty"
+
+# Lock PC
+bindsym $mod+Shift+p exec swaylock -f -c 000000
 
 bindsym  $mod+Shift+d exec --no-startup-id "rofi -show window -show-icons -terminal alacritty"
 # exec file browser
