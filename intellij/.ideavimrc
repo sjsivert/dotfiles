@@ -1,5 +1,6 @@
 source ~/.vimrc
-set clipboard=unnamed
+# Unifies system clipboard and vim clipboard, but removes replace with register feature
+#set clipboard=unnamed
 set surround
 set hlsearch
 set incsearch
@@ -10,10 +11,14 @@ set showmode
 set number
 set relativenumber
 let mapleader = " "
+set which-key
+set sneak
+set easymotion
 imap jk <esc>
 nmap <leader>r :action Run<cr>
 nmap <leader>t :action Refactorings.QuickListPopupAction<cr>
 nmap <leader>b :action CompileDirty<cr>
 nmap gb :action SelectNextOccurrence<cr>
 nmap gh :action ShowErrorDescription<cr>
-
+nmap gcc :action CommentByLineComment<cr>
+nmap gC :action CommentByBlockComment<cr>

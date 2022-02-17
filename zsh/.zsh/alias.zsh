@@ -31,3 +31,5 @@ alias dc="docker-compose"
 alias wtf="wtfutil"
 # Add todoist task
 alias todo="todoist"
+alias rebase="rebase --interactive"
+alias grb="git rebase -i --autosquash"
