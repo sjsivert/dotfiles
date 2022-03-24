@@ -1,0 +1,2 @@
+# default theme - borderless, scale the image down and use imagemagick
+feh --auto-rotate --borderless --scale-down --conversion-timeout 1 --fontpath /usr/share/fonts/truetype/ubuntu --menu-font Ubuntu-R/14
