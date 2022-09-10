@@ -11,7 +11,7 @@ alias venv='source ~/.virtualenvs/abapong/bin/activate'
 # the fuck
 eval $(thefuck --alias)
 # cd into dir when closing ranger
-alias ranger='ranger-cd'
+#alias ranger='ranger-cd'
 # trying to get correct wal colorscheme from rofi
 #alias ranger='ranger-cd && cat ~/.cache/wal/sequences'
 alias cc='pushd'

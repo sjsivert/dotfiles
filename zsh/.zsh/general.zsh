@@ -10,7 +10,7 @@ export  LANG=en_US.UTF-8
 
 export LANG=en_US.UTF-8
 export LC_MESSAGES="C"
-export BROWSER="/usr/bin/firefox"
+#export BROWSER="/usr/bin/firefox"
 # fzf options
 # CTRL-T: automaticly selects if only 1 uitem. quits if 0
 export FZF_CTRL_T_OPTS="--select-1 --exit-0"
