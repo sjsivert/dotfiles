@@ -33,3 +33,5 @@ alias wtf="wtfutil"
 alias todo="todoist"
 alias rebase="rebase --interactive"
 alias grb="git rebase -i --autosquash"
+alias cheat='f() { curl cht.sh/"$@";}; f'
+
