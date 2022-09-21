@@ -25,7 +25,7 @@ alias td="topydo"
 alias gap="git add -p"
 # Go over and fix
 alias co= "!git for-each-ref --format='%(refname:short)' refs/heads | fzf | xargs git checkout"
-alias standup='{git -C ~/code/sio-event-calendar log --since 1.day --author sindrejohan1@gmail.no; git -C ~/code/sio-event-calendar log --since 1.day --author sindrejohan1@gmail.com} | cat'
+alias standup='{git -C . log --since 1.day --author sindrejohan1@gmail.com; git -C . log --since 1.day --author sindre.sivertsen@noaignite.com} | cat'
 alias dc="docker-compose"
 # Wtf util Dashboard
 alias wtf="wtfutil"
