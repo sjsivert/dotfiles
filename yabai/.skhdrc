@@ -167,9 +167,6 @@ alt - e : yabai -m space --layout bsp
 alt - t : yabai -m space --layout float
 alt - s : yabai -m space --layout stack
 
-# cycle through stack windows
-alt - p : yabai -m window --focus stack.next || yabai -m window --focus south
-alt - n : yabai -m window --focus stack.prev || yabai -m window --focus north
 
 # close focused window
 alt - w : yabai -m window --close
@@ -179,6 +176,11 @@ alt - f : yabai -m window --toggle zoom-fullscreen
 
 # toggle window native fullscreen
 alt + shift - f : yabai -m window --toggle native-fullscreen
+
+# cycle through stack windows
+# focus the next stacked window if possible; otherwise focus the next window or go back to the first window
+alt - p : yabai -m window --focus stack.next || yabai -m window --focus next || yabai -m window --focus stack.first
+alt - n : yabai -m window --focus stack.prev || yabai -m window --focus  prev || yabai -m window --focus stack.last
 
 # forwards
 #alt - p : yabai -m query --spaces --space \
