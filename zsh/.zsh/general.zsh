@@ -5,11 +5,19 @@ setopt appendhistory autocd extendedglob nomatch
 unsetopt beep notify
 bindkey -e
 
+# Mac settings
+#export GOPATH=$HOME/go
+#export GOPATH=$HOME/go
+#export GOROOT="$(brew --prefix golang)/libexec"
+#export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
+
 # bsdtar locale error fix
 export  LANG=en_US.UTF-8
 
 export LANG=en_US.UTF-8
 export LC_MESSAGES="C"
+
+# exported out on mac
 #export BROWSER="/usr/bin/firefox"
 # fzf options
 # CTRL-T: automaticly selects if only 1 uitem. quits if 0
