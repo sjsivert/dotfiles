@@ -18,7 +18,23 @@ imap jk <esc>
 nmap <leader>r :action Run<cr>
 nmap <leader>t :action Refactorings.QuickListPopupAction<cr>
 nmap <leader>b :action CompileDirty<cr>
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
 nmap gb :action SelectNextOccurrence<cr>
 nmap gh :action ShowErrorDescription<cr>
 nmap gcc :action CommentByLineComment<cr>
 nmap gC :action CommentByBlockComment<cr>
+
+# Plugins
+# Replace with grr
+Plug 'vim-scripts/ReplaceWithRegisteri
+# Pultible gursor https://github.com/terryma/vim-multiple-cursors/blob/master/doc/multiple_cursors.txt
+Plug 'terryma/vim-multiple-cursors'
+# Comment out lines with cc
+Plug 'tpope/vim-commentary'
+# Easy motion
+Plug 'easymotion/vim-easymotion'
+Plug 'tpope/vim-surround'
+Plug 'preservim/nerdtree'

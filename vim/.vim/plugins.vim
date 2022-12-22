@@ -79,6 +79,7 @@ let python_highlight_all = 1
 Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
+
 " Kotlin language server
 autocmd BufReadPost *.kt setlocal filetype=kotlin
 
@@ -92,4 +93,6 @@ let g:LanguageClient_serverCommands = {
 " highlighting for jsdocs
 "let g:javascript_plugin_jsdoc = 1
 " Initialize plugin system
+" Vim replace with register plugin
+Plug 'vim-scripts/ReplaceWithRegister'
 call plug#end()
