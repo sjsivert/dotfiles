@@ -68,4 +68,8 @@ source $ZSH/oh-my-zsh.sh
    export EDITOR='mvim'
  fi
 
+function git_main_branch() {
+  def=`git remote show origin | sed -n '/HEAD branch/s/.*: //p'`
+  echo $def
+}
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
