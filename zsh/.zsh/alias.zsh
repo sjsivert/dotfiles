@@ -34,4 +34,9 @@ alias todo="todoist"
 alias rebase="rebase --interactive"
 alias grb="git rebase -i --autosquash"
 alias cheat='f() { curl cht.sh/"$@";}; f'
-
+alias gan="git add -N . && git add -p"
+alias cat="bat"
+alias glogm="glog --merges --first-parent"
+mkd() {
+mkdir -p "$@" && cd "$@"
+}
