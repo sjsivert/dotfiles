@@ -40,3 +40,6 @@ alias glogm="glog --merges --first-parent"
 mkd() {
 mkdir -p "$@" && cd "$@"
 }
+alias ranger="source ranger"
+alias jmp="jump"
+
