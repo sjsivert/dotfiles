@@ -62,6 +62,7 @@ yabai -m rule --add app='Raycast' manage=off
 # float settings windows
 yabai -m rule --add title='Settings$' manage=off
 
+
 # global settings
 #yabai -m config                                 \
 #    mouse_follows_focus          off            \
