@@ -98,6 +98,8 @@ alt + ctrl + shift - j : yabai -m window --stack south
 alt + ctrl + shift - h : yabai -m window --stack west
 alt + ctrl + shift - l : yabai -m window --stack east
 
+# restart yabai
+alt + shift - r : yabai --restart-service
 
 #yabai -m window [<source_window_sel>] --stack <target_window_sel>
 
