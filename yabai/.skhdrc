@@ -189,6 +189,9 @@ alt + shift - f : yabai -m window --toggle native-fullscreen
 alt - p : yabai -m window --focus stack.next || yabai -m window --focus stack.first
 alt - n : yabai -m window --focus stack.prev || yabai -m window --focus  prev || yabai -m window --focus stack.last
 
+# Stop and Start Yabai
+#alt + shift + escape  brew services start koekeishiya/formulae/yabai
+#shift - escape  brew services stop koekeishiya/formulae/yabai
 # increase window size
 # shift + alt - a : yabai -m window --resize left:-20:0
 # shift + alt - w : yabai -m window --resize top:0:-20
