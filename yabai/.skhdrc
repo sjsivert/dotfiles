@@ -16,10 +16,10 @@ alt - l : yabai -m window --focus east || $(yabai -m display --focus east)
 
 # --Stacking windows --
 # stack target_window_sel onto source_window_sel
-alt + fn + shift - k : yabai -m window --stack north
-alt + fn + shift - j : yabai -m window --stack south
-alt + fn + shift - h : yabai -m window --stack west
-alt + fn + shift - l : yabai -m window --stack east
+alt + ctrl + shift - k : yabai -m window --stack north
+alt + ctrl + shift - j : yabai -m window --stack south
+alt + ctrl + shift - h : yabai -m window --stack west
+alt + ctrl + shift - l : yabai -m window --stack east
 
 # resize yabai windows
 alt + shift - r : yabai --restart-service
