@@ -14,12 +14,31 @@
 # sudo yabai --load-sa
 # yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 
+########### Programs to open in floating ##########
+#yabai -m rule --add app='^System Setting%'' manage=off
+#yabai -m rule --add app='^Slack%' manage=off
+## float all Safari windows by defaul
+#yabai -m rule --add app='^Safari$' manage=off
+#yabai -m rule --add app="^System Preferences$" manage=off
+#
+########### Floating windows ##########
+## float all windows by default whose title ends in `' Preferences'`
+yabai -m rule --add title='Preferences$' manage=off topmost=o
+yabai -m rule --add title='Activity Monitor$' manage=off topmost=o
+yabai -m rule --add title='Steam.app' manage=off topmost=o
+yabai -m rule --add title='1Password.app' manage=off topmost=o
+yabai -m rule --add title='Microsoft teams' manage=off topmost=o
+
+# Make Chrome Picture in Picture mode windows appear topmost and on all spaces
+yabai -m rule --add app='^Google Chrome$' title='^Picture in Picture$' manage=off topmost=on sticky=on
+
 
 # Focused window look
 yabai -m config window_opacity on
 yabai -m config active_window_opacity 1.0
 yabai -m config normal_window_opacity 0.5
 yabai -m config window_shadow   on
+
 
 # bar settings
 yabai -m config top_padding 0
@@ -31,14 +50,17 @@ yabai -m config focus_follows_mouse          autofocus
 yabai -m config window_placement             second_child
 yabai -m config window_topmost               off
 
+# toggle sticky, float and resize to picture-in-picture size
+alt + shift - p : yabai -m window --grid 5:5:4:0:1:1
+
 #yabai -m config window_opacity               off
 #yabai -m config window_opacity_duration      0.0
 #yabai -m config window_shadow                on
 
-#yabai -m config active_window_opacity        1.0
-#yabai -m config normal_window_opacity        0.90
-#yabai -m config split_ratio                  0.50
-#yabai -m config auto_balance                 off
+yabai -m config active_window_opacity        1.0
+yabai -m config normal_window_opacity        0.90
+yabai -m config split_ratio                  0.50
+yabai -m config auto_balance                 off
 
 # Mouse support
 yabai -m config mouse_modifier               alt
@@ -60,7 +82,7 @@ yabai -m rule --add app='Raycast' manage=off
 
 
 # float settings windows
-yabai -m rule --add title='Settings$' manage=off
+yabai -m rule --add title='^Settings$' manage=off
 
 
 # global settings
@@ -75,7 +97,7 @@ yabai -m rule --add title='Settings$' manage=off
 #    window_opacity_duration      0.0            \
 #    active_window_opacity        1.0            \
 #    normal_window_opacity        0.90           \
-#    window_border                off            \
+yabai -m config window_border                on            \
 #    window_border_width          6              \
 #    active_window_border_color   0xff775759     \
 #    normal_window_border_color   0xff555555     \
