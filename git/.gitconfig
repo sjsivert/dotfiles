@@ -1,6 +1,7 @@
 [user]
 	email = sindrejohan1@gmail.com
 	name = Sindre Sivertsen
+	signingKey = /Users/sindre.sivertsen/.ssh/id_rsa.pub
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true
@@ -18,3 +19,15 @@
 	smudge = cat
 [init]
 	defaultBranch = master
+[alias]
+	please = push --force-with-lease
+	blame = blame -w -C -C -C
+	staash = stash --all
+[rerere]
+	enabled = true
+	autoUpdate = true
+[gpg]
+	format = ssh
+[maintenance]
+	repo = /Users/sindre.sivertsen/code
+	repo = /Users/sindre.sivertsen/code/Pureservice/Pureservice.Update
