@@ -16,16 +16,20 @@ set sneak
 set easymotion
 imap jk <esc>
 nmap <leader>r :action Run<cr>
+nmap <leader>d <Action>(Debug)
 nmap <leader>t :action Refactorings.QuickListPopupAction<cr>
 nmap <leader>b :action CompileDirty<cr>
+nmap <leader>f <Action>(OptimizeImports)<Action>(ReformatCode)
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 nmap gb :action SelectNextOccurrence<cr>
 nmap gh :action ShowErrorDescription<cr>
-nmap gcc :action CommentByLineComment<cr>
+#nmap gcc :action CommentByLineComment<cr>
+map gcc <Action>(CommentByLineComment)
 nmap gC :action CommentByBlockComment<cr>
+nmap gi :action GotoImplementation<CR>
 
 # Plugins
 # Replace with grr
