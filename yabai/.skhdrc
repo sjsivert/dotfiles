@@ -2,6 +2,12 @@
 # focus previous display
 alt + shift - p : yabai -m display --focus recent
 
+# focus space
+alt - 1 : yabai -m space --focus 1
+alt - 2 : yabai -m space --focus 2
+alt - 3 : yabai -m space --focus 3
+alt - 4 : yabai -m space --focus 4
+alt - 5 : yabai -m space --focus 5
 
 
 # focus window
