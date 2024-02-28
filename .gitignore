@@ -5,3 +5,4 @@ vim/plugged
 **__pycache__**
 gitk
 vim/.vim/undo
+.DS_Store
