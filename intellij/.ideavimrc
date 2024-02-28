@@ -18,8 +18,11 @@ imap jk <esc>
 nmap <leader>r :action Run<cr>
 nmap <leader>d <Action>(Debug)
 nmap <leader>t :action Refactorings.QuickListPopupAction<cr>
-nmap <leader>b :action CompileDirty<cr>
+nmap <leader>c :action CompileDirty<cr>
 nmap <leader>f <Action>(OptimizeImports)<Action>(ReformatCode)
+nmap <leader>R <Action>(RiderUnitTestRunContextSplitAction)
+nmap <leader>b <Action>(ToggleLineBreakpoint)
+
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
