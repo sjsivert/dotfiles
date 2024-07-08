@@ -11,15 +11,15 @@
 # see this wiki page for information:
 #  - https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)
 #
-# sudo yabai --load-sa
-# yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+#sudo yabai --load-sa
+#yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 
 ########### Programs to open in floating ##########
-#yabai -m rule --add app='^System Setting%'' manage=off
+yabai -m rule --add app='^System Setting%'' manage=off
 #yabai -m rule --add app='^Slack%' manage=off
 ## float all Safari windows by defaul
 #yabai -m rule --add app='^Safari$' manage=off
-#yabai -m rule --add app="^System Preferences$" manage=off
+yabai -m rule --add app="^System Preferences$" manage=off
 #
 ########### Floating windows ##########
 ## float all windows by default whose title ends in `' Preferences'`
