@@ -9,7 +9,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(vi-mode git autojump jump docker docker-compose zsh-syntax-highlighting)
+plugins=(vi-mode git autojump jump docker docker-compose zsh-syntax-highlighting zsh-github-copilot)
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
