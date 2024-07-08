@@ -20,7 +20,9 @@ nmap <leader>R <Action>(RiderUnitTestRunContextSplitAction)
 nmap <leader>D <Action>(RiderUnitTestDebugContextAction)
 
 nmap <leader>t :action Refactorings.QuickListPopupAction<cr>
-nmap <leader>b :action CompileDirty<cr>
+nmap  <leader>b <Action>(BuildWholeSolutionAction)
+nmap <leader>A <Action>(RiderUnitTestRunSolutionAction)
+
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
@@ -29,6 +31,7 @@ nmap gb :action SelectNextOccurrence<cr>
 nmap gh :action ShowErrorDescription<cr>
 nmap gcc :action CommentByLineComment<cr>
 nmap gC :action CommentByBlockComment<cr>
+nmap gi <Action>(ReSharperGotoImplementation)
 
 # Plugins
 # Replace with grr
