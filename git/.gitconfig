@@ -18,3 +18,7 @@
 	smudge = cat
 [init]
 	defaultBranch = master
+[rebase]
+	autoStash = true
+[push]
+	autoSetupRemote = true
