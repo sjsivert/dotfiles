@@ -35,6 +35,8 @@ LC_CTYPE="en_US.UTF-8"
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# Export Android SDK path for Android Studio
+export ANDROID_HOME=/Users/sindre.sivertsen/Library/Android/sdk
 # ranger cd
 function ranger-cd {
     tempfile="$(mktemp -t tmp.XXXXXX)"
