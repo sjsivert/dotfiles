@@ -18,6 +18,7 @@ imap jk <esc>
 nmap <leader>r :action Run<cr>
 nmap <leader>R <Action>(RiderUnitTestRunContextSplitAction)
 nmap <leader>D <Action>(RiderUnitTestDebugContextAction)
+nmap <leader>d <Action>(Debug)
 
 nmap <leader>t :action Refactorings.QuickListPopupAction<cr>
 nmap  <leader>b <Action>(BuildWholeSolutionAction)
