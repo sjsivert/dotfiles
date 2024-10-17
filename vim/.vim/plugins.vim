@@ -41,8 +41,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdcommenter'
 " autoclose of tags
 Plug 'jiangmiao/auto-pairs'
-" autocompletion
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " show marks made with m
 Plug 'kshenoy/vim-signature'
 
