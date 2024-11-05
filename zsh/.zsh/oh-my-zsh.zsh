@@ -56,6 +56,10 @@ BULLETTRAIN_PROMPT_ORDER=(
 # much, much faster.
  DISABLE_UNTRACKED_FILES_DIRTY="true"
 
+
+
+
+
 # Preferred editor for local and remote sessions
  if [[ -n $SSH_CONNECTION ]]; then
    export EDITOR='vim'
@@ -67,4 +71,4 @@ function git_main_branch() {
   def=`git remote show origin | sed -n '/HEAD branch/s/.*: //p'`
   echo $def
 }
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source $ZSH/oh-my-zsh.sh
