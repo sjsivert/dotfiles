@@ -42,4 +42,5 @@ mkdir -p "$@" && cd "$@"
 }
 alias ranger="source ranger"
 alias jmp="jump"
+alias lg="lazygit"
 
