@@ -5,6 +5,9 @@ setopt appendhistory autocd extendedglob nomatch
 unsetopt beep notify
 bindkey -e
 
+# FZF
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 # Mac settings
 #export GOPATH=$HOME/go
 #export GOPATH=$HOME/go
@@ -62,4 +65,3 @@ bindkey -s '^O' 'ranger-cd\n'
 # To add support for TTYs this line can be optionally added.
 #source ~/.cache/wal/colors-tty.sh
 
-#[ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
