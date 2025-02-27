@@ -8,17 +8,54 @@
 	smudge = git-lfs smudge -- %f
 [diff]
 	tool = vimdiff
+	algorithm = histogram
+	colorMoved = plain
+	mnemonicPrefix = true
+	renames = true
+
 [difftool]
 	prompt = false
 	bc3 = trustExitCode
 [pull]
 	rebase = true
+	autoSquash = true
+	autoStash = true
+	updateRefs = true
 [filter "gitignore"]
 	clean = "sed '/#gitignore$/d'"
 	smudge = cat
 [init]
-	defaultBranch = master
+	defaultBranch = main
 [rebase]
 	autoStash = true
 [push]
 	autoSetupRemote = true
+
+# clearly makes git better
+
+[column]
+        ui = auto
+[branch]
+        sort = -committerdate
+[tag]
+        sort = version:refname
+[push]
+        default = simple
+        autoSetupRemote = true
+        followTags = true
+[fetch]
+        prune = true
+        pruneTags = true
+        all = true
+
+# why the hell not?
+[help]
+        autocorrect = prompt
+[commit]
+        verbose = true
+[rerere]
+        enabled = true
+        autoupdate = true
+[core]
+        excludesfile = ~/.gitignore
+
