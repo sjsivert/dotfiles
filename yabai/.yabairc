@@ -14,6 +14,10 @@
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 sudo yabai --load-sa
 
+# float system preferences
+yabai -m rule --add app="^System Settings$" manage=off
+yabai -m rule --add app="^Messages$" manage=off
+
 
 ########### Programs to open in floating ##########
 yabai -m rule --add app='^System Setting%'' manage=off
