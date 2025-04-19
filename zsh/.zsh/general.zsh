@@ -5,6 +5,9 @@ setopt appendhistory autocd extendedglob nomatch
 unsetopt beep notify
 bindkey -e
 
+# Speed up startup time
+export skip_global_compinit=1
+
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
