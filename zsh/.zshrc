@@ -1,3 +1,4 @@
+zmodload zsh/zprof
 for config (~/.zsh/*.zsh) source $config
 
 
@@ -15,4 +16,6 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+zprof
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
