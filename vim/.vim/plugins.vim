@@ -25,7 +25,7 @@ Plug 'mhartington/oceanic-next'
 if !has('gui_running')
   set t_Co=256
 endif
-set laststatus=2
+"set laststatus=2
 
 Plug 'https://github.com/tpope/vim-surround'
 
@@ -94,3 +94,26 @@ let g:LanguageClient_serverCommands = {
 " Vim replace with register plugin
 Plug 'vim-scripts/ReplaceWithRegister'
 call plug#end()
+
+
+" Avante vim
+" Deps
+Plug 'nvim-lua/plenary.nvim'
+Plug 'MunifTanjim/nui.nvim'
+Plug 'MeanderingProgrammer/render-markdown.nvim'
+
+" Optional deps
+Plug 'hrsh7th/nvim-cmp'
+Plug 'nvim-tree/nvim-web-devicons' "or Plug 'echasnovski/mini.icons'
+Plug 'HakonHarnes/img-clip.nvim'
+Plug 'zbirenbaum/copilot.lua'
+Plug 'stevearc/dressing.nvim' " for enhanced input UI
+Plug 'folke/snacks.nvim' " for modern input UI
+
+" Yay, pass source=true if you want to build from source
+Plug 'yetone/avante.nvim', { 'branch': 'main', 'do': 'make' }
+autocmd! User avante.nvim lua << EOF
+require('avante').setup()
+vim.opt.laststatus = 3
+EOF
+
