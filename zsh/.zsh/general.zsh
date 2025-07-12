@@ -9,7 +9,12 @@ bindkey -e
 export skip_global_compinit=1
 
 # FZF
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
+# ctrl-r
+export FZF_CTRL_R_OPTS='--no-sort --exact'
+# Alt-c
+export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
 
 # Mac settings
 #export GOPATH=$HOME/go
