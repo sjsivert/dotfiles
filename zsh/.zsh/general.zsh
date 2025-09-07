@@ -45,6 +45,10 @@ export TERM="xterm-256color"
 LC_CTYPE="en_US.UTF-8"
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH="$HOME/.local/bin:$PATH"
+# Dotnet tools
+export PATH="$PATH:/Users/sindre.sivertsen/.dotnet/tools"
+
 
 # Export Android SDK path for Android Studio
 export ANDROID_HOME=/Users/sindre.sivertsen/Library/Android/sdk
@@ -70,8 +74,13 @@ bindkey -s '^O' 'ranger-cd\n'
 # Alternative (blocks terminal for 0-3ms)
 #cat ~/.cache/wal/sequences
 
-# To add support for TTYs this line can be optionally added.
-#source ~/.cache/wal/colors-tty.sh
+
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# Autojump
+[[ -s /Users/sindre.sivertsen/.autojump/etc/profile.d/autojump.sh ]] && source /Users/sindre.sivertsen/.autojump/etc/profile.d/autojump.sh
+
+autoload -U compinit && compinit -u
+
 
 # Use correct ruby on mac
 if [ -d "/opt/homebrew/opt/ruby/bin" ]; then
@@ -79,3 +88,25 @@ if [ -d "/opt/homebrew/opt/ruby/bin" ]; then
   export PATH=`gem environment gemdir`/bin:$PATH
 fi
 
+# Download Znap, if it's not there yet. For quick load times
+[[ -r ~/.zsh-plugins/znap/znap.zsh ]] ||
+    git clone --depth 1 -- \
+        https://github.com/marlonrichert/zsh-snap.git ~/.zsh-plugins/znap
+source ~/.zsh-plugins/znap/znap.zsh  # Start Znap
+
+# `znap prompt` makes your prompt visible in just 15-40ms!
+znap prompt sindresorhus/pure
+
+# `znap eval` makes evaluating generated command output up to 10 times faster.
+znap eval iterm2 'curl -fsSL https://iterm2.com/shell_integration/zsh'
+
+# `znap function` lets you lazy-load features you don't always need.
+znap function _pyenv pyenv "znap eval pyenv 'pyenv init - --no-rehash'"
+compctl -K    _pyenv pyenv
+
+znap clone https://github.com/wting/autojump.git
+
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
+[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+source "${ZINIT_HOME}/zinit.zsh"
