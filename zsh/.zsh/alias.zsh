@@ -43,4 +43,7 @@ mkdir -p "$@" && cd "$@"
 alias ranger="source ranger"
 alias jmp="jump"
 alias lg="lazygit"
+alias pwsh="pwsh-lts"
+alias la="ls -la"
+
 
