@@ -79,7 +79,6 @@ bindkey -s '^O' 'ranger-cd\n'
 # Autojump
 [[ -s /Users/sindre.sivertsen/.autojump/etc/profile.d/autojump.sh ]] && source /Users/sindre.sivertsen/.autojump/etc/profile.d/autojump.sh
 
-autoload -U compinit && compinit -u
 
 
 # Use correct ruby on mac
@@ -110,3 +109,5 @@ ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
 [ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 source "${ZINIT_HOME}/zinit.zsh"
+
+autoload -U compinit && compinit -u
