@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+#export ZSH="$HOME/.oh-my-zsh"
 
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
@@ -56,9 +56,7 @@ BULLETTRAIN_PROMPT_ORDER=(
 # much, much faster.
  DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-
-
-
+ DISABLE_AUTO_UPDATE="true"
 
 # Preferred editor for local and remote sessions
  if [[ -n $SSH_CONNECTION ]]; then
@@ -71,4 +69,6 @@ function git_main_branch() {
   def=`git remote show origin | sed -n '/HEAD branch/s/.*: //p'`
   echo $def
 }
-source $ZSH/oh-my-zsh.sh
+#if [[ -r "$ZSH/oh-my-zsh.sh" ]]; then
+  #source $ZSH/oh-my-zsh.sh
+#fi
