@@ -1,5 +1,3 @@
-!/usr/bin/env sh
-
 # the scripting-addition must be loaded manually if
 # you are running yabai on macOS Big Sur. Uncomment
 # the following line to have the injection performed
@@ -20,43 +18,37 @@ yabai -m rule --add app="^Messages$" manage=off
 
 
 ########### Programs to open in floating ##########
-yabai -m rule --add app='^System Setting%'' manage=off
-#yabai -m rule --add app='^Slack%' manage=off
+yabai -m rule --add app="^System Setting%" manage=off
+#yabai -m rule --add app="^Slack%" manage=off
 ## float all Safari windows by defaul
-#yabai -m rule --add app='^Safari$' manage=off
+#yabai -m rule --add app="^Safari$" manage=off
 yabai -m rule --add app="^System Preferences$" manage=off
 #
 ########### Floating windows ##########
-## float all windows by default whose title ends in `' Preferences'`
-yabai -m rule --add title='Preferences$' manage=off topmost=o
-yabai -m rule --add title='Activity Monitor$' manage=off topmost=o
-yabai -m rule --add title='Steam.app' manage=off topmost=o
-yabai -m rule --add title='1Password.app' manage=off topmost=o
-yabai -m rule --add title='Microsoft teams' manage=off topmost=o
+## float all windows by default whose title ends in `" Preferences"`
+yabai -m rule --add title="Preferences$" manage=off 
+yabai -m rule --add title="Activity Monitor$" manage=off 
+yabai -m rule --add title="Steam.app" manage=off 
+yabai -m rule --add title="1Password.app" manage=off
+yabai -m rule --add title="Microsoft teams" manage=off
 
 # Make Chrome Picture in Picture mode windows appear topmost and on all spaces
-yabai -m rule --add app='^Google Chrome$' title='^Picture in Picture$' manage=off topmost=on sticky=on
+yabai -m rule --add app="^Google Chrome$" title="^Picture in Picture$" manage=off  sticky=on
 
 
 # Focused window look
-yabai -m config window_opacity on
 yabai -m config active_window_opacity 1.0
 yabai -m config normal_window_opacity 0.5
-yabai -m config window_shadow   on
 
 
 # bar settings
 yabai -m config top_padding 0
 
 # global settings
-yabai -m config mouse_follows_focus          off
+# yabai -m config mouse_follows_focus          off
 yabai -m config focus_follows_mouse          autofocus
 
 yabai -m config window_placement             second_child
-yabai -m config window_topmost               off
-
-# toggle sticky, float and resize to picture-in-picture size
-alt + shift - p : yabai -m window --grid 5:5:4:0:1:1
 
 #yabai -m config window_opacity               off
 #yabai -m config window_opacity_duration      0.0
@@ -65,7 +57,6 @@ alt + shift - p : yabai -m window --grid 5:5:4:0:1:1
 yabai -m config active_window_opacity        1.0
 yabai -m config normal_window_opacity        1.0
 yabai -m config split_ratio                  0.50
-yabai -m config auto_balance                 off
 
 # Mouse support
 yabai -m config mouse_modifier               alt
@@ -74,20 +65,16 @@ yabai -m config mouse_action2                resize
 
 # general space settings
 yabai -m config layout                       bsp
-yabai -m config bottom_padding               30
-yabai -m config left_padding                 30
-yabai -m config right_padding                30
-yabai -m config window_gap                   10
+yabai -m config window_gap 15
+
+#yabai -m config bottom_padding               30
+#yabai -m config left_padding                 30
+#yabai -m config right_padding                30
+#yabai -m config window_gap                   10
 
 # float system preferences
-yabai -m rule --add app='^System Information$' manage=off
-yabai -m rule --add app='^System Preferences$' manage=off
-yabai -m rule --add title='Preferences$' manage=off
-yabai -m rule --add app='Raycast' manage=off
 
 
-# float settings windows
-yabai -m rule --add title='^Settings$' manage=off
 
 
 # global settings
@@ -102,7 +89,6 @@ yabai -m rule --add title='^Settings$' manage=off
 #    window_opacity_duration      0.0            \
 #    active_window_opacity        1.0            \
 #    normal_window_opacity        0.90           \
-yabai -m config window_border                on            \
 #    window_border_width          6              \
 #    active_window_border_color   0xff775759     \
 #    normal_window_border_color   0xff555555     \
