@@ -5,3 +5,6 @@ vim/plugged
 **__pycache__**
 gitk
 vim/.vim/undo
+zsh/.zsh/general.zsh.zwc
+zsh/.zsh/alias.zsh.zwc
+zsh/.zsh/oh-my-zsh.zsh.zwc
