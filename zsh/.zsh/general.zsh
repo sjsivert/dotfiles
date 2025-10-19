@@ -8,13 +8,6 @@ bindkey -e
 # Speed up startup time
 export skip_global_compinit=1
 
-# FZF
-# Set up fzf key bindings and fuzzy completion
-source <(fzf --zsh)
-# ctrl-r
-export FZF_CTRL_R_OPTS='--no-sort --exact'
-# Alt-c
-export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
 
 # Mac settings
 #export GOPATH=$HOME/go
@@ -35,6 +28,9 @@ export LC_MESSAGES="C"
 export FZF_CTRL_T_OPTS="--select-1 --exit-0"
 # ALT-c tree command to get entries from dirs
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
+export ZVM_INIT_MODE=sourcing
+ZVM_INIT_MODE=sourcing
+
 # editor vim
 export VISUAL=nvim
 export EDITOR="$VISUAL"
@@ -75,7 +71,6 @@ bindkey -s '^O' 'ranger-cd\n'
 #cat ~/.cache/wal/sequences
 
 
-# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # Autojump
 [[ -s /Users/sindre.sivertsen/.autojump/etc/profile.d/autojump.sh ]] && source /Users/sindre.sivertsen/.autojump/etc/profile.d/autojump.sh
 
@@ -104,6 +99,11 @@ znap function _pyenv pyenv "znap eval pyenv 'pyenv init - --no-rehash'"
 compctl -K    _pyenv pyenv
 
 znap clone https://github.com/wting/autojump.git
+
+function zvm_config() {
+  ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
+  ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
+}
 
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
