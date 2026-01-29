@@ -7,6 +7,8 @@ return {
     pickers = {
       find_files = {
         hidden = true,
+        no_ignore = true, -- don't respect .gitignore
+        no_ignore_parent = true, -- don't respect .gitignore in parent dirs
       },
     },
   },
