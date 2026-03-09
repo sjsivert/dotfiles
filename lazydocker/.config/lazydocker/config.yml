@@ -1,0 +1,8 @@
+customCommands:
+    containers:
+      - name: Drop localhost database
+        attach: true
+        command: "docker exec {{ .Container.ID }} /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P \"$(docker exec {{ .Container.ID }} printenv MSSQL_SA_PASSWORD)\" -C -Q \"ALTER DATABASE [localhost] SET SINGLE_USER WITH ROLLBACK IMMEDIATE; DROP DATABASE
+  [localhost];\""
+        serviceNames: []
+
