@@ -45,6 +45,17 @@ export PATH="$HOME/.local/bin:$PATH"
 # Dotnet tools
 export PATH="$PATH:/Users/sindre.sivertsen/.dotnet/tools"
 
+# Add Cargo bins to path
+export PATH="$PATH:$HOME/.cargo/bin"
+
+# DOtnet root so zed can find it
+# export DOTNET_ROOT="/usr/local/bin/dotnet"
+
+
+# Allow automaticly enable devenv
+eval "$(direnv hook zsh)"
+
+
 
 # Export Android SDK path for Android Studio
 export ANDROID_HOME=/Users/sindre.sivertsen/Library/Android/sdk
