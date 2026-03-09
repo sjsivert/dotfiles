@@ -8,3 +8,32 @@ vim/.vim/undo
 zsh/.zsh/general.zsh.zwc
 zsh/.zsh/alias.zsh.zwc
 zsh/.zsh/oh-my-zsh.zsh.zwc
+
+# Claude Code ephemeral data
+claude/.claude/backups/
+claude/.claude/cache/
+claude/.claude/chrome/
+claude/.claude/debug/
+claude/.claude/downloads/
+claude/.claude/file-history/
+claude/.claude/history.jsonl
+claude/.claude/ide/
+claude/.claude/image-cache/
+claude/.claude/mcp-needs-auth-cache.json
+claude/.claude/paste-cache/
+claude/.claude/plans/
+claude/.claude/session-env/
+claude/.claude/shell-snapshots/
+claude/.claude/stats-cache.json
+claude/.claude/statsig/
+claude/.claude/tasks/
+claude/.claude/telemetry/
+claude/.claude/todos/
+claude/.claude/usage-data/
+
+# Claude plugins - cached repos and build artifacts
+claude/.claude/plugins/cache/
+claude/.claude/plugins/repos/
+claude/.claude/plugins/install-counts-cache.json
+claude/.claude/plugins/marketplaces/
+/claude/.claude/projects

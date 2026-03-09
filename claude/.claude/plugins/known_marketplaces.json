@@ -1,0 +1,18 @@
+{
+  "claude-plugins-official": {
+    "source": {
+      "source": "github",
+      "repo": "anthropics/claude-plugins-official"
+    },
+    "installLocation": "/Users/sindre.sivertsen/.claude/plugins/marketplaces/claude-plugins-official",
+    "lastUpdated": "2026-03-09T07:47:09.557Z"
+  },
+  "every-marketplace": {
+    "source": {
+      "source": "git",
+      "url": "https://github.com/EveryInc/every-marketplace.git"
+    },
+    "installLocation": "/Users/sindre.sivertsen/.claude/plugins/marketplaces/every-marketplace",
+    "lastUpdated": "2026-02-16T13:32:16.904Z"
+  }
+}

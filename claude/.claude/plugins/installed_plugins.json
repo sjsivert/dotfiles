@@ -1,0 +1,65 @@
+{
+  "version": 2,
+  "plugins": {
+    "superpowers@superpowers-marketplace": [
+      {
+        "scope": "user",
+        "installPath": "/Users/sindre.sivertsen/.claude/plugins/cache/superpowers-marketplace/superpowers/2.0.4",
+        "version": "2.0.4",
+        "installedAt": "2025-12-03T08:46:23.988Z",
+        "lastUpdated": "2025-12-03T08:46:23.988Z",
+        "gitCommitSha": "84123b84505619a646722afddb79d79e624c8cb4"
+      }
+    ],
+    "superpowers-developing-for-claude-code@superpowers-marketplace": [
+      {
+        "scope": "user",
+        "installPath": "/Users/sindre.sivertsen/.claude/plugins/cache/superpowers-marketplace/superpowers-developing-for-claude-code/0.3.1",
+        "version": "0.3.1",
+        "installedAt": "2025-12-30T09:37:31.323Z",
+        "lastUpdated": "2025-12-30T09:37:31.323Z",
+        "gitCommitSha": "74afe935da49efe782907e837a27ce618498099a"
+      }
+    ],
+    "code-review@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/sindre.sivertsen/.claude/plugins/cache/claude-plugins-official/code-review/205b6e0b3036",
+        "version": "205b6e0b3036",
+        "installedAt": "2026-01-21T08:59:52.993Z",
+        "lastUpdated": "2026-03-04T08:35:22.053Z",
+        "gitCommitSha": "e30768372b4150ca1bc0839d93283e8edc30d60d"
+      }
+    ],
+    "compound-engineering@every-marketplace": [
+      {
+        "scope": "user",
+        "installPath": "/Users/sindre.sivertsen/.claude/plugins/cache/every-marketplace/compound-engineering/2.34.0",
+        "version": "2.34.0",
+        "installedAt": "2026-02-16T13:32:27.488Z",
+        "lastUpdated": "2026-02-16T13:32:27.488Z",
+        "gitCommitSha": "1a3e8e2b5899081a769ed0911c0a4ef5637dfe6c"
+      }
+    ],
+    "ralph-loop@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/sindre.sivertsen/.claude/plugins/cache/claude-plugins-official/ralph-loop/205b6e0b3036",
+        "version": "205b6e0b3036",
+        "installedAt": "2026-02-18T20:45:17.411Z",
+        "lastUpdated": "2026-03-04T08:35:22.064Z",
+        "gitCommitSha": "452c38756951d28b940cd568689616bfb2cb3c3d"
+      }
+    ],
+    "frontend-design@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/sindre.sivertsen/.claude/plugins/cache/claude-plugins-official/frontend-design/205b6e0b3036",
+        "version": "205b6e0b3036",
+        "installedAt": "2026-02-28T12:04:40.209Z",
+        "lastUpdated": "2026-03-04T08:35:22.048Z",
+        "gitCommitSha": "55b58ec6e5649104f926ba7558b567dc8d33c5ff"
+      }
+    ]
+  }
+}

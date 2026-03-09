@@ -35,11 +35,27 @@ yabai -m rule --add title="Microsoft teams" manage=off
 # Make Chrome Picture in Picture mode windows appear topmost and on all spaces
 yabai -m rule --add app="^Google Chrome$" title="^Picture in Picture$" manage=off  sticky=on
 
+# Apps on given workspace rules
+setup_space 1 browser
+setup_space 2 code
+setup_space 3 productivity
+setup_space 4 social
+setup_space 5 media
+setup_space 6 other
+
+yabai -m rule --add app="^Obsidian$" space=3
+#yabai -m rule --add app="^Arc$" space=1
+yabai -m rule --add app="^iTerm2$" space=2
+yabai -m rule --add app="^Code$" space=2
+yabai -m rule --add app="^Teams$" space=4
+yabai -m rule --add app="^Outlook$" space=4
+
+
 
 # Focused window look
-yabai -m config window_opacity on
+yabai -m config window_opacicodety on
 yabai -m config active_window_opacity 1.0
-yabai -m config normal_window_opacity 0.9
+yabai -m config normal_window_opacity 0.94
 
 
 # bar settings
@@ -72,6 +88,10 @@ yabai -m config window_gap 15
 
 # float system preferences
 
+
+
+# Flash focues window on switch
+yabai -m signal --add label="flash_focus" event="window_focused" action="yabai -m window \$YABAI_WINDOW_ID --opacity 0.1 && sleep $(yabai -m config window_opacity_duration) && yabai -m window \$YABAI_WINDOW_ID --opacity 0.0"
 
 
 
