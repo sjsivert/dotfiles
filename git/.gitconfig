@@ -55,7 +55,7 @@
 [commit]
         verbose = true
 [rerere]
-        enabled = true
+	enabled = true
         autoupdate = true
 [core]
         excludesfile = ~/.gitignore
