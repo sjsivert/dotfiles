@@ -9,7 +9,6 @@ alias ll='ls -l'
 # virtualenv
 alias venv='source ~/.virtualenvs/abapong/bin/activate'
 # the fuck
-eval $(thefuck --alias)
 # cd into dir when closing ranger
 #alias ranger='ranger-cd'
 # trying to get correct wal colorscheme from rofi
@@ -35,7 +34,6 @@ alias rebase="rebase --interactive"
 alias grb="git rebase -i --autosquash"
 alias cheat='f() { curl cht.sh/"$@";}; f'
 alias gan="git add -N . && git add -p"
-alias cat="bat"
 alias glogm="glog --merges --first-parent"
 mkd() {
 mkdir -p "$@" && cd "$@"
@@ -46,8 +44,9 @@ alias lg="lazygit"
 alias ld="lazydocker"
 alias la="lsd -la"
 alias flush="docker compose exec -it redis redis-cli FLUSHALL"
-alias claudeyolo="claude --dangerously-skip-permissions"
-alias claudesafe="claude --sandbox"
+alias claudeyolo="CLAUDE_CODE_NO_FLICKER=1 claude --dangerously-skip-permissions"
+alias claude="CLAUDE_CODE_NO_FLICKER=1 claude"
+alias claudesafe="CLAUDE_CODE_NO_FLICKER=1 claude --sandbox"
 
 
 
