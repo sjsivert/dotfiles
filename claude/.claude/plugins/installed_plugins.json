@@ -1,64 +1,114 @@
 {
   "version": 2,
   "plugins": {
-    "superpowers@superpowers-marketplace": [
-      {
-        "scope": "user",
-        "installPath": "/Users/sindre.sivertsen/.claude/plugins/cache/superpowers-marketplace/superpowers/2.0.4",
-        "version": "2.0.4",
-        "installedAt": "2025-12-03T08:46:23.988Z",
-        "lastUpdated": "2025-12-03T08:46:23.988Z",
-        "gitCommitSha": "84123b84505619a646722afddb79d79e624c8cb4"
-      }
-    ],
-    "superpowers-developing-for-claude-code@superpowers-marketplace": [
-      {
-        "scope": "user",
-        "installPath": "/Users/sindre.sivertsen/.claude/plugins/cache/superpowers-marketplace/superpowers-developing-for-claude-code/0.3.1",
-        "version": "0.3.1",
-        "installedAt": "2025-12-30T09:37:31.323Z",
-        "lastUpdated": "2025-12-30T09:37:31.323Z",
-        "gitCommitSha": "74afe935da49efe782907e837a27ce618498099a"
-      }
-    ],
     "code-review@claude-plugins-official": [
       {
         "scope": "user",
-        "installPath": "/Users/sindre.sivertsen/.claude/plugins/cache/claude-plugins-official/code-review/205b6e0b3036",
-        "version": "205b6e0b3036",
+        "installPath": "/Users/sindre.sivertsen/.claude/plugins/cache/claude-plugins-official/code-review/unknown",
+        "version": "unknown",
         "installedAt": "2026-01-21T08:59:52.993Z",
-        "lastUpdated": "2026-03-04T08:35:22.053Z",
+        "lastUpdated": "2026-06-27T09:11:57.425Z",
         "gitCommitSha": "e30768372b4150ca1bc0839d93283e8edc30d60d"
-      }
-    ],
-    "compound-engineering@every-marketplace": [
-      {
-        "scope": "user",
-        "installPath": "/Users/sindre.sivertsen/.claude/plugins/cache/every-marketplace/compound-engineering/2.34.0",
-        "version": "2.34.0",
-        "installedAt": "2026-02-16T13:32:27.488Z",
-        "lastUpdated": "2026-02-16T13:32:27.488Z",
-        "gitCommitSha": "1a3e8e2b5899081a769ed0911c0a4ef5637dfe6c"
       }
     ],
     "ralph-loop@claude-plugins-official": [
       {
         "scope": "user",
-        "installPath": "/Users/sindre.sivertsen/.claude/plugins/cache/claude-plugins-official/ralph-loop/205b6e0b3036",
-        "version": "205b6e0b3036",
+        "installPath": "/Users/sindre.sivertsen/.claude/plugins/cache/claude-plugins-official/ralph-loop/1.0.0",
+        "version": "1.0.0",
         "installedAt": "2026-02-18T20:45:17.411Z",
-        "lastUpdated": "2026-03-04T08:35:22.064Z",
+        "lastUpdated": "2026-04-07T05:51:20.269Z",
         "gitCommitSha": "452c38756951d28b940cd568689616bfb2cb3c3d"
       }
     ],
     "frontend-design@claude-plugins-official": [
       {
         "scope": "user",
-        "installPath": "/Users/sindre.sivertsen/.claude/plugins/cache/claude-plugins-official/frontend-design/205b6e0b3036",
-        "version": "205b6e0b3036",
+        "installPath": "/Users/sindre.sivertsen/.claude/plugins/cache/claude-plugins-official/frontend-design/unknown",
+        "version": "unknown",
         "installedAt": "2026-02-28T12:04:40.209Z",
-        "lastUpdated": "2026-03-04T08:35:22.048Z",
+        "lastUpdated": "2026-06-27T09:11:57.453Z",
         "gitCommitSha": "55b58ec6e5649104f926ba7558b567dc8d33c5ff"
+      }
+    ],
+    "typescript-lsp@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/sindre.sivertsen/.claude/plugins/cache/claude-plugins-official/typescript-lsp/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-03-09T08:22:56.350Z",
+        "lastUpdated": "2026-03-09T08:22:56.350Z",
+        "gitCommitSha": "205b6e0b30366a969412d9aab7b99bea99d58db1"
+      }
+    ],
+    "pyright-lsp@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/sindre.sivertsen/.claude/plugins/cache/claude-plugins-official/pyright-lsp/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-03-09T08:23:27.557Z",
+        "lastUpdated": "2026-03-09T08:23:27.557Z",
+        "gitCommitSha": "205b6e0b30366a969412d9aab7b99bea99d58db1"
+      }
+    ],
+    "csharp-lsp@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/sindre.sivertsen/.claude/plugins/cache/claude-plugins-official/csharp-lsp/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-03-09T08:23:27.596Z",
+        "lastUpdated": "2026-03-09T08:23:27.596Z",
+        "gitCommitSha": "205b6e0b30366a969412d9aab7b99bea99d58db1"
+      }
+    ],
+    "context7@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/sindre.sivertsen/.claude/plugins/cache/claude-plugins-official/context7/unknown",
+        "version": "unknown",
+        "installedAt": "2026-03-09T08:23:42.110Z",
+        "lastUpdated": "2026-06-27T09:11:57.448Z",
+        "gitCommitSha": "205b6e0b30366a969412d9aab7b99bea99d58db1"
+      }
+    ],
+    "playwright@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/sindre.sivertsen/.claude/plugins/cache/claude-plugins-official/playwright/unknown",
+        "version": "unknown",
+        "installedAt": "2026-03-09T08:24:32.881Z",
+        "lastUpdated": "2026-06-27T09:11:57.458Z",
+        "gitCommitSha": "205b6e0b30366a969412d9aab7b99bea99d58db1"
+      }
+    ],
+    "claude-md-management@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/sindre.sivertsen/.claude/plugins/cache/claude-plugins-official/claude-md-management/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-03-09T08:28:13.365Z",
+        "lastUpdated": "2026-03-09T08:28:13.365Z",
+        "gitCommitSha": "205b6e0b30366a969412d9aab7b99bea99d58db1"
+      }
+    ],
+    "caveman@caveman": [
+      {
+        "scope": "user",
+        "installPath": "/Users/sindre.sivertsen/.claude/plugins/cache/caveman/caveman/c2ed24b3e5d4",
+        "version": "c2ed24b3e5d4",
+        "installedAt": "2026-04-16T12:50:09.244Z",
+        "lastUpdated": "2026-04-16T12:50:09.244Z",
+        "gitCommitSha": "c2ed24b3e5d412cd0c25197b2bc9af587621fd99"
+      }
+    ],
+    "superpowers@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/sindre.sivertsen/.claude/plugins/cache/claude-plugins-official/superpowers/6.0.3",
+        "version": "6.0.3",
+        "installedAt": "2026-06-01T14:43:02.399Z",
+        "lastUpdated": "2026-06-19T07:53:32.167Z",
+        "gitCommitSha": "f2cbfbefebbfef77321e4c9abc9e949826bea9d7"
       }
     ]
   }

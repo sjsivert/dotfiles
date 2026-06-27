@@ -5,7 +5,7 @@
       "repo": "anthropics/claude-plugins-official"
     },
     "installLocation": "/Users/sindre.sivertsen/.claude/plugins/marketplaces/claude-plugins-official",
-    "lastUpdated": "2026-03-09T08:13:46.010Z"
+    "lastUpdated": "2026-06-27T09:11:57.309Z"
   },
   "every-marketplace": {
     "source": {
@@ -14,5 +14,13 @@
     },
     "installLocation": "/Users/sindre.sivertsen/.claude/plugins/marketplaces/every-marketplace",
     "lastUpdated": "2026-02-16T13:32:16.904Z"
+  },
+  "caveman": {
+    "source": {
+      "source": "github",
+      "repo": "JuliusBrussee/caveman"
+    },
+    "installLocation": "/Users/sindre.sivertsen/.claude/plugins/marketplaces/caveman",
+    "lastUpdated": "2026-04-16T12:50:08.633Z"
   }
 }
