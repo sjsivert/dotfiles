@@ -9,3 +9,7 @@ if [ -f '/Users/sindre.sivertsen/Downloads/google-cloud-sdk/completion.zsh.inc' 
 
 # Added by Antigravity
 export PATH="/Users/sindre.sivertsen/.antigravity/antigravity/bin:$PATH"
+
+zshaddhistory() {
+  [[ $1 != *node-cdp* ]] && [[ $1 != *deferredMode* ]]
+}
