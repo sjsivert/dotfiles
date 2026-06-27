@@ -1,5 +1,14 @@
 return {
   "nvim-telescope/telescope.nvim",
+  keys = {
+    {
+      "<leader>fA",
+      function()
+        require("telescope.builtin").find_files({ no_ignore = true, hidden = true })
+      end,
+      desc = "Find All Files (incl. gitignored)",
+    },
+  },
   opts = {
     defaults = {
       file_ignore_patterns = { "%.git/" }, -- hide .git folder, but not all dotfiles
