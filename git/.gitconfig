@@ -1,6 +1,6 @@
 [user]
 	email = sindrejohan1@gmail.com
-	name = Sindre Sivertsen
+	name = Sindre J. I. Sivertsen
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true
@@ -62,3 +62,9 @@
 
 [url "git@github.com:"]
 	insteadOf = https://github.com/
+[credential "https://github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
