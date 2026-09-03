@@ -40,7 +40,6 @@ mkdir -p "$@" && cd "$@"
 }
 alias ranger="source ranger"
 alias jmp="jump"
-alias lg="lazygit"
 alias ld="lazydocker"
 alias la="lsd -la"
 alias flush="docker compose exec -it redis redis-cli FLUSHALL"

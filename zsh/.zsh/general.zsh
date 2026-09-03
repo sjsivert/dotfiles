@@ -119,6 +119,16 @@ killport() {
   lsof -ti tcp:"$1" | xargs kill -9 && echo "Killed process on :$1"
 }
 
+# lazygit, but cd into whatever repo/worktree you were in when you quit.
+# Quit with shift+Q instead of q to stay in the current directory.
+lg() {
+    local tempfile
+    tempfile="$(mktemp -t lazygit-newdir.XXXXXX)"
+    LAZYGIT_NEW_DIR_FILE="$tempfile" lazygit "$@"
+    test -s "$tempfile" && cd -- "$(cat "$tempfile")"
+    rm -f -- "$tempfile"
+}
+
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
 [ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
