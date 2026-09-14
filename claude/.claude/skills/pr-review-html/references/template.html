@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PR #{{PR_NUMBER}} — {{PR_TITLE}} · Review</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.0/dist/mermaid.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-clike.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-csharp.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-typescript.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-sql.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-bash.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-markup.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-json.min.js"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              ink: "#0b0f17", panel: "#121826", edge: "#1f2937",
+              muted: "#94a3b8", accent: "#a78bfa",
+              danger: "#f87171", warn: "#fbbf24", ok: "#34d399", info: "#60a5fa",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      html { scroll-behavior: smooth; }
+      body {
+        background:
+          radial-gradient(1200px 600px at 80% -10%, rgba(167,139,250,.12), transparent 60%),
+          radial-gradient(900px 500px at -10% 30%, rgba(96,165,250,.08), transparent 60%),
+          #0b0f17;
+      }
+      .card { background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0)); border: 1px solid rgba(255,255,255,.06); }
+      .glow-danger { box-shadow: 0 0 0 1px rgba(248,113,113,.25), 0 8px 32px -12px rgba(248,113,113,.4); }
+      .glow-warn   { box-shadow: 0 0 0 1px rgba(251,191,36,.25), 0 8px 32px -12px rgba(251,191,36,.35); }
+      .glow-ok     { box-shadow: 0 0 0 1px rgba(52,211,153,.25), 0 8px 32px -12px rgba(52,211,153,.35); }
+      .glow-info   { box-shadow: 0 0 0 1px rgba(96,165,250,.2),  0 8px 32px -12px rgba(96,165,250,.35); }
+      .pill { font-size: 11px; letter-spacing: .04em; text-transform: uppercase; }
+      pre[class*="language-"] { background: #0a0d14 !important; border: 1px solid #1f2937; border-radius: .5rem; font-size: 12.5px; line-height: 1.55; }
+      code[class*="language-"] { font-family: ui-monospace, SFMono-Regular, Menlo, monospace !important; }
+      .annot { border-left: 3px solid var(--c, #a78bfa); background: rgba(167,139,250,.06); }
+      .heatcell { transition: transform .15s ease; }
+      .heatcell:hover { transform: translateY(-2px); }
+      .mermaid { background: #0a0d14; border-radius: 8px; padding: 16px; }
+      .anchor-pad { scroll-margin-top: 80px; }
+      .ribbon { background: linear-gradient(90deg, rgba(167,139,250,.15), rgba(96,165,250,.05)); }
+      details > summary { list-style: none; cursor: pointer; }
+      details > summary::-webkit-details-marker { display: none; }
+      details[open] .chev { transform: rotate(90deg); }
+      .chev { transition: transform .15s ease; }
+    </style>
+  </head>
+  <body class="text-slate-200">
+    <nav class="sticky top-0 z-50 backdrop-blur bg-ink/70 border-b border-edge">
+      <div class="max-w-7xl mx-auto px-6 py-3 flex items-center gap-6 text-sm">
+        <div class="flex items-center gap-2 font-semibold text-white">
+          <span class="inline-block w-2 h-2 rounded-full bg-accent"></span>
+          PR #{{PR_NUMBER}} Review
+        </div>
+        <a href="#tldr" class="text-muted hover:text-white">TL;DR</a>
+        <a href="#dashboard" class="text-muted hover:text-white">Dashboard</a>
+        <a href="#files" class="text-muted hover:text-white">Files</a>
+        <a href="#flow" class="text-muted hover:text-white">Risk flow</a>
+        <a href="#findings" class="text-muted hover:text-white">Findings</a>
+        <a href="#tests" class="text-muted hover:text-white">Tests</a>
+        <a href="#action" class="text-muted hover:text-white">Action</a>
+        <div class="ml-auto">
+          <a href="{{PR_URL}}" target="_blank"
+             class="px-3 py-1.5 rounded-md border border-edge text-xs hover:border-accent hover:text-white">
+            Open on GitHub →
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <header class="max-w-7xl mx-auto px-6 pt-12 pb-8">
+      <div class="ribbon rounded-2xl border border-edge p-8">
+        <div class="flex items-start gap-4">
+          <div>
+            <div class="pill text-accent font-semibold">Pull Request Review</div>
+            <h1 class="text-4xl font-bold text-white mt-2 tracking-tight">{{PR_TITLE}}</h1>
+            <p class="text-muted mt-3 max-w-3xl">{{PR_SUBTITLE}}</p>
+          </div>
+          <div class="ml-auto grid grid-cols-3 gap-3 text-center">
+            <div class="card rounded-lg px-4 py-3">
+              <div class="text-2xl font-bold text-ok">+{{ADDITIONS}}</div>
+              <div class="text-xs text-muted">added</div>
+            </div>
+            <div class="card rounded-lg px-4 py-3">
+              <div class="text-2xl font-bold text-danger">−{{DELETIONS}}</div>
+              <div class="text-xs text-muted">removed</div>
+            </div>
+            <div class="card rounded-lg px-4 py-3">
+              <div class="text-2xl font-bold text-white">{{CHANGED_FILES}}</div>
+              <div class="text-xs text-muted">files</div>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-2 mt-6">
+          {{MERGE_STATE_PILL}}
+        </div>
+      </div>
+    </header>
+
+    <section id="tldr" class="max-w-7xl mx-auto px-6 py-8 anchor-pad">
+      <h2 class="text-xs uppercase tracking-widest text-muted">TL;DR</h2>
+      <div class="grid md:grid-cols-4 gap-4 mt-3">
+        <div class="card rounded-xl p-5 glow-ok">
+          <div class="pill text-ok">Feature design</div>
+          <div class="mt-2 font-semibold text-white">{{FEATURE_DESIGN}}</div>
+        </div>
+        <div class="card rounded-xl p-5 glow-warn">
+          <div class="pill text-warn">Readability</div>
+          <div class="mt-2 font-semibold text-white">{{READABILITY}}</div>
+        </div>
+        <div class="card rounded-xl p-5 glow-warn">
+          <div class="pill text-warn">Architecture</div>
+          <div class="mt-2 font-semibold text-white">{{ARCHITECTURE}}</div>
+        </div>
+        <div class="card rounded-xl p-5 glow-danger">
+          <div class="pill text-danger">Verdict</div>
+          <div class="mt-2 font-semibold text-white">{{VERDICT}}</div>
+          <p class="text-sm text-muted mt-1">{{VERDICT_REASON}}</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="dashboard" class="max-w-7xl mx-auto px-6 py-8 anchor-pad">
+      <div class="flex items-end justify-between">
+        <div>
+          <h2 class="text-xs uppercase tracking-widest text-muted">Severity dashboard</h2>
+          <p class="text-white text-2xl font-semibold mt-1">{{FINDINGS_COUNT}} findings · {{MUST_FIX_COUNT}} must-fix</p>
+        </div>
+      </div>
+      <div class="grid lg:grid-cols-3 gap-5 mt-5">
+        <div class="card rounded-xl p-5">
+          <div class="pill text-muted">By severity</div>
+          <div class="h-64 mt-3"><canvas id="sevChart"></canvas></div>
+        </div>
+        <div class="card rounded-xl p-5 lg:col-span-2">
+          <div class="pill text-muted">By category</div>
+          <div class="h-64 mt-3"><canvas id="catChart"></canvas></div>
+        </div>
+      </div>
+
+      <div class="mt-8">
+        <h3 class="text-white font-semibold">Top issues</h3>
+        <ol class="grid md:grid-cols-2 gap-3 mt-3">
+          {{TOP5_CARDS_HTML}}
+        </ol>
+      </div>
+    </section>
+
+    <section id="files" class="max-w-7xl mx-auto px-6 py-8 anchor-pad">
+      <h2 class="text-xs uppercase tracking-widest text-muted">File hotspots</h2>
+      <p class="text-white text-2xl font-semibold mt-1">Where the issues cluster</p>
+      <div id="heat" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mt-5"></div>
+    </section>
+
+    <section id="flow" class="max-w-7xl mx-auto px-6 py-8 anchor-pad">
+      <h2 class="text-xs uppercase tracking-widest text-muted">Risk flow</h2>
+      <p class="text-white text-2xl font-semibold mt-1">Critical path through the change</p>
+      <div class="card rounded-xl p-5 mt-5">
+        <div class="mermaid">
+{{MERMAID_FLOW}}
+        </div>
+      </div>
+    </section>
+
+    <section id="findings" class="max-w-7xl mx-auto px-6 py-12 anchor-pad">
+      <h2 class="text-xs uppercase tracking-widest text-muted">Inline findings</h2>
+      <p class="text-white text-2xl font-semibold mt-1">Code with annotations</p>
+      <div class="space-y-6 mt-6">
+        {{FINDINGS_HTML}}
+      </div>
+    </section>
+
+    <section id="tests" class="max-w-7xl mx-auto px-6 py-12 anchor-pad">
+      <h2 class="text-xs uppercase tracking-widest text-muted">Test coverage</h2>
+      <div class="grid md:grid-cols-2 gap-4 mt-4">
+        <div class="card rounded-xl p-5 glow-ok">
+          <div class="pill text-ok mb-2">Covered</div>
+          <ul class="text-sm text-slate-300 space-y-1 list-disc list-inside">
+            {{TESTS_COVERED_LIST_HTML}}
+          </ul>
+        </div>
+        <div class="card rounded-xl p-5 glow-warn">
+          <div class="pill text-warn mb-2">Missing</div>
+          <ul class="text-sm text-slate-300 space-y-1 list-disc list-inside">
+            {{TESTS_MISSING_LIST_HTML}}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="action" class="max-w-7xl mx-auto px-6 py-12 anchor-pad">
+      <h2 class="text-xs uppercase tracking-widest text-muted">Action checklist</h2>
+      <div class="grid lg:grid-cols-3 gap-4 mt-5">
+        <div class="card rounded-xl p-5 glow-danger">
+          <div class="pill text-danger">Before merge</div>
+          <ul class="mt-3 space-y-2 text-sm">{{ACTION_BEFORE_LIST_HTML}}</ul>
+        </div>
+        <div class="card rounded-xl p-5 glow-warn">
+          <div class="pill text-warn">Strongly recommended</div>
+          <ul class="mt-3 space-y-2 text-sm">{{ACTION_RECOMMENDED_LIST_HTML}}</ul>
+        </div>
+        <div class="card rounded-xl p-5 glow-info">
+          <div class="pill text-info">Follow-up</div>
+          <ul class="mt-3 space-y-2 text-sm">{{ACTION_FOLLOWUP_LIST_HTML}}</ul>
+        </div>
+      </div>
+    </section>
+
+    <footer class="border-t border-edge mt-12">
+      <div class="max-w-7xl mx-auto px-6 py-6 text-xs text-muted flex items-center justify-between">
+        <div>Generated by <code>/pr-review-html</code> · single HTML file · CDN-only deps.</div>
+        <a href="#" class="hover:text-white">↑ Top</a>
+      </div>
+    </footer>
+
+    <script>
+      mermaid.initialize({
+        startOnLoad: true, theme: "dark",
+        themeVariables: {
+          background: "#0a0d14", primaryColor: "#1f2937", primaryTextColor: "#e5e7eb",
+          lineColor: "#475569", fontFamily: "ui-sans-serif, system-ui",
+        },
+      });
+      window.addEventListener("DOMContentLoaded", () => Prism.highlightAll());
+
+      const sevData = {{SEV_JSON}};
+      new Chart(document.getElementById("sevChart"), {
+        type: "doughnut",
+        data: {
+          labels: Object.keys(sevData),
+          datasets: [{
+            data: Object.values(sevData),
+            backgroundColor: ["#f87171","#fbbf24","#fb923c","#60a5fa","#a78bfa","#94a3b8","#34d399"],
+            borderColor: "#0b0f17", borderWidth: 2,
+          }],
+        },
+        options: {
+          plugins: { legend: { position: "bottom", labels: { color: "#cbd5e1", boxWidth: 10 } } },
+          cutout: "62%",
+        },
+      });
+
+      new Chart(document.getElementById("catChart"), {
+        type: "bar",
+        data: {
+          labels: {{CAT_LABELS_JSON}},
+          datasets: [{ label: "Findings", data: {{CAT_DATA_JSON}}, backgroundColor: "#a78bfa", borderRadius: 6 }],
+        },
+        options: {
+          indexAxis: "y",
+          plugins: { legend: { display: false } },
+          scales: {
+            x: { ticks: { color: "#94a3b8" }, grid: { color: "#1f2937" } },
+            y: { ticks: { color: "#cbd5e1" }, grid: { display: false } },
+          },
+        },
+      });
+
+      const files = {{HEATMAP_JSON}};
+      const max = files.length ? Math.max(...files.map(x => x.n)) : 0;
+      const root = document.getElementById("heat");
+      files.forEach(x => {
+        const intensity = max === 0 ? 0 : x.n / max;
+        const bg = `rgba(248,113,113, ${0.08 + intensity * 0.55})`;
+        const border = intensity > 0 ? "rgba(248,113,113,.4)" : "rgba(255,255,255,.06)";
+        const el = document.createElement("div");
+        el.className = "heatcell rounded-lg p-4";
+        el.style.background = bg;
+        el.style.border = `1px solid ${border}`;
+        el.innerHTML = `
+          <div class="text-xs text-muted">${x.layer}</div>
+          <div class="font-mono text-sm mt-1 text-white truncate" title="${x.f}">${x.f}</div>
+          <div class="mt-3 flex items-end justify-between">
+            <div class="text-2xl font-bold ${x.n > 0 ? "text-danger" : "text-slate-500"}">${x.n}</div>
+            <div class="pill ${x.n > 0 ? "text-danger" : "text-muted"}">${x.n === 0 ? "no issues" : "findings"}</div>
+          </div>`;
+        root.appendChild(el);
+      });
+    </script>
+  </body>
+</html>

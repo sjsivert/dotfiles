@@ -1,6 +1,113 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Bash(find:*)",
+      "Bash(cat:*)",
+      "Bash(grep:*)",
+      "Bash(head:*)",
+      "Bash(ls:*)"
+    ],
+    "defaultMode": "auto"
+  },
+  "model": "opus[1m]",
+  "skillOverrides": {
+    "agent-native-architecture": "off",
+    "agent-native-audit": "off",
+    "andrew-kane-gem-writer": "off",
+    "ce-compound": "off",
+    "ce-review": "off",
+    "changelog": "off",
+    "claude-permissions-optimizer": "off",
+    "deploy-docs": "off",
+    "dhh-rails-style": "off",
+    "document-review": "off",
+    "dspy-ruby": "off",
+    "every-style-editor": "off",
+    "feature-video": "off",
+    "gemini-imagegen": "off",
+    "improve-claude-md": "off",
+    "lfg": "off",
+    "onboarding": "off",
+    "orchestrating-swarms": "off",
+    "proof": "off",
+    "rclone": "off",
+    "report-bug-ce": "off",
+    "reproduce-bug": "off",
+    "resolve-pr-feedback": "off",
+    "setup": "off",
+    "shapeup": "off",
+    "slfg": "off",
+    "superpowers:executing-plans": "user-invocable-only",
+    "superpowers:subagent-driven-development": "user-invocable-only",
+    "superpowers:writing-plans": "user-invocable-only",
+    "test-browser": "off",
+    "test-xcode": "off",
+    "todo-create": "off",
+    "todo-resolve": "off",
+    "todo-triage": "off"
+  },
   "hooks": {
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/sindre.sivertsen/.config/iterm2/cc-status"
+          }
+        ]
+      }
+    ],
+    "PermissionRequest": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/sindre.sivertsen/.config/iterm2/cc-status"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/sindre.sivertsen/.config/iterm2/cc-status"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/sindre.sivertsen/.config/iterm2/cc-status"
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/sindre.sivertsen/.config/iterm2/cc-status"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/sindre.sivertsen/.config/iterm2/cc-status"
+          }
+        ]
+      }
+    ],
     "Stop": [
       {
         "hooks": [
@@ -9,14 +116,42 @@
             "command": "afplay /System/Library/Sounds/Glass.aiff"
           }
         ]
-      }
-    ],
-    "Notification": [
+      },
       {
         "hooks": [
           {
             "type": "command",
-            "command": "Oga boga | xargs say'"
+            "command": "/Users/sindre.sivertsen/.config/iterm2/cc-status"
+          }
+        ]
+      }
+    ],
+    "StopFailure": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/sindre.sivertsen/.config/iterm2/cc-status"
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/sindre.sivertsen/.config/iterm2/cc-status"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/sindre.sivertsen/.config/iterm2/cc-status"
           }
         ]
       }
@@ -27,12 +162,47 @@
     "command": "bash ~/.claude/statusline-pure.sh"
   },
   "enabledPlugins": {
-    "code-review@claude-plugins-official": true,
-    "compound-engineering@every-marketplace": true,
+    "claude-md-management@claude-plugins-official": false,
+    "code-review@claude-plugins-official": false,
+    "context7@claude-plugins-official": true,
+    "csharp-lsp@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": false,
+    "playwright@claude-plugins-official": true,
+    "pyright-lsp@claude-plugins-official": false,
     "ralph-loop@claude-plugins-official": true,
-    "frontend-design@claude-plugins-official": true
+    "superpowers@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": false
   },
+  "extraKnownMarketplaces": {
+    "caveman": {
+      "source": {
+        "source": "github",
+        "repo": "JuliusBrussee/caveman"
+      }
+    }
+  },
+  "sandbox": {
+    "network": {
+      "allowedDomains": [
+        "github.com",
+        "*.github.com",
+        "api.github.com",
+        "*.githubusercontent.com",
+        "api.nuget.org",
+        "*.nuget.org",
+        "*.dev.azure.com",
+        "pkgs.dev.azure.com"
+      ]
+    }
+  },
+  "effortLevel": "xhigh",
+  "tui": "fullscreen",
   "skipDangerousModePermissionPrompt": true,
+  "skipWorkflowUsageWarning": true,
+  "theme": "dark-ansi",
+  "editorMode": "vim",
+  "preferredNotifChannel": "terminal_bell",
+  "skipAutoPermissionPrompt": true,
   "feedbackSurveyState": {
     "lastShownTime": 1754227357686
   }

@@ -4,10 +4,10 @@
     "code-review@claude-plugins-official": [
       {
         "scope": "user",
-        "installPath": "/Users/sindre.sivertsen/.claude/plugins/cache/claude-plugins-official/code-review/unknown",
-        "version": "unknown",
+        "installPath": "/Users/sindre.sivertsen/.claude/plugins/cache/claude-plugins-official/code-review/022b3c274938",
+        "version": "022b3c274938",
         "installedAt": "2026-01-21T08:59:52.993Z",
-        "lastUpdated": "2026-06-27T09:11:57.425Z",
+        "lastUpdated": "2026-09-14T08:05:35.076Z",
         "gitCommitSha": "e30768372b4150ca1bc0839d93283e8edc30d60d"
       }
     ],
@@ -24,10 +24,10 @@
     "frontend-design@claude-plugins-official": [
       {
         "scope": "user",
-        "installPath": "/Users/sindre.sivertsen/.claude/plugins/cache/claude-plugins-official/frontend-design/unknown",
-        "version": "unknown",
+        "installPath": "/Users/sindre.sivertsen/.claude/plugins/cache/claude-plugins-official/frontend-design/022b3c274938",
+        "version": "022b3c274938",
         "installedAt": "2026-02-28T12:04:40.209Z",
-        "lastUpdated": "2026-06-27T09:11:57.453Z",
+        "lastUpdated": "2026-09-14T08:05:35.083Z",
         "gitCommitSha": "55b58ec6e5649104f926ba7558b567dc8d33c5ff"
       }
     ],
@@ -64,20 +64,20 @@
     "context7@claude-plugins-official": [
       {
         "scope": "user",
-        "installPath": "/Users/sindre.sivertsen/.claude/plugins/cache/claude-plugins-official/context7/unknown",
-        "version": "unknown",
+        "installPath": "/Users/sindre.sivertsen/.claude/plugins/cache/claude-plugins-official/context7/022b3c274938",
+        "version": "022b3c274938",
         "installedAt": "2026-03-09T08:23:42.110Z",
-        "lastUpdated": "2026-06-27T09:11:57.448Z",
+        "lastUpdated": "2026-09-14T08:05:35.094Z",
         "gitCommitSha": "205b6e0b30366a969412d9aab7b99bea99d58db1"
       }
     ],
     "playwright@claude-plugins-official": [
       {
         "scope": "user",
-        "installPath": "/Users/sindre.sivertsen/.claude/plugins/cache/claude-plugins-official/playwright/unknown",
-        "version": "unknown",
+        "installPath": "/Users/sindre.sivertsen/.claude/plugins/cache/claude-plugins-official/playwright/022b3c274938",
+        "version": "022b3c274938",
         "installedAt": "2026-03-09T08:24:32.881Z",
-        "lastUpdated": "2026-06-27T09:11:57.458Z",
+        "lastUpdated": "2026-09-14T08:05:35.088Z",
         "gitCommitSha": "205b6e0b30366a969412d9aab7b99bea99d58db1"
       }
     ],
@@ -91,23 +91,13 @@
         "gitCommitSha": "205b6e0b30366a969412d9aab7b99bea99d58db1"
       }
     ],
-    "caveman@caveman": [
-      {
-        "scope": "user",
-        "installPath": "/Users/sindre.sivertsen/.claude/plugins/cache/caveman/caveman/c2ed24b3e5d4",
-        "version": "c2ed24b3e5d4",
-        "installedAt": "2026-04-16T12:50:09.244Z",
-        "lastUpdated": "2026-04-16T12:50:09.244Z",
-        "gitCommitSha": "c2ed24b3e5d412cd0c25197b2bc9af587621fd99"
-      }
-    ],
     "superpowers@claude-plugins-official": [
       {
         "scope": "user",
-        "installPath": "/Users/sindre.sivertsen/.claude/plugins/cache/claude-plugins-official/superpowers/6.0.3",
-        "version": "6.0.3",
+        "installPath": "/Users/sindre.sivertsen/.claude/plugins/cache/claude-plugins-official/superpowers/6.3.0",
+        "version": "6.3.0",
         "installedAt": "2026-06-01T14:43:02.399Z",
-        "lastUpdated": "2026-06-19T07:53:32.167Z",
+        "lastUpdated": "2026-08-13T08:28:03.698Z",
         "gitCommitSha": "f2cbfbefebbfef77321e4c9abc9e949826bea9d7"
       }
     ]
