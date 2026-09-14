@@ -11,16 +11,6 @@
         "gitCommitSha": "e30768372b4150ca1bc0839d93283e8edc30d60d"
       }
     ],
-    "ralph-loop@claude-plugins-official": [
-      {
-        "scope": "user",
-        "installPath": "/Users/sindre.sivertsen/.claude/plugins/cache/claude-plugins-official/ralph-loop/1.0.0",
-        "version": "1.0.0",
-        "installedAt": "2026-02-18T20:45:17.411Z",
-        "lastUpdated": "2026-04-07T05:51:20.269Z",
-        "gitCommitSha": "452c38756951d28b940cd568689616bfb2cb3c3d"
-      }
-    ],
     "frontend-design@claude-plugins-official": [
       {
         "scope": "user",
@@ -89,16 +79,6 @@
         "installedAt": "2026-03-09T08:28:13.365Z",
         "lastUpdated": "2026-03-09T08:28:13.365Z",
         "gitCommitSha": "205b6e0b30366a969412d9aab7b99bea99d58db1"
-      }
-    ],
-    "superpowers@claude-plugins-official": [
-      {
-        "scope": "user",
-        "installPath": "/Users/sindre.sivertsen/.claude/plugins/cache/claude-plugins-official/superpowers/6.3.0",
-        "version": "6.3.0",
-        "installedAt": "2026-06-01T14:43:02.399Z",
-        "lastUpdated": "2026-08-13T08:28:03.698Z",
-        "gitCommitSha": "f2cbfbefebbfef77321e4c9abc9e949826bea9d7"
       }
     ]
   }
