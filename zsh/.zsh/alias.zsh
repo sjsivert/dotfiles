@@ -46,6 +46,7 @@ alias flush="docker compose exec -it redis redis-cli FLUSHALL"
 alias claudeyolo="CLAUDE_CODE_NO_FLICKER=1 claude --dangerously-skip-permissions"
 alias claude="CLAUDE_CODE_NO_FLICKER=1 claude"
 alias claudesafe="CLAUDE_CODE_NO_FLICKER=1 claude --sandbox"
+alias lgs="node ~/code/gitreview/bin/gitreview.js"
 
 
 
