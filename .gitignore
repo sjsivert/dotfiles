@@ -49,3 +49,5 @@ claude/.claude/settings.json.bak-*
 claude/.claude/plugins/.last_inuse_sweep
 claude/.claude/plugins/installed_plugins.json.bak
 claude/.claude/plugins/plugin-catalog-cache.json
+claude/.claude/policy-limits.json.stamp.json
+claude/.claude/state/
