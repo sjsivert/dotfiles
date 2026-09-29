@@ -1,0 +1,28 @@
+// Place your key bindings in this file to override the defaults
+
+[
+  {
+    "key": "ctrl+shift+enter",
+    "command": "github.copilot.generate",
+    "when": "editorTextFocus && github.copilot.activated"
+  },
+  {
+    "key": "ctrl+enter",
+    "command": "-github.copilot.generate",
+    "when": "editorTextFocus && github.copilot.activated"
+  },
+  {
+    "key": "space ,",
+    "command": "jupyter.runcurrentcell",
+    "when": "editorTextFocus && isWorkspaceTrusted && jupyter.hascodecells && !editorHasSelection && !jupyter.havenativecells && !notebookEditorFocused"
+  },
+  {
+    "key": "ctrl+enter",
+    "command": "-jupyter.runcurrentcell",
+    "when": "editorTextFocus && isWorkspaceTrusted && jupyter.hascodecells && !editorHasSelection && !jupyter.havenativecells && !notebookEditorFocused"
+  },
+  {
+    "key": "cmd+i",
+    "command": "composerMode.agent"
+  }
+]

@@ -51,3 +51,6 @@ claude/.claude/plugins/installed_plugins.json.bak
 claude/.claude/plugins/plugin-catalog-cache.json
 claude/.claude/policy-limits.json.stamp.json
 claude/.claude/state/
+
+# Karabiner writes a backup on every config change
+karabiner/.config/karabiner/automatic_backups/

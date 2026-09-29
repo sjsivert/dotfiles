@@ -1,0 +1,257 @@
+{
+  "workbench.iconTheme": "material-icon-theme",
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "vim.useSystemClipboard": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "python.languageServer": "Pylance",
+  "python.pythonPath": "/usr/local/bin/python3",
+  "tabnine.experimentalAutoImports": true,
+  "vim.leader": "<space>",
+  "vim.normalModeKeyBindings": [
+    {
+      "before": [
+        "<leader>",
+        "e"
+      ],
+      "commands": [
+        "workbench.view.explorer"
+      ],
+    },
+    {
+      "before": [
+        "<leader>",
+        "n"
+      ],
+      "commands": [
+        "terminal.integrated.shell: [ranger]"
+      ],
+    },
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "J"
+      ],
+      "after": [
+        "5",
+        "j"
+      ],
+    },
+    {
+      "before": [
+        "K"
+      ],
+      "after": [
+        "5",
+        "k"
+      ],
+    },
+    {
+      "before": [
+        "leader",
+        "r"
+      ],
+      "commands": [
+        "python.execInTerminal-icon"
+      ],
+    },
+    {
+      "before": [
+        "g",
+        "d",
+        "d"
+      ],
+      "after": [
+        "[",
+        "{",
+        "0",
+        "w",
+        "w"
+      ],
+    },
+  ],
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter.notebook.ipynb",
+  },
+  "latex-workshop.latex.tools": [
+    {
+      "name": "latexmk",
+      "command": "latexmk",
+      "args": [
+        "-shell-escape", // <---- added this line
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "-pdf",
+        "-outdir=%OUTDIR%",
+        "%DOC%",
+      ],
+      "env": {},
+    },
+  ],
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "python.defaultInterpreterPath": "/opt/homebrew/Caskroom/miniconda/base/envs/pf",
+  "workbench.colorTheme": "Nord",
+  "editor.tabSize": 2,
+  "vim.highlightedyank.enable": true,
+  "vim.replaceWithRegister": true,
+  "latex-workshop.view.pdf.viewer": "external",
+  "vim.camelCaseMotion.enable": true,
+  "editor.inlineSuggest.enabled": true,
+  "github.copilot.enable": {
+    "*": true,
+    "yaml": false,
+    "plaintext": false,
+    "markdown": false,
+    "latex": false,
+  },
+  "editor.guides.bracketPairs": true,
+  "editor.guides.bracketPairsHorizontal": true,
+  "vim.neovimPath": "/opt/homebrew/bin/nvim",
+  "vim.neovimConfigPath": "~/.config/nvim/init.vim",
+  "notebook.navigation.allowNavigateToSurroundingCells": false,
+  "vim.easymotion": true,
+  "vim.smartRelativeLine": true,
+  "vim.neovimUseConfigFile": true,
+  "vim.sneakReplacesF": true,
+  "vim.sneakUseIgnorecaseAndSmartcase": true,
+  "vim.whichwrap": "b,s$",
+  "[latex]": {
+    "editor.defaultFormatter": "James-Yu.latex-workshop",
+  },
+  "settingsSync.ignoredSettings": [
+    "latex-workshop.view.pdf.viewer"
+  ],
+  "[python]": {
+    "editor.formatOnType": true,
+  },
+  "gitlens.defaultDateFormat": "Do, MMMM, YYYY",
+  "gitlens.defaultDateShortFormat": "D, MMM, YYYY",
+  "gitlens.defaultTimeFormat": "h:mm",
+  "jupyter.askForKernelRestart": false,
+  "svelte.enable-ts-plugin": true,
+  "eslint.alwaysShowStatus": true,
+  "eslint.validate": [
+    "glimmer-ts",
+    "glimmer-js"
+  ],
+  "eslint.format.enable": true,
+  "[typescript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  },
+  "vim.sneak": true,
+  "tailwindCSS.emmetCompletions": true,
+  "tailwindCSS.experimental.classRegex": [
+    "cntl`([^`]*)", // cntl`...`
+  ],
+  "workbench.editor.labelFormat": "short",
+  "workbench.editor.enablePreviewFromQuickOpen": true,
+  "workbench.editor.enablePreviewFromCodeNavigation": true,
+  "editor.suggest.preview": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "go.inferGopath": true,
+  "go.alternateTools": {},
+  "[go]": {
+    "editor.defaultFormatter": "golang.go",
+  },
+  "editor.formatOnSave": true,
+  "svelte.plugin.svelte.note-new-transformation": false,
+  "[svelte]": {
+    "editor.defaultFormatter": "svelte.svelte-vscode",
+  },
+  "javascript.preferences.importModuleSpecifier": "relative",
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "redhat.telemetry.enabled": false,
+  "[xml]": {
+    "editor.defaultFormatter": "redhat.vscode-xml",
+  },
+  "svelte.ask-to-enable-ts-plugin": false,
+  "omnisharp.monoPath": "/opt/homebrew/bin/mono",
+  "omnisharp.dotnetPath": "/opt/homebrew/bin/dotnet",
+  "[glimmer-js]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.foldingStrategy": "indentation",
+  },
+  "[glimmer-ts]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.foldingStrategy": "indentation",
+  },
+  "eslint.rules.customizations": [
+    {
+      "rule": "*",
+      "severity": "warn",
+    },
+  ],
+  "files.associations": {
+    "*.js": "javascript",
+  },
+  "window.zoomLevel": 1,
+  "fileHopper.customGlobPatterns": [
+    "**/{_,}%FILE_NAME%.%FILE_EXT%"
+  ],
+  "fileHopper.ignorePatterns": [
+    "**/node_modules"
+  ],
+  "fileHopper.supportedExtensions": [
+    "js",
+    "hbs",
+    "scss"
+  ],
+  "fileHopper.appSubFolders": [
+    "models",
+    "routes",
+    "controllers",
+    "components",
+    "templates",
+    "styles",
+  ],
+  "prompt-flow.connections.connectionProvider": "Azure AI Connections (Workspace)",
+  "prompt-flow.connections.subscriptionId": "",
+  "prompt-flow.connections.resourceGroupName": "",
+  "prompt-flow.connections.workspaceName": "",
+  "workbench.settings.applyToAllProfiles": [],
+  "[terraform]": {
+    "editor.defaultFormatter": "hashicorp.terraform",
+  },
+  "terminal.integrated.inheritEnv": false,
+  "jupyter.jupyterLaunchTimeout": 600000,
+  "synapse.localWorkFolderPath": "",
+  "chat.editing.alwaysSaveWithGeneratedChanges": true,
+  "mssql.enableRichExperiences": true,
+  "github.copilot.chat.codeGeneration.instructions": [],
+  "@azure.argTenant": "",
+  "githubLocalActions.dockerDesktopPath": "/Applications/Docker.app",
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "mssql.objectExplorer.groupBySchema": true,
+  "[dockercompose]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.autoIndent": "advanced",
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": false,
+      "strings": true,
+    },
+    "editor.defaultFormatter": "redhat.vscode-yaml",
+  },
+  "[github-actions-workflow]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml",
+  },
+  "editor.accessibilitySupport": "off",
+  "open-in-vim.useNeovim": true,
+  "vim.vimrc.path": "$HOME/.config/nvim/init.lua",
+  "vim.vimrc.enable": true,
+  "python.analysis.extraPaths": [],
+  "yaml.format.singleQuote": true,
+  "azureML.yaml.format.singleQuote": true,
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1,
+  },
+  "docker.extension.enableComposeLanguageServer": false,
+  "resharper.region.region": "Europe",
+  "resharper.dataSharing.allowDataSharing": false,
+}
