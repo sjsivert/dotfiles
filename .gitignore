@@ -54,3 +54,6 @@ claude/.claude/state/
 
 # Karabiner writes a backup on every config change
 karabiner/.config/karabiner/automatic_backups/
+
+# Skills that Claude Code syncs from claude.ai
+claude/.claude/skills/synced/
