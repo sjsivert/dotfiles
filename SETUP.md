@@ -2,7 +2,8 @@
 
 A runbook for an agent that walks the user through setting up a new Mac from
 this repo. The user has already run the bootstrap in README.md: Homebrew,
-Claude Code, this repo cloned to `~/dotfiles`, and the agent started there.
+Nix, Claude Code, this repo cloned to `~/dotfiles`, and the agent started
+there.
 
 ## How to run it
 
@@ -13,13 +14,16 @@ Claude Code, this repo cloned to `~/dotfiles`, and the agent started there.
   dialog or a sign-in. Say exactly what to click, then wait for "done".
 - Never overwrite a file in `~`. When stow reports a conflict, show the
   existing file. Move it to `<name>.pre-dotfiles` only after the user agrees.
+  Home Manager does this by itself for the files it links (step 1).
+- Quote flake references, as in `"$HOME/dotfiles#mac"`. Once the repo's zsh
+  config is linked, `extendedglob` reads `#` as a glob.
 - This repo is public. Before any commit, grep the diff for credentials,
   tokens and anything from an employer, and leave those out.
 
 ## 0. Check the machine
 
 ```sh
-echo "$HOME"; uname -m; sw_vers -productVersion; brew --version; ~/.local/bin/claude --version
+echo "$HOME"; uname -m; sw_vers -productVersion; brew --version; nix --version; ~/.local/bin/claude --version
 ```
 
 If `$HOME` is not `/Users/sindre.sivertsen`, some files still hardcode that
@@ -35,36 +39,56 @@ path. List them with
 
 Ask the user before editing, and commit the change.
 
-## 1. Apps and tools
+## 1. Apps, tools and terminal dotfiles
 
-`Brewfile` lists taps, formulae, casks, VS Code extensions and go, npm, cargo
-and uv globals. Some of it came from the previous job: Azure, Databricks,
-MSSQL and Aspire tooling. Ask the user whether to drop any of it. If so,
-delete those lines and commit.
+One nix-darwin switch does all of this:
 
-```sh
-brew bundle --file ~/dotfiles/Brewfile
-```
+- `darwin.nix` lists the casks and the eight formulae that stay in Homebrew,
+  and sets iTerm2 to load its settings from the repo.
+- `home.nix` installs the command-line tools from nixpkgs and links zsh,
+  bash, git, tmux, vim, nvim, lazygit and the nix config from `~` into the
+  repo.
 
-**[user]** Some casks ask for the macOS password. The Brewfile has about 240
-entries, so the run takes a while.
-The `microsoft/aspire` tap prints a warning about its own cask definition;
-ignore it.
-
-Check: `brew bundle check --file ~/dotfiles/Brewfile`
-
-## 2. Shell and command-line tools
+`darwin-rebuild` is not installed yet, so build the system first and run it
+from the build:
 
 ```sh
-cd ~/dotfiles && stow zsh git tmux nvim lazygit intellij yabai
+cd ~/dotfiles && nix --extra-experimental-features 'nix-command flakes' build '.#darwinConfigurations.mac.system'
 ```
+
+The flag is only needed this once. After the switch, nix-darwin turns flakes
+on in `/etc/nix/nix.conf`.
+
+nix-darwin refuses to replace an `/etc` file whose content it does not
+recognise, and the Nix installer edits some of them. When this was first
+set up (2026-10-03), only `/etc/bashrc` needed moving. Show the user each file the
+error names before moving it.
+
+**[user]** These need the macOS password, and some casks ask for it too:
+
+```sh
+sudo mv /etc/bashrc /etc/bashrc.before-nix-darwin
+sudo ./result/sw/bin/darwin-rebuild switch --flake "$HOME/dotfiles#mac"
+```
+
+If the switch stops with "Unexpected files in /etc", move each named file
+the same way and run it again.
 
 Open a new terminal tab. On the first start, zsh clones znap, zinit, the
 pure prompt and its other plugins by itself, so it needs network and takes a
 minute. `zsh/.oh-my-zsh` is an empty leftover and nothing loads it.
 
-Check: `zsh -ic 'echo ok'` prints `ok` without errors, and `which claude`
-finds `~/.local/bin/claude`.
+Check: `zsh -ic 'echo ok'` prints `ok` without errors, `which git nvim`
+prints paths under `/etc/profiles/per-user/`, and `which claude` finds
+`~/.local/bin/claude`.
+
+## 2. Other stow packages
+
+```sh
+cd ~/dotfiles && stow intellij yabai
+```
+
+Do not stow the packages Home Manager links in step 1.
 
 `git/.gitconfig` commits as the user's private address. If the new job needs
 a different address for work repos, ask the user and set it per repo or with
@@ -96,7 +120,9 @@ its default `settings.json` conflicts; ask before moving it aside. The
 `vscode` package also holds an old Linux `.config/Code - OSS` copy, which is
 harmless.
 
-VS Code extensions come from the Brewfile. For Cursor:
+No file in the repo lists the VS Code extensions any more. The old Brewfile
+had 75 of them, and commit 770092f dropped them. Ask the user whether to
+install them from `git show f19f995:Brewfile | grep '^vscode '`. For Cursor:
 
 **[user]** In Cursor, open the command palette and run the shell command
 that installs `cursor` in PATH. Then:
@@ -105,8 +131,7 @@ that installs `cursor` in PATH. Then:
 xargs -n1 cursor --install-extension < ~/dotfiles/macos/cursor-extensions.txt
 ```
 
-Check: `code --list-extensions | wc -l` (about 75) and
-`cursor --list-extensions | wc -l` (about 61).
+Check: `cursor --list-extensions | wc -l` (about 61).
 
 ## 5. Keyboard and windows
 
@@ -127,15 +152,12 @@ Check: a Karabiner remap works, and `yabai -m query --spaces` returns JSON.
 
 ## 6. iTerm2
 
-**[user]** In iTerm2: Settings → General → Settings → "Load settings from a
-custom folder or URL" → `~/dotfiles/macos/iterm2`. Restart iTerm2.
+Step 1 already pointed iTerm2 at `~/dotfiles/macos/iterm2`.
 
-If iTerm2 is not running, the agent can set the same thing itself:
+**[user]** If iTerm2 was open during step 1, quit and reopen it.
 
-```sh
-defaults write com.googlecode.iterm2 PrefsCustomFolder -string "$HOME/dotfiles/macos/iterm2"
-defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
-```
+Check: `defaults read com.googlecode.iterm2 PrefsCustomFolder` prints the
+repo path.
 
 The Claude Code hooks call `~/.config/iterm2/cc-status`, a link into the
 iTerm2 app. Create it:
@@ -149,7 +171,7 @@ Check: `test -x ~/.config/iterm2/cc-status && echo ok`
 
 ## 7. Raycast
 
-**[user]** Sign in to Google Drive (installed by the Brewfile) and open
+**[user]** Sign in to Google Drive (installed in step 1) and open
 `My Drive/Personlig/Mac-oppsett/`. In Raycast, run "Import Settings & Data",
 pick the `.rayconfig` file there and enter the password chosen at export. The
 password is not in this repo; the user has it.
