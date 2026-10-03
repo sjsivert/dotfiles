@@ -28,6 +28,9 @@ in
       gh
       git
       git-filter-repo
+      # git/.gitconfig already has the lfs filter. Don't run `git lfs install`:
+      # it would rewrite that file in the repo.
+      git-lfs
       gitui
       gotop
       htop
