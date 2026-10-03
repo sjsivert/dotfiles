@@ -25,7 +25,10 @@
       linuxHome =
         system:
         home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.${system};
+          pkgs = import nixpkgs {
+            inherit system;
+            config.allowUnfree = true;
+          };
           modules = [
             ./home.nix
             {
@@ -33,6 +36,9 @@
               home.homeDirectory = "/home/sjsivert";
               programs.home-manager.enable = true;
               targets.genericLinux.enable = true;
+              # `nix shell nixpkgs#…` and `pkg` get the nixpkgs this config
+              # pins. nix-darwin does the same on the Mac.
+              nix.registry.nixpkgs.flake = nixpkgs;
             }
           ];
         };

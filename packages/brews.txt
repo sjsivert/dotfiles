@@ -1,0 +1,12 @@
+# Homebrew formulae for the Mac: tools nixpkgs lacks or can't build for macOS.
+# One per line. A formula from a third-party tap uses its full name
+# (owner/tap/name), and darwin.nix taps and trusts that tap. `pkg sync` and
+# `pkg rm` edit this file and keep the entries sorted.
+asmvik/formulae/skhd
+asmvik/formulae/yabai
+mdless
+nvm
+python@3.10
+telnet
+tty-clock
+wtf

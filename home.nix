@@ -10,59 +10,17 @@ let
   # Link into the repo checkout rather than a copy in the Nix store, so edits
   # apply without a rebuild, like stow. The repo must be cloned to ~/dotfiles.
   link = path: config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/${path}";
+
+  lists = import ./packages {
+    inherit lib;
+    platform = pkgs.stdenv.hostPlatform;
+  };
 in
 {
   home.stateVersion = "26.11";
 
-  home.packages =
-    with pkgs;
-    [
-      autojump
-      bat
-      bfg-repo-cleaner
-      direnv
-      docker-compose
-      duckdb
-      fd
-      fzf
-      gh
-      git
-      git-filter-repo
-      # git/.gitconfig already has the lfs filter. Don't run `git lfs install`:
-      # it would rewrite that file in the repo.
-      git-lfs
-      gitui
-      gotop
-      htop
-      imagemagick
-      jq
-      jump
-      lazydocker
-      lazygit
-      lsd
-      minikube
-      neovim
-      nixfmt
-      nmap
-      nodejs
-      pandoc
-      pnpm
-      ranger
-      ripgrep
-      speedtest-cli
-      starship
-      stow
-      tmux
-      tree
-      # LazyVim's nvim-treesitter (main branch) compiles parsers with it.
-      tree-sitter
-      uv
-      watchman
-      wget
-      wtfutil
-    ]
-    # Not built for macOS; darwin.nix installs it with brew there.
-    ++ lib.optionals stdenv.hostPlatform.isLinux [ tty-clock ];
+  # The tools are listed in packages/nix.txt.
+  home.packages = map (name: lib.getAttrFromPath (lib.splitString "." name) pkgs) lists.nix;
 
   # These were stow packages. Mac app configs (karabiner, yabai, zed, vscode,
   # cursor, claude, agents) are still stowed; see SETUP.md.

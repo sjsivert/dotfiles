@@ -1,0 +1,38 @@
+# Homebrew casks (Mac apps). One per line; a cask from a third-party tap uses
+# its full name (owner/tap/name). `pkg sync` and `pkg rm` edit this file and
+# keep the entries sorted.
+1password
+1password-cli
+anki
+chatgpt
+claude
+cleanshot
+discord
+flux-app
+font-hack-nerd-font
+font-jetbrains-mono
+font-monaspace
+go2shell
+google-chrome
+google-drive
+homerow
+iterm2
+karabiner-elements
+keepingyouawake
+keycastr
+macfuse
+notion
+obsidian
+openvpn-connect
+orbstack
+raycast
+scroll-reverser
+shottr
+slack
+spotify
+swish
+tailscale-app
+todoist-app
+visual-studio-code
+xnapper
+zed

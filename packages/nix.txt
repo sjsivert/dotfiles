@@ -1,0 +1,45 @@
+# Command-line tools from nixpkgs, for the Mac and Linux.
+# One package per line. Add `linux` or `darwin` after the name to install it
+# on that system only. `#` starts a comment. `pkg add` and `pkg rm` edit this
+# file and keep the entries sorted.
+autojump
+bat
+bfg-repo-cleaner
+direnv
+docker-compose
+duckdb
+fd
+fzf
+gh
+git
+git-filter-repo
+git-lfs  # git/.gitconfig has the lfs filter. Don't run `git lfs install`: it rewrites that file.
+gitui
+gotop
+htop
+imagemagick
+jq
+jump
+lazydocker
+lazygit
+lsd
+minikube
+neovim
+nixfmt
+nmap
+nodejs
+pandoc
+pnpm
+ranger
+ripgrep
+speedtest-cli
+starship
+stow
+tmux
+tree
+tree-sitter  # LazyVim's nvim-treesitter (main branch) compiles parsers with it.
+tty-clock  linux  # Broken on macOS. brews.txt installs it there.
+uv
+watchman
+wget
+wtfutil

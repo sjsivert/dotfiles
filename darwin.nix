@@ -1,12 +1,25 @@
 # nix-darwin: the Mac itself. Command-line tools and terminal dotfiles come
 # from home.nix, which Linux shares.
-{ lib, ... }:
+{ lib, pkgs, ... }:
 
 let
   user = "sindre.sivertsen";
+
+  lists = import ./packages {
+    inherit lib;
+    platform = pkgs.stdenv.hostPlatform;
+  };
+
+  # asmvik/formulae/yabai comes from the tap asmvik/formulae.
+  taps = lib.unique (
+    map (name: lib.concatStringsSep "/" (lib.take 2 (lib.splitString "/" name))) (
+      builtins.filter (lib.hasInfix "/") (lists.brews ++ lists.casks)
+    )
+  );
 in
 {
   nixpkgs.hostPlatform = "aarch64-darwin";
+  nixpkgs.config.allowUnfree = true;
 
   nix.settings.experimental-features = [
     "nix-command"
@@ -39,68 +52,18 @@ in
     users.${user} = import ./home.nix;
   };
 
-  # Homebrew itself is installed by the README bootstrap. This replaces the
-  # Brewfile: GUI apps, plus formulae that nixpkgs lacks or that must come
-  # from brew on macOS. cleanup = "none" leaves anything else installed.
+  # Homebrew itself is installed by the README bootstrap. The formulae and
+  # casks are listed in packages/brews.txt and packages/casks.txt.
+  # cleanup = "none" leaves anything else installed; `pkg sync` asks about it.
   homebrew = {
     enable = true;
     onActivation.cleanup = "none";
-
-    taps = [
-      {
-        name = "asmvik/formulae";
-        trusted = true;
-      }
-    ];
-
-    brews = [
-      "python@3.10"
-      "nvm"
-      "mdless"
-      "telnet"
-      "tty-clock"
-      "wtf"
-      "asmvik/formulae/skhd"
-      "asmvik/formulae/yabai"
-    ];
-
-    casks = [
-      "1password"
-      "1password-cli"
-      "anki"
-      "chatgpt"
-      "claude"
-      "cleanshot"
-      "discord"
-      "flux-app"
-      "font-hack-nerd-font"
-      "font-jetbrains-mono"
-      "font-monaspace"
-      "go2shell"
-      "google-chrome"
-      "google-drive"
-      "homerow"
-      "iterm2"
-      "karabiner-elements"
-      "keepingyouawake"
-      "keycastr"
-      "macfuse"
-      "notion"
-      "obsidian"
-      "openvpn-connect"
-      "orbstack"
-      "raycast"
-      "scroll-reverser"
-      "shottr"
-      "slack"
-      "spotify"
-      "swish"
-      "tailscale-app"
-      "todoist-app"
-      "visual-studio-code"
-      "xnapper"
-      "zed"
-    ];
+    taps = map (name: {
+      inherit name;
+      trusted = true;
+    }) taps;
+    brews = lists.brews;
+    casks = lists.casks;
   };
 
   # iTerm2 loads its settings from the repo (SETUP.md step 6).
