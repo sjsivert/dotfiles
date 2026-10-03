@@ -13,6 +13,3 @@ export PATH="/Users/sindre.sivertsen/.antigravity/antigravity/bin:$PATH"
 zshaddhistory() {
   [[ $1 != *node-cdp* ]] && [[ $1 != *deferredMode* ]]
 }
-
-# Bun global packages (bun add -g)
-export PATH="$HOME/.cache/.bun/bin:$PATH"
