@@ -52,6 +52,13 @@ export PATH="$PATH:$HOME/.cargo/bin"
 # export DOTNET_ROOT="/usr/local/bin/dotnet"
 
 
+# Nix. The installer hooks into /etc/zshrc, but macOS updates reset that file
+if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+  . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+fi
+# extendedglob makes the # in nixpkgs#hello a glob operator
+alias nix='noglob nix'
+
 # Allow automaticly enable devenv
 eval "$(direnv hook zsh)"
 
