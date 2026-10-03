@@ -26,8 +26,6 @@ ms-azuretools.vscode-azurefunctions
 ms-azuretools.vscode-azureresourcegroups
 ms-azuretools.vscode-azurestorage
 ms-azuretools.vscode-docker
-ms-dotnettools.csharp
-ms-dotnettools.vscode-dotnet-runtime
 ms-python.black-formatter
 ms-python.debugpy
 ms-python.flake8

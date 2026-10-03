@@ -133,7 +133,7 @@ that installs `cursor` in PATH. Then:
 xargs -n1 cursor --install-extension < ~/dotfiles/macos/cursor-extensions.txt
 ```
 
-Check: `cursor --list-extensions | wc -l` (about 61).
+Check: `cursor --list-extensions | wc -l` (about 59).
 
 ## 5. Keyboard and windows
 
