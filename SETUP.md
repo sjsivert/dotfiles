@@ -36,6 +36,8 @@ path. List them with
 - `macos/iterm2/com.googlecode.iterm2.plist`: fix the affected profile paths
   in iTerm2's settings after step 6, not in the file.
 - `claude/.claude/plugins/*.json`: leave them. Claude Code rewrites them.
+- `darwin.nix`: set `user` to the new username. The grep misses this file,
+  because it builds `/Users/${user}` from that value.
 
 Ask the user before editing, and commit the change.
 

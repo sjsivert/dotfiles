@@ -22,8 +22,10 @@ stowed.
 - Command-line tools go in `packages/nix.txt`. Casks, and formulae nixpkgs
   lacks for macOS, go in `packages/casks.txt` and `brews.txt`. There is no
   Brewfile. `pkg add`, `rm`, `sync` and `up` commit their own changes.
-- Check a change builds with `nix build '.#darwinConfigurations.mac.system'`.
-  Applying it needs root, so the user runs
-  `sudo darwin-rebuild switch --flake "$HOME/dotfiles#mac"`.
+- On the Mac, a switch needs the user's sudo password, which an agent cannot
+  type. That rules out `pkg add`, `rm`, `up` and `switch` for an agent. Edit
+  the list or `.nix` files instead, check the build with
+  `nix build '.#darwinConfigurations.mac.system'`, ask the user to run
+  `pkg switch`, then commit. `pkg switch` does not commit.
 - Quote flake references: the zsh config sets `extendedglob`, which reads `#`
   as a glob. `git add` new `.nix` files, or Nix cannot see them.

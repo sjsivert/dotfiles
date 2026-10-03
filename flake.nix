@@ -44,7 +44,7 @@
         };
     in
     {
-      # sudo darwin-rebuild switch --flake ~/dotfiles#mac
+      # pkg switch, or: sudo darwin-rebuild switch --flake "$HOME/dotfiles#mac"
       darwinConfigurations.mac = nix-darwin.lib.darwinSystem {
         modules = [
           ./darwin.nix
@@ -52,8 +52,8 @@
         ];
       };
 
-      # home-manager switch --flake ~/dotfiles            (x86_64)
-      # home-manager switch --flake ~/dotfiles#sjsivert-aarch64
+      # pkg switch, or: home-manager switch --flake "$HOME/dotfiles"   (x86_64)
+      #             or: home-manager switch --flake "$HOME/dotfiles#sjsivert-aarch64"
       homeConfigurations = {
         sjsivert = linuxHome "x86_64-linux";
         sjsivert-aarch64 = linuxHome "aarch64-linux";

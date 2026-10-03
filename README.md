@@ -13,7 +13,13 @@ edits apply without a rebuild.
 
 `packages/` holds the package lists, one name per line: `nix.txt` for the
 command-line tools, and `brews.txt` and `casks.txt` for Homebrew on the Mac.
-The `pkg` command (`packages/pkg`) edits them.
+The `pkg` command edits them.
+
+`pkg` is not a package. It is my own zsh script, `packages/pkg`, which Home
+Manager links into `~/.local/bin`. It runs standard tools: `nix-search` (from
+nix-search-cli), `nix eval`, `nix shell`, `nix flake update`, `darwin-rebuild`
+or `home-manager`, `brew` and `git`. To look something up, search for those
+tools rather than `pkg`.
 
 The other top-level folders are GNU stow packages for Mac apps (karabiner,
 yabai, zed, vscode, cursor, claude, agents). The i3, sway, rofi, termite and
