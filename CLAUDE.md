@@ -7,5 +7,5 @@ repo root are not stowed.
 - Setting up a new machine: follow SETUP.md with the user, one step at a time.
 - Never commit credentials, tokens or anything from an employer. Grep the
   diff before every commit.
-- Stow `agents`, `vscode`, `cursor` and `zed` with `--no-folding`.
+- Stow `agents`, `vscode`, `cursor`, `zed` and `nix` with `--no-folding`.
   `claude` and `karabiner` fold on purpose.
