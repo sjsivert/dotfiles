@@ -73,8 +73,9 @@ in
     ".vim".source = link "vim/.vim";
   }
   // lib.optionalAttrs pkgs.stdenv.hostPlatform.isDarwin {
-    # lazygit reads this on macOS and ~/.config/lazygit on Linux.
-    "Library/Application Support/lazygit".source = link "lazygit/Library/Application Support/lazygit";
+    # lazygit reads its config from here on macOS, so point it at the same
+    # folder Linux reads through ~/.config/lazygit.
+    "Library/Application Support/lazygit".source = link "lazygit/.config/lazygit";
   };
 
   xdg.configFile = {
