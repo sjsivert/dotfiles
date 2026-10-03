@@ -32,6 +32,7 @@ in
     ".tmux.conf".source = link "tmux/.tmux.conf";
     ".vimrc".source = link "vim/.vimrc";
     ".vim".source = link "vim/.vim";
+    ".local/bin/pkg".source = link "packages/pkg";
   }
   // lib.optionalAttrs pkgs.stdenv.hostPlatform.isDarwin {
     # lazygit reads its config from here on macOS, so point it at the same

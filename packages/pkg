@@ -1,0 +1,346 @@
+#!/usr/bin/env zsh
+# pkg: find, try and keep packages. The lists are in ~/dotfiles/packages, and
+# Home Manager links this script to ~/.local/bin/pkg. Run `pkg` for help.
+
+emulate -R zsh
+setopt err_exit no_unset extended_glob
+
+DOTFILES=${DOTFILES:-$HOME/dotfiles}
+NIX_LIST=$DOTFILES/packages/nix.txt
+BREWS=$DOTFILES/packages/brews.txt
+CASKS=$DOTFILES/packages/casks.txt
+
+usage() {
+  cat <<'EOF'
+pkg: find, try and keep packages. The lists are in ~/dotfiles/packages.
+
+  pkg search <words>     search nixpkgs on search.nixos.org
+  pkg search -p <cmd>    find the package that provides a command
+  pkg info <name>        details, and the version this machine gets
+  pkg try <name>...      open a shell with the packages; exit drops them
+  pkg add <name>...      keep a nix package: add to nix.txt, switch, commit
+  pkg rm <name>...       remove from its list (brew uninstalls on the Mac),
+                         switch, commit
+  pkg sync               Mac: ask about each brew install that no list has
+  pkg switch             apply the config
+  pkg up [nix|brew]      update the pinned nixpkgs and brew packages
+EOF
+}
+
+die() { print -u2 -r -- "pkg: $*"; exit 1 }
+say() { print -r -- "$fg_bold[blue]==>$reset_color $*" }
+autoload -U colors && colors
+
+is_mac() { [[ $OSTYPE == darwin* ]] }
+
+# The entry in a list file for a name, or nothing. "yabai" also finds
+# "asmvik/formulae/yabai".
+find_entry() {
+  [[ -f $2 ]] || return 0
+  awk -v n="$1" '
+    { sub(/#.*/, "") }
+    NF && ($1 == n || substr($1, length($1) - length(n)) == "/" n) { print $1; exit }
+  ' "$2"
+}
+
+# Add a line to a list file, keeping the header comment on top and the
+# entries below it sorted.
+add_line() {
+  local file=$1 line=$2 tmp
+  tmp=$(mktemp)
+  {
+    awk '/^[^#[:space:]]/ { exit } { print }' "$file"
+    { awk 'f || /^[^#[:space:]]/ { f = 1; print }' "$file"; print -r -- "$line" } |
+      grep -v '^[[:space:]]*$' | LC_ALL=C sort
+  } >"$tmp"
+  cat "$tmp" >"$file"
+  rm "$tmp"
+}
+
+# Remove the entry whose first word is the given name.
+remove_entry() {
+  local file=$1 name=$2 tmp
+  tmp=$(mktemp)
+  awk -v n="$name" '{ line = $0; sub(/#.*/, "", line); split(line, w, " ") } w[1] != n' "$file" >"$tmp"
+  cat "$tmp" >"$file"
+  rm "$tmp"
+}
+
+# Copies of files, to put back if a switch fails.
+BACKUP=""
+backup() {
+  BACKUP=$(mktemp -d)
+  local f
+  for f; do [[ -f $f ]] && cp -p "$f" "$BACKUP/${f:t}"; done
+  return 0
+}
+restore() {
+  local f
+  for f; do [[ -f $BACKUP/${f:t} ]] && cp -p "$BACKUP/${f:t}" "$f"; done
+  return 0
+}
+
+commit() {
+  local msg=$1
+  shift
+  git -C "$DOTFILES" commit --quiet -m "$msg" -- "$@"
+  say "Committed: $msg"
+}
+
+do_switch() {
+  local untracked
+  untracked=$(git -C "$DOTFILES" ls-files --others --exclude-standard -- '*.nix' 'packages/*')
+  if [[ -n $untracked ]]; then
+    say "Nix can't see these files until you git add them:"
+    print -r -- "$untracked"
+  fi
+  if is_mac; then
+    say "Switching (needs your password)"
+    sudo darwin-rebuild switch --flake "$DOTFILES#mac"
+  else
+    local name=$USER
+    [[ $(uname -m) == (aarch64|arm64) ]] && name=$USER-aarch64
+    say "Switching"
+    home-manager switch --flake "$DOTFILES#$name"
+  fi
+}
+
+# JSON facts about nixpkgs#<name> on this machine. Fails if there is no such
+# package.
+nix_facts() {
+  NIXPKGS_ALLOW_UNFREE=1 nix eval --impure --json "nixpkgs#$1" --apply '
+    p:
+    let
+      m = p.meta or { };
+      one = l: if builtins.isAttrs l then l.spdxId or l.shortName or "?" else toString l;
+      license = m.license or [ ];
+    in
+    {
+      version = p.version or "";
+      available = m.available or true;
+      unfree = m.unfree or false;
+      description = m.description or "";
+      homepage = m.homepage or "";
+      mainProgram = m.mainProgram or "";
+      license = if builtins.isList license then map one license else [ (one license) ];
+    }' 2>/dev/null
+}
+
+cmd_search() {
+  (( $# )) || die "usage: pkg search <words>, or pkg search -p <command>"
+  if [[ $1 == -p ]]; then
+    shift
+    nix-search --program "$*"
+  else
+    nix-search "$*"
+  fi
+}
+
+cmd_info() {
+  (( $# == 1 )) || die "usage: pkg info <name>"
+  local name=$1 facts programs where
+  facts=$(nix_facts "$name") || die "nixpkgs has no package $name. Try: pkg search $name"
+  programs=$(nix-search --json --max-results 50 --name "$name" 2>/dev/null |
+    jq -r --arg n "$name" 'select(.package_attr_name == $n) | .package_programs | join(" ")' | head -1)
+
+  if [[ -n $(find_entry "$name" "$NIX_LIST") ]]; then
+    where="kept in packages/nix.txt"
+  elif is_mac && [[ -n $(find_entry "$name" "$BREWS")$(find_entry "$name" "$CASKS") ]]; then
+    where="kept in Homebrew (packages/brews.txt or casks.txt)"
+  else
+    where="not kept"
+  fi
+
+  jq -r --arg name "$name" --arg programs "$programs" --arg where "$where" --arg system "$(uname -sm)" '
+    "\($name) \(.version)",
+    "  \(.description)",
+    "  programs:  \(if $programs == "" then "(unknown)" else $programs end)",
+    "  homepage:  \(.homepage)",
+    "  license:   \(.license | join(", "))\(if .unfree then " (unfree)" else "" end)",
+    "  this machine: \(if .available then "available" else "NOT available on \($system)" end), \($where)"
+  ' <<<"$facts"
+}
+
+cmd_try() {
+  (( $# )) || die "usage: pkg try <name>..."
+  say "A shell with $*. Nothing is installed; type exit to leave."
+  NIXPKGS_ALLOW_UNFREE=1 exec nix shell --impure "${@/#/nixpkgs#}"
+}
+
+cmd_add() {
+  (( $# )) || die "usage: pkg add <name>..."
+  local name facts
+  local -a added
+  for name; do
+    if [[ -n $(find_entry "$name" "$NIX_LIST") ]]; then
+      say "$name is already in nix.txt"
+      continue
+    fi
+    say "Checking $name"
+    facts=$(nix_facts "$name") || die "nixpkgs has no package $name. Try: pkg search $name"
+    [[ $(jq -r .available <<<"$facts") == true ]] ||
+      die "$name is broken or unsupported on $(uname -sm). On the Mac, try brew instead."
+    added+=$name
+  done
+  (( $#added )) || return 0
+
+  backup "$NIX_LIST"
+  for name in $added; do add_line "$NIX_LIST" "$name"; done
+  if do_switch; then
+    commit "packages: Add ${(j:, :)added}" "$NIX_LIST"
+  else
+    restore "$NIX_LIST"
+    die "the switch failed, so nix.txt is back as it was"
+  fi
+}
+
+cmd_rm() {
+  (( $# )) || die "usage: pkg rm <name>..."
+  local name entry
+  local -a from_nix from_brews from_casks
+  for name; do
+    if entry=$(find_entry "$name" "$NIX_LIST") && [[ -n $entry ]]; then
+      from_nix+=$entry
+    elif entry=$(find_entry "$name" "$BREWS") && [[ -n $entry ]]; then
+      from_brews+=$entry
+    elif entry=$(find_entry "$name" "$CASKS") && [[ -n $entry ]]; then
+      from_casks+=$entry
+    else
+      die "$name is not in any list in $DOTFILES/packages"
+    fi
+  done
+
+  backup "$NIX_LIST" "$BREWS" "$CASKS"
+  for entry in $from_nix; do remove_entry "$NIX_LIST" "$entry"; done
+  for entry in $from_brews; do remove_entry "$BREWS" "$entry"; done
+  for entry in $from_casks; do remove_entry "$CASKS" "$entry"; done
+
+  if (( $#from_nix )) && ! do_switch; then
+    restore "$NIX_LIST" "$BREWS" "$CASKS"
+    die "the switch failed, so the lists are back as they were"
+  fi
+  # The switch never uninstalls brew packages, so do it here.
+  if is_mac; then
+    (( $#from_brews )) && { brew uninstall $from_brews || say "brew uninstall failed; the list change stays" }
+    (( $#from_casks )) && { brew uninstall --cask $from_casks || say "brew uninstall failed; the list change stays" }
+  fi
+  local -a removed=($from_nix $from_brews $from_casks)
+  commit "packages: Remove ${(j:, :)removed}" "$NIX_LIST" "$BREWS" "$CASKS"
+}
+
+cmd_sync() {
+  is_mac || die "sync goes through Homebrew installs, so it only runs on the Mac"
+  say "Reading what Homebrew has installed"
+  local json
+  json=$(brew info --json=v2 --installed)
+
+  local -a requested all_formulae casks keep_brews keep_casks drop_brews drop_casks
+  requested=(${(f)"$(jq -r '.formulae[] | select(.installed[0].installed_on_request) | .full_name' <<<"$json")"})
+  all_formulae=(${(f)"$(jq -r '.formulae[].full_name' <<<"$json")"})
+  casks=(${(f)"$(jq -r '.casks[].full_token' <<<"$json")"})
+
+  local name desc key quit=0
+
+  # Ask about each installed package that no list has.
+  ask() {
+    local kind=$1 name=$2
+    if [[ $kind == formula ]]; then
+      desc=$(jq -r --arg n "$name" '.formulae[] | select(.full_name == $n) | .desc // ""' <<<"$json")
+    else
+      desc=$(jq -r --arg n "$name" '.casks[] | select(.full_token == $n) | .desc // ""' <<<"$json")
+    fi
+    print
+    print -r -- "$fg_bold[default]$name$reset_color ($kind): $desc"
+    while true; do
+      # read's own "?prompt" only shows in interactive shells.
+      print -n -- "  [k]eep  [u]ninstall  [s]kip  [q]uit: "
+      if [[ -t 0 ]]; then
+        read -k 1 key || key=q
+      else
+        read -k 1 -u 0 key || key=q
+      fi
+      print
+      case $key in
+        k) [[ $kind == formula ]] && keep_brews+=$name || keep_casks+=$name; return 0 ;;
+        u) [[ $kind == formula ]] && drop_brews+=$name || drop_casks+=$name; return 0 ;;
+        s) return 0 ;;
+        q) quit=1; return 0 ;;
+      esac
+    done
+  }
+
+  local -i asked=0
+  for name in $requested; do
+    (( quit )) && break
+    [[ -n $(find_entry "$name" "$BREWS") ]] && continue
+    asked+=1; ask formula "$name"
+  done
+  for name in $casks; do
+    (( quit )) && break
+    [[ -n $(find_entry "$name" "$CASKS") ]] && continue
+    asked+=1; ask cask "$name"
+  done
+  (( asked )) || say "Every installed brew package is in brews.txt or casks.txt"
+
+  local -a missing
+  for name in ${(f)"$(awk '{ sub(/#.*/, "") } NF { print $1 }' "$BREWS")"}; do
+    (( ${all_formulae[(Ie)$name]} )) || missing+=$name
+  done
+  for name in ${(f)"$(awk '{ sub(/#.*/, "") } NF { print $1 }' "$CASKS")"}; do
+    (( ${casks[(Ie)$name]} )) || missing+=$name
+  done
+  (( $#missing )) && say "Listed but not installed (pkg switch installs them): $missing"
+
+  (( $#drop_brews )) && { brew uninstall $drop_brews || say "brew uninstall failed for some formulae" }
+  (( $#drop_casks )) && { brew uninstall --cask $drop_casks || say "brew uninstall failed for some casks" }
+
+  local -a kept=($keep_brews $keep_casks)
+  if (( $#kept )); then
+    for name in $keep_brews; do add_line "$BREWS" "$name"; done
+    for name in $keep_casks; do add_line "$CASKS" "$name"; done
+    commit "packages: Keep ${(j:, :)kept} from Homebrew" "$BREWS" "$CASKS"
+  fi
+  return 0
+}
+
+cmd_up() {
+  local what=${1:-all}
+  [[ $what == (all|nix|brew) ]] || die "usage: pkg up [nix|brew]"
+
+  if [[ $what != brew ]]; then
+    local lock=$DOTFILES/flake.lock
+    backup "$lock"
+    say "Updating the pinned nixpkgs, nix-darwin and Home Manager"
+    nix flake update --flake "$DOTFILES"
+    if git -C "$DOTFILES" diff --quiet -- "$lock"; then
+      say "Nix inputs are already up to date"
+    elif do_switch; then
+      commit "nix: Update flake inputs" "$lock"
+    else
+      restore "$lock"
+      die "the switch failed, so flake.lock is back as it was"
+    fi
+  fi
+
+  if [[ $what != nix ]] && is_mac; then
+    say "Upgrading Homebrew packages"
+    brew update
+    brew upgrade
+  fi
+  return 0
+}
+
+cmd=${1:-}
+(( $# )) && shift
+case $cmd in
+  search) cmd_search "$@" ;;
+  info) cmd_info "$@" ;;
+  try) cmd_try "$@" ;;
+  add) cmd_add "$@" ;;
+  rm | remove) cmd_rm "$@" ;;
+  sync) cmd_sync ;;
+  switch) do_switch ;;
+  up | upgrade) cmd_up "$@" ;;
+  "" | -h | --help | help) usage ;;
+  *) usage >&2; exit 1 ;;
+esac

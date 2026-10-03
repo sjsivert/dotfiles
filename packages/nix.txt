@@ -25,6 +25,7 @@ lazygit
 lsd
 minikube
 neovim
+nix-search-cli  # pkg search and pkg info
 nixfmt
 nmap
 nodejs
