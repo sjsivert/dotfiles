@@ -42,15 +42,9 @@ LC_CTYPE="en_US.UTF-8"
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH="$HOME/.local/bin:$PATH"
-# Dotnet tools
-export PATH="$PATH:/Users/sindre.sivertsen/.dotnet/tools"
 
 # Add Cargo bins to path
 export PATH="$PATH:$HOME/.cargo/bin"
-
-# DOtnet root so zed can find it
-# export DOTNET_ROOT="/usr/local/bin/dotnet"
-
 
 # Nix. The installer hooks into /etc/zshrc, but macOS updates reset that file
 if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
