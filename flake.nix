@@ -1,0 +1,56 @@
+{
+  description = "Sindre's Mac and Linux setup";
+
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
+
+  outputs =
+    {
+      nixpkgs,
+      nix-darwin,
+      home-manager,
+      ...
+    }:
+    let
+      # Standalone Home Manager for Arch, Ubuntu and Debian.
+      linuxHome =
+        system:
+        home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.${system};
+          modules = [
+            ./home.nix
+            {
+              home.username = "sjsivert";
+              home.homeDirectory = "/home/sjsivert";
+              programs.home-manager.enable = true;
+              targets.genericLinux.enable = true;
+            }
+          ];
+        };
+    in
+    {
+      # sudo darwin-rebuild switch --flake ~/dotfiles#mac
+      darwinConfigurations.mac = nix-darwin.lib.darwinSystem {
+        modules = [
+          ./darwin.nix
+          home-manager.darwinModules.home-manager
+        ];
+      };
+
+      # home-manager switch --flake ~/dotfiles            (x86_64)
+      # home-manager switch --flake ~/dotfiles#sjsivert-aarch64
+      homeConfigurations = {
+        sjsivert = linuxHome "x86_64-linux";
+        sjsivert-aarch64 = linuxHome "aarch64-linux";
+      };
+    };
+}

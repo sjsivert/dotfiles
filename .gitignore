@@ -57,3 +57,6 @@ karabiner/.config/karabiner/automatic_backups/
 
 # Skills that Claude Code syncs from claude.ai
 claude/.claude/skills/synced/
+
+# nix build output
+/result
