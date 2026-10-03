@@ -11,6 +11,10 @@ links the terminal dotfiles (zsh, bash, git, tmux, vim, nvim, lazygit, nix)
 from `~` into this repo. The links point at the checkout, not a copy, so
 edits apply without a rebuild.
 
+`packages/` holds the package lists, one name per line: `nix.txt` for the
+command-line tools, and `brews.txt` and `casks.txt` for Homebrew on the Mac.
+The `pkg` command (`packages/pkg`) edits them.
+
 The other top-level folders are GNU stow packages for Mac apps (karabiner,
 yabai, zed, vscode, cursor, claude, agents). The i3, sway, rofi, termite and
 other X11 packages are from an old Arch Linux machine and are not used.
@@ -67,19 +71,39 @@ chsh -s "$(command -v zsh)"
 
 ## Day to day
 
-| To | Do |
-|---|---|
-| Apply a change on the Mac | `sudo darwin-rebuild switch --flake "$HOME/dotfiles#mac"` |
-| Apply a change on Linux | `home-manager switch --flake "$HOME/dotfiles"` |
-| Add a command-line tool | Add it to `home.packages` in `home.nix` ([search](https://search.nixos.org/packages)) |
-| Add a Mac app | Add it to `homebrew.casks` in `darwin.nix` |
-| Update everything | `nix flake update`, switch, commit `flake.lock` |
+`pkg` wraps the Nix and Homebrew commands. Run `pkg` alone for help.
 
-- Quote the flake reference. My zsh sets `extendedglob`, which reads `#` as
-  a glob.
-- Nix only sees files git knows about, so `git add` a new `.nix` file before
-  switching.
-- Edits to linked dotfiles apply right away, with no switch.
+| To | Run |
+|---|---|
+| Find a package | `pkg search ripgrep` |
+| Find the package that has a command | `pkg search -p rg` |
+| See details and the version I'd get | `pkg info ripgrep` |
+| Try it without installing | `pkg try ripgrep` (opens a shell; `exit` drops it) |
+| Keep a command-line tool | `pkg add ripgrep` |
+| Install a Mac app | `brew install --cask spotify`, later `pkg sync` |
+| Decide what to keep from brew | `pkg sync` |
+| Remove a package from any list | `pkg rm ripgrep` |
+| Apply edits made by hand | `pkg switch` |
+| Update Nix tools and brew packages | `pkg up` (or `pkg up nix`, `pkg up brew`) |
+
+`pkg add`, `rm`, `sync` and `up` commit the list or `flake.lock` themselves,
+after a successful switch, and never push. If a switch fails, the file goes
+back to how it was.
+
+`pkg sync` goes through the brew formulae I installed myself and the casks
+that no list has. Dependencies are left out. For each one it asks: keep it
+(add it to `brews.txt` or `casks.txt`), uninstall it, or skip it. A switch
+never uninstalls brew packages by itself.
+
+Without `pkg`:
+
+- **Switch on the Mac:** `sudo darwin-rebuild switch --flake "$HOME/dotfiles#mac"`.
+- **Switch on Linux:** `home-manager switch --flake "$HOME/dotfiles"`.
+- **Quote the flake reference.** My zsh sets `extendedglob`, which reads `#`
+  as a glob.
+- **`git add` new `.nix` files before switching.** Nix only sees files git
+  knows about.
+- **Linked dotfiles apply right away**, with no switch.
 
 ## Not in this repo
 
