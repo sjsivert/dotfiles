@@ -69,7 +69,7 @@ export ANDROID_HOME=/Users/sindre.sivertsen/Library/Android/sdk
 # ranger cd
 function ranger-cd {
     tempfile="$(mktemp -t tmp.XXXXXX)"
-    /usr/bin/ranger --choosedir="$tempfile" "${@:-$(pwd)}"
+    command ranger --choosedir="$tempfile" "${@:-$(pwd)}"
     test -f "$tempfile" &&
     if [ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]; then
         cd -- "$(cat "$tempfile")"
