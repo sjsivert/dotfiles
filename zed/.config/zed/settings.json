@@ -78,7 +78,6 @@
   },
   // Settings related to the file finder.
 
-  // Custom roslyn analyzer c#
   "lsp": {
     "yaml-language-server": {
       "settings": {
@@ -92,11 +91,6 @@
           "https://getcomposer.org/schema.json": ["/*"],
           "../relative/path/schema.json": ["/config*.yaml"],
         },
-      },
-    },
-    "omnisharp": {
-      "binary": {
-        "path": "csharp-language-server",
       },
     },
   },
