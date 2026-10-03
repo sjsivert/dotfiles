@@ -5,7 +5,6 @@
 asmvik/formulae/skhd
 asmvik/formulae/yabai
 mdless
-nvm
 python@3.10
 telnet
 tty-clock
