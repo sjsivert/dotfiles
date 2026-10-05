@@ -7,6 +7,7 @@ anki
 chatgpt
 claude
 cleanshot
+cursor
 discord
 flux-app
 font-hack-nerd-font
@@ -34,5 +35,6 @@ swish
 tailscale-app
 todoist-app
 visual-studio-code
+wispr-flow
 xnapper
 zed
