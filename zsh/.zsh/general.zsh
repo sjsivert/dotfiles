@@ -73,6 +73,10 @@ function ranger-cd {
 bindkey -s '^O' 'ranger-cd\n'
 #ranger-cd will fire for Ctrl+O
 
+# macOS's terminal driver swallows Ctrl+O (its "discard" key), so programs
+# never see it. ranger needs it: C-o drags files out with ripdrag.
+[[ -t 0 ]] && stty discard undef
+
 # WAL import for new terminals
 # Import colorscheme from 'wal' asynchronously
 # &   # Run the process in the background.
