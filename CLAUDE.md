@@ -3,7 +3,7 @@
 Public repo: github.com/sjsivert/dotfiles. `flake.nix` sets up the Mac with
 nix-darwin (`darwin.nix`) and Linux with standalone Home Manager. Both share
 `home.nix`: command-line tools from nixpkgs, plus links from `~` into the
-zsh, bash, git, tmux, vim, nvim, lazygit, zathura and nix packages.
+zsh, bash, git, tmux, vim, nvim, lazygit, ranger, zathura and nix packages.
 
 `packages/` holds the package lists (`nix.txt`, `brews.txt`, `casks.txt`) and
 the `pkg` script that edits them. `packages/default.nix` reads the lists.

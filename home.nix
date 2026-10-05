@@ -45,6 +45,7 @@ in
     "lazygit".source = link "lazygit/.config/lazygit";
     "nix/nix.conf".source = link "nix/.config/nix/nix.conf";
     "nvim".source = link "nvim/.config/nvim";
+    "ranger".source = link "ranger/.config/ranger";
     "zathura".source = link "zathura/.config/zathura";
   };
 }

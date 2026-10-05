@@ -48,8 +48,8 @@ One nix-darwin switch does all of this:
 - `darwin.nix` installs the casks and formulae in `packages/casks.txt` and
   `packages/brews.txt`, and sets iTerm2 to load its settings from the repo.
 - `home.nix` installs the command-line tools in `packages/nix.txt`, links
-  zsh, bash, git, tmux, vim, nvim, lazygit, zathura and the nix config from
-  `~` into the repo, and puts the `pkg` command in `~/.local/bin`.
+  zsh, bash, git, tmux, vim, nvim, lazygit, ranger, zathura and the nix
+  config from `~` into the repo, and puts the `pkg` command in `~/.local/bin`.
 
 `darwin-rebuild` is not installed yet, so build the system first and run it
 from the build:
