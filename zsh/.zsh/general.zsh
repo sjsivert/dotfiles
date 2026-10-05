@@ -83,8 +83,9 @@ bindkey -s '^O' 'ranger-cd\n'
 #cat ~/.cache/wal/sequences
 
 
-# Autojump
-[[ -s /Users/sindre.sivertsen/.autojump/etc/profile.d/autojump.sh ]] && source /Users/sindre.sivertsen/.autojump/etc/profile.d/autojump.sh
+# Autojump, from nixpkgs. The profile doesn't link share/autojump, so find
+# the script next to the binary.
+(( $+commands[autojump] )) && source ${${commands[autojump]:A}:h:h}/share/autojump/autojump.zsh
 
 
 
@@ -109,8 +110,6 @@ znap eval iterm2 'curl -fsSL https://iterm2.com/shell_integration/zsh'
 # `znap function` lets you lazy-load features you don't always need.
 znap function _pyenv pyenv "znap eval pyenv 'pyenv init - --no-rehash'"
 compctl -K    _pyenv pyenv
-
-znap clone https://github.com/wting/autojump.git
 
 function zvm_config() {
   ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
