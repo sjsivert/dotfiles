@@ -1,37 +1,7 @@
 set guioptions none
 
-## Base16 Nord
-# Author: arcticicestudio
-
-set default-bg                  "#2E3440"
-set default-fg                  "#3B4252"
-
-set statusbar-fg                "#D8DEE9"
-set statusbar-bg                "#434C5E"
-
-set inputbar-bg                 "#2E3440"
-set inputbar-fg                 "#8FBCBB"
-
-set notification-bg             "#2E3440"
-set notification-fg             "#8FBCBB"
-
-set notification-error-bg       "#2E3440"
-set notification-error-fg       "#BF616A"
-
-set notification-warning-bg     "#2E3440"
-set notification-warning-fg     "#BF616A"
-
-set highlight-color             "#EBCB8B"
-set highlight-active-color      "#81A1C1"
-
-set completion-bg               "#3B4252"
-set completion-fg               "#81A1C1"
-
-set completion-highlight-fg     "#8FBCBB"
-set completion-highlight-bg     "#81A1C1"
-
-set recolor-lightcolor          "#2E3440"
-set recolor-darkcolor           "#ECEFF4"
-
-set recolor                     "false"
-set recolor-keephue             "false" ---Theme---
+# Tokyo Night Moon, copied unchanged from
+# https://github.com/folke/tokyonight.nvim/tree/main/extras/zathura
+# (Apache-2.0). Ctrl+R toggles recolor, which draws the pages in the theme's
+# colors.
+include tokyonight_moon.zathurarc

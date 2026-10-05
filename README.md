@@ -7,8 +7,8 @@ My Mac and Linux setup. `flake.nix` has two parts:
 - **Linux (Arch, Ubuntu, Debian):** standalone Home Manager.
 
 Both use `home.nix`, which installs my command-line tools from nixpkgs and
-links the terminal dotfiles (zsh, bash, git, tmux, vim, nvim, lazygit, nix)
-from `~` into this repo. The links point at the checkout, not a copy, so
+links the terminal dotfiles (zsh, bash, git, tmux, vim, nvim, lazygit, zathura,
+nix) from `~` into this repo. The links point at the checkout, not a copy, so
 edits apply without a rebuild.
 
 `packages/` holds the package lists, one name per line: `nix.txt` for the
