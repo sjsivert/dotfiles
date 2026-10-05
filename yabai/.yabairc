@@ -53,9 +53,10 @@ yabai -m rule --add app="^Outlook$" space=4
 
 
 # Focused window look
-yabai -m config window_opacicodety on
-yabai -m config active_window_opacity 1.0
-yabai -m config normal_window_opacity 0.94
+# Border around the focused window: JankyBorders, from packages/nix.txt.
+# yabai's launchd PATH lacks the Nix profile, hence the full path. If borders
+# is already running, this passes the new settings to it and exits.
+/etc/profiles/per-user/$USER/bin/borders active_color=0xff8caaee inactive_color=0x00000000 width=4.0 &
 
 
 # bar settings

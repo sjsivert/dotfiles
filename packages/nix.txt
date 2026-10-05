@@ -18,6 +18,7 @@ gitui
 gotop
 htop
 imagemagick
+jankyborders  darwin  # borders: the focused-window border. yabai/.yabairc starts it.
 jq
 jump
 lazydocker
