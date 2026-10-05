@@ -91,10 +91,6 @@ yabai -m config window_gap 15
 
 
 
-# Flash focues window on switch
-yabai -m signal --add label="flash_focus" event="window_focused" action="yabai -m window \$YABAI_WINDOW_ID --opacity 0.1 && sleep $(yabai -m config window_opacity_duration) && yabai -m window \$YABAI_WINDOW_ID --opacity 0.0"
-
-
 
 # global settings
 #yabai -m config                                 \
