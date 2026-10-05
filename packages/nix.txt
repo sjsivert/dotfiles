@@ -33,6 +33,7 @@ nodejs
 pandoc
 pnpm
 ranger
+ripdrag  # drag files out of the terminal. ranger/.config/ranger/rc.conf maps it to C-o.
 ripgrep
 speedtest-cli
 starship
