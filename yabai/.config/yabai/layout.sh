@@ -1,18 +1,24 @@
 #!/bin/sh
-# Put spaces and windows back where they were after macOS moves them.
-# yabairc runs it from signals:
+# Put windows back on their spaces after macOS moves them. yabairc runs it
+# from signals:
 #
 #   layout.sh save          as windows and spaces change: remember how many
 #                           spaces each display has and where every window is
 #   layout.sh suspend       when a display goes away: stop saving
-#   layout.sh restore [-n]  when a display comes back or the Mac wakes: give
-#                           each display its spaces and each window its space,
-#                           then save again. -n prints what it would do.
+#   layout.sh restore [-n]  when a display comes back or the Mac wakes: wait
+#                           for macOS to put the spaces back, then move each
+#                           window to its space and save again. -n prints the
+#                           moves it would make now.
 #
-# A monitor that sleeps with the screen can drop off the Mac. macOS then moves
-# its spaces and windows to the laptop, and leaves them there when the monitor
-# wakes. Saving stops while the monitor is gone, so the saved layout is the
-# one from before. The log goes to /tmp/yabai_$USER.out.log.
+# When the screen wakes, the monitor drops off the Mac for a moment. macOS
+# moves its spaces and windows to the laptop and then back, but not every
+# window lands on its old space. Saving stops while the monitor is gone, so
+# the saved layout is the one from before.
+#
+# It never moves spaces itself. macOS does that, and display numbers change
+# while it does: moving spaces then sent them to the wrong display. If the
+# spaces do not come back as they were, the windows stay where they are.
+# The log goes to /tmp/yabai_$USER.out.log.
 
 dir=${XDG_STATE_HOME:-$HOME/.local/state}/yabai
 layout=$dir/layout.json
@@ -27,14 +33,18 @@ run() {
   [ -n "$dry" ] || "$@"
 }
 
+# The displays in order, with how many spaces each has.
+shape() {
+  yabai -m query --displays | jq -c '[.[] | {uuid, spaces: (.spaces | length)}]'
+}
+
 save() {
   [ -e "$suspended" ] && return
   displays=$(yabai -m query --displays) || return
   # One display is the laptop on its own, or a monitor that has gone away.
   [ "$(echo "$displays" | jq length)" -ge 2 ] || return
   mkdir -p "$dir"
-  # A window's place is its display and the position of its space there,
-  # which still holds if macOS adds a space to another display.
+  # A window's place is its display and the position of its space there.
   yabai -m query --windows | jq --argjson d "$displays" '{
     displays: [$d[] | {uuid, spaces: (.spaces | length)}],
     windows: [.[] | select(."is-sticky" | not) | . as $w
@@ -44,34 +54,19 @@ save() {
   }' >"$layout.$$" && mv "$layout.$$" "$layout"
 }
 
-# "<display index> <spaces now> <spaces saved>" for each display
-space_counts() {
-  yabai -m query --displays | jq -r --slurpfile l "$layout" '
-    ($l[0].displays | map({key: .uuid, value: .spaces}) | from_entries) as $saved
-    | .[] | "\(.index) \(.spaces | length) \($saved[.uuid])"'
-}
-
-# Give each display back as many spaces as it had: take spare ones from the
-# other display, or make new ones.
-add_spaces() {
+# Wait up to 30 seconds for the displays and spaces to be as saved, and
+# still so a second later.
+settled() {
+  saved=$(jq -c .displays "$layout")
   i=0
-  while [ $i -lt 10 ]; do
+  while [ $i -lt 30 ]; do
     i=$((i + 1))
-    counts=$(space_counts)
-    short=$(echo "$counts" | awk '$2 < $3 { print $1; exit }')
-    [ -n "$short" ] || return
-    spare=$(echo "$counts" | awk '$2 > $3 { print $1; exit }')
-    space=
-    [ -n "$spare" ] && space=$(yabai -m query --spaces --display "$spare" |
-      jq 'map(select(."is-visible" | not)) | last.index // empty')
-    if [ -n "$space" ]; then
-      run yabai -m space "$space" --display "$short"
-    else
-      run yabai -m space --create "$short"
-    fi
-    # The counts above do not change in a dry run.
-    [ -z "$dry" ] || return
+    sleep 1
+    [ "$(shape)" = "$saved" ] || continue
+    sleep 1
+    [ "$(shape)" = "$saved" ] && return 0
   done
+  return 1
 }
 
 move_windows() {
@@ -90,44 +85,31 @@ move_windows() {
     done
 }
 
-# Spaces beyond what a display had go, once their windows have moved out.
-remove_spaces() {
-  space_counts | while read -r display now saved; do
-    extra=$((now - saved))
-    [ "$extra" -gt 0 ] || continue
-    yabai -m query --spaces --display "$display" | jq -r 'reverse | .[]
-      | select(."is-visible" | not) | .index' |
-      while read -r space; do
-        [ "$extra" -gt 0 ] || break
-        windows=$(yabai -m query --windows --space "$space" |
-          jq 'map(select(."is-sticky" | not)) | length')
-        [ "$windows" -eq 0 ] || continue
-        run yabai -m space "$space" --destroy
-        extra=$((extra - 1))
-      done
-  done
-}
-
 restore() {
   [ "${1:-}" = -n ] && dry=1
   [ -r "$layout" ] || return
-  if [ -z "$dry" ]; then
-    mkdir -p "$dir" && touch "$suspended"
-    # Let macOS finish moving things first.
-    sleep 3
-  fi
-  displays=$(yabai -m query --displays) || return
-  # The monitor is not back yet: stay suspended until it is.
-  [ "$(echo "$displays" | jq length)" -ge 2 ] || return
-  if [ "$(echo "$displays" | jq -c '[.[].uuid] | sort')" != \
-    "$(jq -c '[.displays[].uuid] | sort' "$layout")" ]; then
-    log "not the saved displays, so starting a new layout"
-  else
-    add_spaces
+  if [ -n "$dry" ]; then
+    [ "$(shape)" = "$(jq -c .displays "$layout")" ] ||
+      log "the spaces are not as saved, so it would wait for them"
     move_windows
-    remove_spaces
+    return
   fi
-  [ -n "$dry" ] && return
+
+  # display_added and system_woke can both fire. One restore is enough.
+  mkdir -p "$dir"
+  mkdir "$dir/restoring" 2>/dev/null || return
+  trap 'rmdir "$dir/restoring"' EXIT
+  touch "$suspended"
+
+  log "a display is back, so waiting for macOS to put the spaces back"
+  if settled; then
+    move_windows
+  elif [ "$(yabai -m query --displays | jq length)" -lt 2 ]; then
+    # The monitor is still gone. Stay suspended until it is back.
+    return
+  else
+    log "the spaces did not come back as saved, so the windows stay put"
+  fi
   rm -f "$suspended"
   save
 }

@@ -51,8 +51,9 @@ yabai -m rule --add app="^Code$" space=2
 yabai -m rule --add app="^Microsoft Teams$" space=5
 yabai -m rule --add app="^Outlook$" space=4
 
-# When the monitor sleeps it can drop off the Mac, and macOS moves its spaces
-# and windows to the laptop. layout.sh saves the layout and puts it back.
+# When the screen wakes, the monitor drops off the Mac for a moment, and
+# windows can land on other spaces. layout.sh saves where they were and puts
+# them back once macOS has put the spaces back.
 layout=~/.config/yabai/layout.sh
 yabai -m signal --add event=display_removed action="$layout suspend" label=layout_suspend
 yabai -m signal --add event=display_added action="$layout restore" label=layout_restore
