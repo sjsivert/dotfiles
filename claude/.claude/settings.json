@@ -18,6 +18,10 @@
           {
             "type": "command",
             "command": "/Users/sindre.sivertsen/.config/iterm2/cc-status"
+          },
+          {
+            "type": "command",
+            "command": "~/.claude/tools/tmux-claude hook"
           }
         ]
       }
@@ -28,6 +32,10 @@
           {
             "type": "command",
             "command": "/Users/sindre.sivertsen/.config/iterm2/cc-status"
+          },
+          {
+            "type": "command",
+            "command": "~/.claude/tools/tmux-claude hook"
           }
         ]
       }
@@ -38,6 +46,10 @@
           {
             "type": "command",
             "command": "/Users/sindre.sivertsen/.config/iterm2/cc-status"
+          },
+          {
+            "type": "command",
+            "command": "~/.claude/tools/tmux-claude hook"
           }
         ]
       }
@@ -48,6 +60,10 @@
           {
             "type": "command",
             "command": "/Users/sindre.sivertsen/.config/iterm2/cc-status"
+          },
+          {
+            "type": "command",
+            "command": "~/.claude/tools/tmux-claude hook"
           }
         ]
       }
@@ -58,6 +74,10 @@
           {
             "type": "command",
             "command": "/Users/sindre.sivertsen/.config/iterm2/cc-status"
+          },
+          {
+            "type": "command",
+            "command": "~/.claude/tools/tmux-claude hook"
           }
         ]
       }
@@ -68,6 +88,10 @@
           {
             "type": "command",
             "command": "/Users/sindre.sivertsen/.config/iterm2/cc-status"
+          },
+          {
+            "type": "command",
+            "command": "~/.claude/tools/tmux-claude hook"
           }
         ]
       }
@@ -86,6 +110,10 @@
           {
             "type": "command",
             "command": "/Users/sindre.sivertsen/.config/iterm2/cc-status"
+          },
+          {
+            "type": "command",
+            "command": "~/.claude/tools/tmux-claude hook"
           }
         ]
       }
@@ -96,6 +124,10 @@
           {
             "type": "command",
             "command": "/Users/sindre.sivertsen/.config/iterm2/cc-status"
+          },
+          {
+            "type": "command",
+            "command": "~/.claude/tools/tmux-claude hook"
           }
         ]
       }
@@ -116,6 +148,10 @@
           {
             "type": "command",
             "command": "/Users/sindre.sivertsen/.config/iterm2/cc-status"
+          },
+          {
+            "type": "command",
+            "command": "~/.claude/tools/tmux-claude hook"
           }
         ]
       }

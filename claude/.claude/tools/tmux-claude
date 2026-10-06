@@ -1,0 +1,102 @@
+#!/usr/bin/env bash
+# Tracks what each Claude Code session in tmux is doing, for the tmux status
+# bar, the prefix + W tree and prefix + N (see tmux/.tmux.conf).
+#
+#   tmux-claude hook               Claude Code runs this from its hooks in
+#                                  settings.json. Sets the pane options below.
+#   tmux-claude next PANE CLIENT   Switch CLIENT to the session that has
+#                                  waited longest for you, skipping PANE.
+#
+# Pane options:
+#   @claude_state   working; waiting (on a permission prompt, a question or
+#                   a plan); error (the turn failed); done (finished while
+#                   you looked elsewhere); idle (finished, and you have seen it)
+#   @claude_since   when the state last changed, in epoch seconds
+#   @claude_detail  the tool it runs or waits on
+
+set -u
+
+hook() {
+  # Claude Code runs outside tmux too.
+  [ -n "${TMUX_PANE:-}" ] || exit 0
+
+  local event tool ntype state detail=
+  IFS='|' read -r event tool ntype < <(
+    jq -r '"\(.hook_event_name)|\(.tool_name // "")|\(.notification_type // "")"'
+  )
+  # mcp__server__browser_click -> browser_click
+  tool=${tool##*__}
+
+  case $event in
+    SessionStart) state=idle ;;
+    UserPromptSubmit | PostToolUse) state=working ;;
+    PreToolUse)
+      case $tool in
+        AskUserQuestion) state=waiting detail=question ;;
+        ExitPlanMode) state=waiting detail=plan ;;
+        *) state=working detail=$tool ;;
+      esac
+      ;;
+    PermissionRequest) state=waiting detail="allow $tool" ;;
+    Notification)
+      case $ntype in
+        permission_prompt | elicitation_dialog) state=waiting ;;
+        *) exit 0 ;;
+      esac
+      ;;
+    Stop) state=done ;;
+    StopFailure) state=error ;;
+    SessionEnd)
+      tmux set -pu -t "$TMUX_PANE" @claude_state \; \
+        set -pu -t "$TMUX_PANE" @claude_since \; \
+        set -pu -t "$TMUX_PANE" @claude_detail
+      exit 0
+      ;;
+    *) exit 0 ;;
+  esac
+
+  local current visible
+  IFS='|' read -r current visible < <(
+    tmux display -p -t "$TMUX_PANE" \
+      '#{@claude_state}|#{&&:#{pane_active},#{&&:#{window_active},#{session_attached}}}'
+  )
+  # A permission notification follows the PermissionRequest hook, which
+  # already named the tool.
+  [ "$event" = Notification ] && [ "$current" = waiting ] && exit 0
+  # Finishing in the pane you are looking at needs no flag.
+  [ "$state" = done ] && [ "$visible" = 1 ] && state=idle
+
+  local args=(set -p -t "$TMUX_PANE" @claude_state "$state" \;
+    set -p -t "$TMUX_PANE" @claude_detail "$detail")
+  [ "$state" != "$current" ] &&
+    args+=(\; set -p -t "$TMUX_PANE" @claude_since "$(date +%s)")
+  tmux "${args[@]}"
+}
+
+next() {
+  local here=${1:-} client=${2:-} target
+  # Blocked sessions first, then failed, then finished; oldest first.
+  target=$(
+    tmux list-panes -a -F '#{pane_id} #{@claude_state} #{@claude_since}' |
+      awk -v here="$here" '
+        $1 == here { next }
+        $2 == "waiting" { print 1, $3, $1 }
+        $2 == "error"   { print 2, $3, $1 }
+        $2 == "done"    { print 3, $3, $1 }' |
+      sort -n -k1,1 -k2,2 | awk 'NR == 1 { print $3 }'
+  )
+  if [ -z "$target" ]; then
+    tmux display-message "No Claude session needs you"
+    return
+  fi
+  tmux switch-client ${client:+-c "$client"} -t "$target"
+}
+
+case ${1:-} in
+  hook) hook ;;
+  next) shift && next "$@" ;;
+  *)
+    echo "usage: tmux-claude hook | next PANE CLIENT" >&2
+    exit 2
+    ;;
+esac
