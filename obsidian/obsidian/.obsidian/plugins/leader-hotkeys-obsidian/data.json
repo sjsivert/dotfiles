@@ -1,0 +1,223 @@
+{
+  "hotkeys": [
+    {
+      "sequence": [
+        {
+          "key": "w",
+          "shift": false,
+          "alt": false,
+          "ctrl": true,
+          "meta": false
+        },
+        {
+          "key": "v",
+          "shift": false,
+          "alt": false,
+          "ctrl": false,
+          "meta": false
+        }
+      ],
+      "commandID": "workspace:split-vertical"
+    },
+    {
+      "sequence": [
+        {
+          "key": "w",
+          "shift": false,
+          "alt": false,
+          "ctrl": true,
+          "meta": false
+        },
+        {
+          "key": "s",
+          "shift": false,
+          "alt": false,
+          "ctrl": false,
+          "meta": false
+        }
+      ],
+      "commandID": "workspace:split-horizontal"
+    },
+    {
+      "sequence": [
+        {
+          "key": "w",
+          "shift": false,
+          "alt": false,
+          "ctrl": true,
+          "meta": false
+        },
+        {
+          "key": "c",
+          "shift": false,
+          "alt": false,
+          "ctrl": false,
+          "meta": false
+        }
+      ],
+      "commandID": "workspace:close"
+    },
+    {
+      "sequence": [
+        {
+          "key": "w",
+          "shift": false,
+          "alt": false,
+          "ctrl": true,
+          "meta": false
+        },
+        {
+          "key": "q",
+          "shift": false,
+          "alt": false,
+          "ctrl": false,
+          "meta": false
+        }
+      ],
+      "commandID": "workspace:close"
+    },
+    {
+      "sequence": [
+        {
+          "key": "w",
+          "shift": false,
+          "alt": false,
+          "ctrl": true,
+          "meta": false
+        },
+        {
+          "key": "o",
+          "shift": false,
+          "alt": false,
+          "ctrl": false,
+          "meta": false
+        }
+      ],
+      "commandID": "workspace:close-others"
+    },
+    {
+      "sequence": [
+        {
+          "key": "w",
+          "shift": false,
+          "alt": false,
+          "ctrl": true,
+          "meta": false
+        },
+        {
+          "key": "h",
+          "shift": false,
+          "alt": false,
+          "ctrl": false,
+          "meta": false
+        }
+      ],
+      "commandID": "editor:focus-left"
+    },
+    {
+      "sequence": [
+        {
+          "key": "w",
+          "shift": false,
+          "alt": false,
+          "ctrl": true,
+          "meta": false
+        },
+        {
+          "key": "j",
+          "shift": false,
+          "alt": false,
+          "ctrl": false,
+          "meta": false
+        }
+      ],
+      "commandID": "editor:focus-bottom"
+    },
+    {
+      "sequence": [
+        {
+          "key": "w",
+          "shift": false,
+          "alt": false,
+          "ctrl": true,
+          "meta": false
+        },
+        {
+          "key": "k",
+          "shift": false,
+          "alt": false,
+          "ctrl": false,
+          "meta": false
+        }
+      ],
+      "commandID": "editor:focus-top"
+    },
+    {
+      "sequence": [
+        {
+          "key": "w",
+          "shift": false,
+          "alt": false,
+          "ctrl": true,
+          "meta": false
+        },
+        {
+          "key": "l",
+          "shift": false,
+          "alt": false,
+          "ctrl": false,
+          "meta": false
+        }
+      ],
+      "commandID": "editor:focus-right"
+    },
+    {
+      "sequence": [
+        {
+          "key": "h",
+          "shift": false,
+          "alt": false,
+          "ctrl": true,
+          "meta": false
+        }
+      ],
+      "commandID": "editor:focus-left"
+    },
+    {
+      "sequence": [
+        {
+          "key": "j",
+          "shift": false,
+          "alt": false,
+          "ctrl": true,
+          "meta": false
+        }
+      ],
+      "commandID": "editor:focus-bottom"
+    },
+    {
+      "sequence": [
+        {
+          "key": "k",
+          "shift": false,
+          "alt": false,
+          "ctrl": true,
+          "meta": false
+        }
+      ],
+      "commandID": "editor:focus-top"
+    },
+    {
+      "sequence": [
+        {
+          "key": "l",
+          "shift": false,
+          "alt": false,
+          "ctrl": true,
+          "meta": false
+        }
+      ],
+      "commandID": "editor:focus-right"
+    }
+  ]
+}

@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 1,
+  "locale": "auto",
+  "keymap": "",
+  "openers": [
+    {
+      "id": "system",
+      "label": "Default app",
+      "key": "d",
+      "appliesTo": "file",
+      "extensions": [],
+      "platform": "all",
+      "kind": "system",
+      "enabled": true
+    },
+    {
+      "id": "explore",
+      "label": "Open folder",
+      "key": "f",
+      "appliesTo": "folder",
+      "extensions": [],
+      "platform": "all",
+      "kind": "system",
+      "enabled": true
+    },
+    {
+      "id": "reveal",
+      "label": "Show in file manager",
+      "key": "r",
+      "appliesTo": "both",
+      "extensions": [],
+      "platform": "all",
+      "kind": "reveal",
+      "enabled": true
+    }
+  ],
+  "decorations": [],
+  "facets": [
+    {
+      "id": "scope",
+      "key": "f",
+      "icon": "📁",
+      "label": "Folder",
+      "kind": "path",
+      "enabled": true
+    },
+    {
+      "id": "tag",
+      "key": "t",
+      "icon": "🏷",
+      "label": "Tag",
+      "kind": "tag",
+      "enabled": true
+    },
+    {
+      "id": "ext",
+      "key": "e",
+      "icon": "🧩",
+      "label": "Extension",
+      "kind": "ext",
+      "enabled": true
+    },
+    {
+      "id": "exclude",
+      "key": "x",
+      "icon": "➖",
+      "label": "Exclude word",
+      "kind": "free",
+      "enabled": true
+    },
+    {
+      "id": "regex",
+      "key": "r",
+      "icon": ".*",
+      "label": "Regex",
+      "kind": "free",
+      "enabled": true
+    }
+  ],
+  "relations": [
+    {
+      "id": "parent",
+      "enabled": true,
+      "field": "parent",
+      "label": "Parent",
+      "inverse": "Children"
+    },
+    {
+      "id": "up",
+      "enabled": true,
+      "field": "up",
+      "label": "Up",
+      "inverse": "Down"
+    },
+    {
+      "id": "related",
+      "enabled": true,
+      "field": "related",
+      "label": "Related",
+      "symmetric": true
+    },
+    {
+      "id": "blocks",
+      "enabled": true,
+      "field": "blocks",
+      "label": "Blocks",
+      "inverse": "Blocked by"
+    }
+  ],
+  "views": [],
+  "preview": {
+    "renderMarkdown": true,
+    "renderDelay": 120,
+    "seekLines": 5,
+    "maxChars": 20000,
+    "maxLines": 400,
+    "wheelScrollsPreview": true
+  },
+  "behavior": {
+    "wrapCursor": true,
+    "halfPage": 10,
+    "recentLimit": 40,
+    "frecencyLimit": 60,
+    "searchLimit": 60
+  },
+  "index": {
+    "enabled": true,
+    "maxFileBytes": 1048576,
+    "maxChars": 200000,
+    "excludeFolders": []
+  },
+  "bookmarks": [],
+  "frecency": {
+    "Drafts & short-lived/2026-10-07.md": {
+      "n": 1,
+      "t": 1791365258889
+    },
+    "Blog": {
+      "n": 2,
+      "t": 1791365282733
+    }
+  },
+  "sort": {
+    "field": "name",
+    "reverse": false,
+    "foldersFirst": true
+  },
+  "sortSearch": {
+    "field": "natural",
+    "reverse": false,
+    "foldersFirst": true
+  }
+}
