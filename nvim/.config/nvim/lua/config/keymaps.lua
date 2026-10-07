@@ -3,12 +3,6 @@
 -- Add any additional keymaps here
 
 local g = vim.g
-local set = vim.api.nvim_set_keymap
-local ns = { noremap = true, silent = true }
-
-set("i", "jk", "<Esc>", ns)
-set("i", "kj", "<Esc>", ns)
-
 -- Smart tmux-aware window navigation.
 -- Problem: snacks picker and explorer open floating windows on top of a real
 -- split (snacks_layout_box). When wincmd lands on that container, winnr()
