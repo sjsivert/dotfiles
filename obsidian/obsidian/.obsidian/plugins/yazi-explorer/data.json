@@ -32,6 +32,44 @@
       "platform": "all",
       "kind": "reveal",
       "enabled": true
+    },
+    {
+      "id": "tmux-nvim",
+      "label": "Neovim (tmux window)",
+      "key": "n",
+      "appliesTo": "file",
+      "extensions": [],
+      "platform": "mac",
+      "kind": "command",
+      "command": "/bin/sh",
+      "args": [
+        "-c",
+        "exec \"$HOME/.local/bin/obsidian-tmux\" \"$@\"",
+        "sh",
+        "nvim",
+        "{{path}}",
+        "{{vaultPath}}"
+      ],
+      "enabled": true
+    },
+    {
+      "id": "tmux-claude",
+      "label": "Claude (tmux window)",
+      "key": "c",
+      "appliesTo": "file",
+      "extensions": [],
+      "platform": "mac",
+      "kind": "command",
+      "command": "/bin/sh",
+      "args": [
+        "-c",
+        "exec \"$HOME/.local/bin/obsidian-tmux\" \"$@\"",
+        "sh",
+        "claude",
+        "{{path}}",
+        "{{vaultPath}}"
+      ],
+      "enabled": true
     }
   ],
   "decorations": [],
@@ -130,16 +168,7 @@
     "excludeFolders": []
   },
   "bookmarks": [],
-  "frecency": {
-    "Drafts & short-lived/2026-10-07.md": {
-      "n": 1,
-      "t": 1791365258889
-    },
-    "Blog": {
-      "n": 2,
-      "t": 1791365282733
-    }
-  },
+  "frecency": {},
   "sort": {
     "field": "name",
     "reverse": false,

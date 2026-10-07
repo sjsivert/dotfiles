@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# Open a note from Obsidian in a new tmux window of the session you were last
+# using, then bring the terminal to the front.
+# Usage: obsidian-tmux nvim|claude <absolute note path> <vault path>
+set -euo pipefail
+export PATH="/etc/profiles/per-user/$USER/bin:/run/current-system/sw/bin:/opt/homebrew/bin:$HOME/.local/bin:$PATH"
+
+mode=${1:?mode: nvim or claude}
+note=${2:?note path}
+vault=${3:?vault path}
+rel=${note#"$vault"/}
+
+session=$(tmux list-clients -F '#{client_activity} #{session_name}' | sort -rn | head -n 1 | cut -d' ' -f2-)
+[ -n "$session" ] || { echo "no attached tmux client" >&2; exit 1; }
+
+case $mode in
+  nvim)   cmd="nvim $(printf '%q' "$rel")" ;;
+  claude) cmd="claude $(printf '%q' "Read $rel")" ;;
+  *) echo "unknown mode: $mode" >&2; exit 1 ;;
+esac
+
+tmux new-window -t "$session:" -c "$vault" -n "$mode" "$cmd"
+open -a iTerm
