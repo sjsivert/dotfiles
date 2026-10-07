@@ -13,3 +13,10 @@ export PATH="/Users/sindre.sivertsen/.antigravity/antigravity/bin:$PATH"
 zshaddhistory() {
   [[ $1 != *node-cdp* ]] && [[ $1 != *deferredMode* ]]
 }
+
+sshop() {
+  local item="$1"; shift
+  (( $# )) || set -- "$item"
+  OP_SSH_ITEM="$item" SSH_ASKPASS="$HOME/.ssh/op-otp-askpass" \
+  SSH_ASKPASS_REQUIRE=force ssh "$@"
+}

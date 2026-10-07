@@ -1,5 +1,5 @@
 alias lyd="pavucontrol"
-alias ssh="TERM=termite ssh"
+alias ssh="TERM=xterm-256color ssh"
 alias pdf="zathura"
 # .bashrc config
 alias update='sudo pacmatic -Syu'
