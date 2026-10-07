@@ -43,7 +43,6 @@ setup_space 4 social
 setup_space 5 media
 setup_space 6 other
 
-yabai -m rule --add app="^Obsidian$" space=3
 #yabai -m rule --add app="^Arc$" space=1
 yabai -m rule --add app="^iTerm2$" space=2
 yabai -m rule --add app="^Code$" space=2
