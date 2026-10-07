@@ -5,17 +5,18 @@ vim.g.mapleader = " "
 
 local leader = {
   -- top level
-  { "e", "app:toggle-left-sidebar", desc = "Explorer" },
+  { "e", "yazi-explorer:open", desc = "Explorer (yazi)" },
   { "/", "global-search:open", desc = "Grep" },
   { ",", "app:show-tab-switcher", desc = "Switch buffer" },
-  { " ", "switcher:open", desc = "Find file" },
+  { " ", "yazi-explorer:search-file", desc = "Find file (yazi)" },
   { ":", "command-palette:open", desc = "Commands" },
   { "-", "workspace:split-horizontal", desc = "Split below" },
   { "|", "workspace:split-vertical", desc = "Split right" },
 
   -- file / find
   { "ff", "switcher:open", desc = "Find file" },
-  { "fr", "switcher:open", desc = "Recent" },
+  { "fr", "yazi-explorer:open-recent", desc = "Recent" },
+  { "fz", "yazi-explorer:open-frecency", desc = "Most visited" },
   { "fb", "app:show-tab-switcher", desc = "Buffers" },
   { "fn", "file-explorer:new-file", desc = "New file" },
   { "fd", "file-explorer:new-folder", desc = "New folder" },
@@ -27,11 +28,12 @@ local leader = {
   { "sw", "global-search:open", desc = "Word" },
   { "sb", "editor:open-search", desc = "Buffer" },
   { "sr", "editor:open-search-replace", desc = "Replace" },
-  { "ss", "outline:open", desc = "Symbols" },
+  { "ss", "yazi-explorer:open-outline", desc = "Symbols" },
+  { "sd", "yazi-explorer:search-dir", desc = "Folders" },
   { "sc", "command-palette:open", desc = "Commands" },
   { "sk", "app:open-settings", desc = "Keymaps" },
   { "sh", "app:open-help", desc = "Help" },
-  { "sm", "bookmarks:open", desc = "Bookmarks" },
+  { "sm", "yazi-explorer:open-bookmarks", desc = "Bookmarks" },
   { "st", "tag-pane:open", desc = "Tags" },
 
   -- buffers
@@ -54,6 +56,7 @@ local leader = {
   { "wl", "editor:focus-right", desc = "Go right" },
 
   -- ui toggles
+  { "ue", "app:toggle-left-sidebar", desc = "Sidebar" },
   { "ul", "editor:toggle-line-numbers", desc = "Line numbers" },
   { "us", "editor:toggle-spellcheck", desc = "Spelling" },
   { "uw", "editor:toggle-readable-line-length", desc = "Readable width" },
@@ -64,6 +67,7 @@ local leader = {
   { "og", "graph:open", desc = "Graph" },
   { "ol", "graph:open-local", desc = "Local graph" },
   { "ob", "backlink:open", desc = "Backlinks" },
+  { "or", "yazi-explorer:open-relations", desc = "Relations (yazi)" },
   { "oo", "outgoing-link:open", desc = "Outgoing links" },
   { "op", "properties:open", desc = "Properties" },
   { "oc", "canvas:new-file", desc = "New canvas" },

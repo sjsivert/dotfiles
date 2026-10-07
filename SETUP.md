@@ -135,6 +135,23 @@ xargs -n1 cursor --install-extension < ~/dotfiles/macos/cursor-extensions.txt
 
 Check: `cursor --list-extensions | wc -l` (about 59).
 
+### Obsidian
+
+The `obsidian` package holds the settings for the vault at `~/obsidian`:
+`community-plugins.json`, each plugin's `data.json`, the themes and the
+snippets. It does not hold the plugin code or the notes.
+
+```sh
+cd ~/dotfiles && stow --no-folding obsidian
+```
+
+Always use `--no-folding`, so only these files are linked and Obsidian's
+`workspace.json` stays out of the repo. Stow before the first Obsidian launch,
+or move the default `.obsidian` files aside first (ask). Then open `~/obsidian`
+as a vault and turn on community plugins: Obsidian does not download the
+plugins listed in `community-plugins.json` by itself. Install each one from
+Settings > Community plugins, and the stowed `data.json` is picked up.
+
 ## 5. Keyboard and windows
 
 ```sh

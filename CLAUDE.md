@@ -17,8 +17,11 @@ stowed.
 - Never commit credentials, tokens or anything from an employer. Grep the
   diff before every commit.
 - Never stow a package that `home.nix` links.
-- Stow `agents`, `vscode`, `cursor` and `zed` with `--no-folding`. `claude`
-  and `karabiner` fold on purpose.
+- Stow `agents`, `vscode`, `cursor`, `zed` and `obsidian` with
+  `--no-folding`. `claude` and `karabiner` fold on purpose.
+- `obsidian` tracks only plugin settings, themes and snippets for the vault
+  at `~/obsidian`. Plugin `main.js` is gitignored, and the notes are not in
+  this repo. The Space-leader keymaps live in `nvim/.config/nvim/obsidian.lua`.
 - Command-line tools go in `packages/nix.txt`. Casks, and formulae nixpkgs
   lacks for macOS, go in `packages/casks.txt` and `brews.txt`. There is no
   Brewfile. `pkg add`, `rm`, `sync` and `up` commit their own changes.
