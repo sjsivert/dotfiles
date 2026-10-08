@@ -1,3 +1,8 @@
+# ~/.local/bin first: ~/.zsh/*.zsh test for nvim, lsd and so on while they load.
+# (hpc-tools.sh installs nvim, fzf, lazygit, ranger there on servers.)
+typeset -U path PATH
+[[ -d ~/.local/bin ]] && path=(~/.local/bin $path)
+
 for config (~/.zsh/*.zsh) source $config
 
 
