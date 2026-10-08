@@ -41,7 +41,11 @@ mkdir -p "$@" && cd "$@"
 alias ranger="source ranger"
 alias jmp="jump"
 alias ld="lazydocker"
-alias la="lsd -la"
+if command -v lsd >/dev/null 2>&1; then
+  alias la="lsd -la"
+else
+  alias la="ls -la"
+fi
 alias flush="docker compose exec -it redis redis-cli FLUSHALL"
 alias claudeyolo="CLAUDE_CODE_NO_FLICKER=1 claude --dangerously-skip-permissions"
 alias claude="CLAUDE_CODE_NO_FLICKER=1 claude"
