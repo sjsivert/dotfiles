@@ -58,3 +58,5 @@ alias lgs="node ~/code/gitreview/bin/gitreview.js"
 
 
 
+# Second Claude Code profile (own login, shares skills/agents/settings via symlinks)
+alias claude-ent='CLAUDE_CONFIG_DIR=$HOME/.claude-enterprise claude'
