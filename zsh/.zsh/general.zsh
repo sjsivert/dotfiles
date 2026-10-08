@@ -32,7 +32,11 @@ export ZVM_INIT_MODE=sourcing
 ZVM_INIT_MODE=sourcing
 
 # editor vim
-export VISUAL=nvim
+if command -v nvim >/dev/null 2>&1; then
+  export VISUAL=nvim
+else
+  export VISUAL=vim
+fi
 export EDITOR="$VISUAL"
 #export TERMINAL=termite
 export TERMINAL=alacritty

@@ -15,8 +15,12 @@ alias venv='source ~/.virtualenvs/abapong/bin/activate'
 #alias ranger='ranger-cd && cat ~/.cache/wal/sequences'
 alias cc='pushd'
 alias dirs="dirs -v"
-alias v='nvim'
-alias vim='nvim'
+if command -v nvim >/dev/null 2>&1; then
+  alias v='nvim'
+  alias vim='nvim'
+else
+  alias v='vim'
+fi
 alias todo='topydo columns'
 alias wall='QuickWall'
 alias walb='wal -i ~/.QuickWall -b "#1D232F"'
