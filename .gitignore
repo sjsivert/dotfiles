@@ -64,3 +64,4 @@ claude/.claude/skills/synced/
 # Obsidian: only plugin settings, themes and snippets are tracked, not the
 # plugin code (Obsidian reinstalls it from community-plugins.json)
 obsidian/obsidian/.obsidian/plugins/*/main.js
+/claude/.claude/skills/.trash
