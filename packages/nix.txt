@@ -15,6 +15,7 @@ git
 git-filter-repo
 git-lfs  # git/.gitconfig has the lfs filter. Don't run `git lfs install`: it rewrites that file.
 gitui
+go
 gotop
 htop
 imagemagick
