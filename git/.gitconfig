@@ -68,3 +68,16 @@
 [credential "https://gist.github.com"]
 	helper = 
 	helper = !gh auth git-credential
+
+[user]
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIxegu6Qmmz2ieyzDVkql/EOq1YIJ6b8nj5TOCe0kWAJ
+
+[gpg]
+  format = ssh
+
+[gpg "ssh"]
+  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+
+[commit]
+  gpgsign = true
+
