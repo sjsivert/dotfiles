@@ -21,6 +21,7 @@ imagemagick
 jankyborders  darwin  # borders: the focused-window border. yabai/.yabairc starts it.
 jq
 jump
+kubectl
 lazydocker
 lazygit
 lsd
@@ -30,8 +31,8 @@ nixfmt
 nmap
 nodejs
 pandoc
-poppler-utils  # pdftoppm and pdftotext: ranger/.config/ranger/scope.sh previews PDFs with them.
 pnpm
+poppler-utils  # pdftoppm and pdftotext: ranger/.config/ranger/scope.sh previews PDFs with them.
 ranger
 ripdrag  # drag files out of the terminal. ranger/.config/ranger/rc.conf maps it to C-o.
 ripgrep
