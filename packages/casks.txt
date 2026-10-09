@@ -13,7 +13,6 @@ flux-app
 font-hack-nerd-font
 font-jetbrains-mono
 font-monaspace
-go2shell
 google-chrome
 google-drive
 homerow
