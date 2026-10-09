@@ -65,3 +65,4 @@ claude/.claude/skills/synced/
 # plugin code (Obsidian reinstalls it from community-plugins.json)
 obsidian/obsidian/.obsidian/plugins/*/main.js
 /claude/.claude/skills/.trash
+/obsidian/obsidian/.obsidian/plugins/yazi-explorer/data.json
