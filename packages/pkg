@@ -21,7 +21,8 @@ pkg: find, try and keep packages. The lists are in ~/dotfiles/packages.
   pkg add <name>...      keep a nix package: add to nix.txt, switch, commit
   pkg rm <name>...       remove from its list (brew uninstalls on the Mac),
                          switch, commit
-  pkg sync               Mac: ask about each brew install that no list has
+  pkg sync               Mac: ask about each brew install that no list has,
+                         and each list entry that brew does not have
   pkg switch             apply the config
   pkg up [nix|brew]      update the pinned nixpkgs and brew packages
 EOF
@@ -282,17 +283,54 @@ cmd_sync() {
   done
   (( asked )) || say "Every installed brew package is in brews.txt or casks.txt"
 
-  local -a missing
+  # Listed but not installed: ask whether to drop the list entry, so that
+  # pkg switch does not install it again.
+  local -a missing_brews missing_casks unlist_brews unlist_casks
   for name in ${(f)"$(awk '{ sub(/#.*/, "") } NF { print $1 }' "$BREWS")"}; do
-    (( ${all_formulae[(Ie)$name]} )) || missing+=$name
+    (( ${all_formulae[(Ie)$name]} )) || missing_brews+=$name
   done
   for name in ${(f)"$(awk '{ sub(/#.*/, "") } NF { print $1 }' "$CASKS")"}; do
-    (( ${casks[(Ie)$name]} )) || missing+=$name
+    (( ${casks[(Ie)$name]} )) || missing_casks+=$name
   done
-  (( $#missing )) && say "Listed but not installed (pkg switch installs them): $missing"
+
+  # Ask whether to remove a list entry that Homebrew does not have.
+  ask_unlist() {
+    local kind=$1 name=$2 key
+    print
+    print -r -- "$fg_bold[default]$name$reset_color ($kind) is in the list but not installed"
+    while true; do
+      print -n -- "  [r]emove from list  [k]eep (pkg switch installs it)  [s]kip  [q]uit: "
+      if [[ -t 0 ]]; then
+        read -k 1 key || key=q
+      else
+        read -k 1 -u 0 key || key=q
+      fi
+      print
+      case $key in
+        r) [[ $kind == formula ]] && unlist_brews+=$name || unlist_casks+=$name; return 0 ;;
+        k | s) return 0 ;;
+        q) quit=1; return 0 ;;
+      esac
+    done
+  }
+  for name in $missing_brews; do
+    (( quit )) && break
+    ask_unlist formula "$name"
+  done
+  for name in $missing_casks; do
+    (( quit )) && break
+    ask_unlist cask "$name"
+  done
 
   (( $#drop_brews )) && { brew uninstall $drop_brews || say "brew uninstall failed for some formulae" }
   (( $#drop_casks )) && { brew uninstall --cask $drop_casks || say "brew uninstall failed for some casks" }
+
+  local -a unlisted=($unlist_brews $unlist_casks)
+  if (( $#unlisted )); then
+    for name in $unlist_brews; do remove_entry "$BREWS" "$name"; done
+    for name in $unlist_casks; do remove_entry "$CASKS" "$name"; done
+    commit "packages: Remove ${(j:, :)unlisted} not installed" "$BREWS" "$CASKS"
+  fi
 
   local -a kept=($keep_brews $keep_casks)
   if (( $#kept )); then
