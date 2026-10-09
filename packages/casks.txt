@@ -28,6 +28,7 @@ openvpn-connect
 orbstack
 raycast
 scroll-reverser
+shortcat
 shottr
 slack
 spotify
