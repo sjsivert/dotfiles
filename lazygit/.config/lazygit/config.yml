@@ -1,2 +1,5 @@
 git:
   autoStageResolvedConflicts: false
+  overrideGpg: true
+gui:
+  promptToReturnFromSubprocess: false
